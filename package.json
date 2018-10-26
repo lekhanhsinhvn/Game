@@ -1,15 +1,14 @@
 {
-  "name": "api-game-card",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "name": "game",
+  "version": "0.0.0",
+  "private": true,
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node ./bin/www"
   },
-  "author": "",
-  "license": "ISC",
   "dependencies": {
-    "express": "^4.16.4",
-    "mongoose": "^5.3.6"
+    "cookie-parser": "~1.4.3",
+    "debug": "~2.6.9",
+    "express": "~4.16.0",
+    "morgan": "~1.9.0"
   }
 }
