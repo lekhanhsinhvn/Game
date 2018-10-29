@@ -1,0 +1,31 @@
+extends layouts/layout.pug
+
+prepend head
+    title #{title}
+block content
+    .container-fluid
+        table#board
+            tr(id="op_side")
+                td(x=0 y=0 class="zone droppable" ondrop="drop(event)" ondragover="allowDrop(event)")
+                td(x=1 y=0 class="zone droppable" ondrop="drop(event)" ondragover="allowDrop(event)")
+                td(x=2 y=0 class="zone droppable" ondrop="drop(event)" ondragover="allowDrop(event)")
+                td(x=3 y=0 class="zone droppable" ondrop="drop(event)" ondragover="allowDrop(event)")
+            tr(id="my_side")
+                td(x=0 y=1 class="zone droppable" ondrop="drop(event)" ondragover="allowDrop(event)")
+                td(x=1 y=1 class="zone droppable" ondrop="drop(event)" ondragover="allowDrop(event)")
+                td(x=2 y=1 class="zone droppable" ondrop="drop(event)" ondragover="allowDrop(event)")
+                td(x=3 y=1 class="zone droppable" ondrop="drop(event)" ondragover="allowDrop(event)")
+        button#draw Draw
+        table#hand
+            tr
+                td(x=0 class="zone")
+                td(x=1 class="zone")
+                td(x=2 class="zone")
+                td(x=3 class="zone")
+                td(x=4 class="zone")
+                td(x=5 class="zone")
+                td(x=6 class="zone")
+append foot
+    script(src="/assets/socket.io.js")
+    script(src="/javascripts/connect.js")
+
