@@ -1,45 +1,36 @@
-function allowDrop(ev) {
-    ev.preventDefault();
-}
-var socket = io.connect('http://localhost:4000');
-var room;
-var me;
-var op;
-var game;
+var socket = io.connect('http://localhost:3000');
 socket.on('connect', function (data) {
     socket.emit('cmd', 'join');
 });
-var n = 0;
-function drag(ev) {
-    ev.dataTransfer.setData("text", ev.target.id);
-    console.log(ev.target.id);
-}
-function drop(ev) {
-    ev.preventDefault();
-    var id=parseInt(ev.dataTransfer.getData("text"));
-    var x = ev.target.getAttribute("x");
-    var y = ev.target.getAttribute("y");
-    var card=remove_from_hand(me,id);
-    add_to_board(x, y, card);
-}
-socket.on('update', function (game) {
-    room = game.room;
-    me = check_me(game, socket);
-    op = check_op(game, socket);
-    console.log(game);
+var room, data_me, data_op;
+//room #@# id_me #@# id_op #@# action #@# id_card #@# x #@# y
+socket.on('update', function (r, me, op) {
+    room = r;
+    data_me = me;
+    data_op = op;
+    console.log(room);
+    console.log(data_me);
+    console.log(data_op);
     updategame();
+    $(".draggable").draggable({
+        connectToSortable: ".droppable",
+        containment: "document",
+    });
+    $(".droppable").droppable({
+        drop: function (event, ui) {
+            x = $(this).attr("x");
+            y = $(this).attr("y");
+            id=ui.draggable.attr("id");
+            send("summon", id, x, y);
+        }
+    });
 })
-function send(me, op) {
-    temp = {
-        room: room,
-        player1: me,
-        player2: op
-    }
-    socket.emit("play", temp);
+function send(action, id, x, y) {
+    socket.emit("cmd", "play@#@" + room + "#@#" + 1 + "#@#" + 2 + "#@#" + action + "#@#" + id + "#@#" + x + "#@#" + y);
 
 }
 function loadcard(card) {
-    var str = "<table id=" + card.id + " class='card-holder' draggable='true' ondragstart='drag(event)'>"
+    var str = "<table id='" + card.id + "' class='card-holder draggable'>"
         + "<tr>"
         + "<td class='name-holder' colspan='3'>"
         + "<p>" + card.id + "</p>"
@@ -64,23 +55,23 @@ function loadcard(card) {
 function updategame() {
     for (let i = 0; i < 4; i++) {
         $("td[y$='0'][x$='" + i + "']").empty();
-        if (op.board[i] != undefined) {
-            $("td[y$='0'][x$='" + i + "']").html(loadcard(op.board[i]));
+        if (data_op.board[i] != undefined) {
+            $("td[y$='0'][x$='" + i + "']").append(loadcard(data_op.board[i]));
         }
     }
     for (let i = 0; i < 4; i++) {
         $("td[y$='1'][x$='" + i + "']").empty();
-        if (me.board[i] != undefined) {
-            $("td[y$='1'][x$='" + i + "']").html(loadcard(me.board[i]));
+        if (data_me.board[i] != undefined) {
+            $("td[y$='1'][x$='" + i + "']").append(loadcard(data_me.board[i]));
         }
     }
     for (let i = 0; i < 7; i++) {
         $("#hand td[x$='" + i + "']").empty();
-        if (me.hand[i] != undefined) {
-            $("#hand td[x$='" + i + "']").html(loadcard(me.hand[i]));
+        if (data_me.hand[i] != undefined) {
+            $("#hand td[x$='" + i + "']").append(loadcard(data_me.hand[i]));
         }
     }
 }
 $("#draw").click(function () {
-    
+    send("draw");
 });

@@ -1,74 +1,107 @@
-var games=new Map();
+var games = new Map();
 module.exports = {
-    incomingPlay: function (room, me, op, msg, socket) {
-        var game=get_game_state(room);
-        var player_me=check_player(game,me);
-        var player_op=check_player(game,op);
-        console.log(msg);
-        //action #@# card #@# x #@# y 
-        var data=msg.split("#@#");
-        switch (data[0]) {
+    incomingPlay: function (str, socket) {
+        //room #@# id_me #@# id_op #@# action #@# id_card #@# x #@# y
+        var data = str.split("#@#");
+        var game = get_game_state(data[0]);
+        var player_me = check_player(game, data[1]);
+        var player_op = check_player(game, data[2]);
+        switch (data[3]) {
             case "draw":
-                add_to_hand(remove_from_deck(player_me.deck[0],player_me),player_me);
+                if (player_me.hand.length < 7) {
+                    add_to_hand(remove_card_from_deck(player_me.deck[0], player_me), player_me);
+                }
                 break;
             case "attack":
-                
+
                 break;
-            case "summon_from_hand":
-                add_to_board(data[2],data[3],remove_from_hand(data[1]),player_me,player_op);
+            case "summon":
+                var card = get_card_from_array(data[4], player_me.hand);
+                remove_card_from_hand(card, player_me);
+                add_to_board(parseInt(data[5]), parseInt(data[6]), card, player_me, player_op);
                 break;
             default:
                 break;
         }
-        check_player(game,id)=player_me;
-        check_player(game,op)=player_op;
-        set_game_state(room,game);
+        var game = {
+            player1: player_me,
+            player2: player_op
+        }
+        set_game_state(data[0], game);
         //me(hp,mp,deck_num,hand,board,graveyard) op(hp,mp,deck_num,hand_num,board,graveyard)
-        socket.to(game.room).emit('update',
-                                player_me.hp,
-                                player_me.mp,
-                                player_me.deck.length(),
-                                player_me.hand,
-                                player_me.board,
-                                player_me.graveyard,
-                                player_op.hp,
-                                player_op.mp,
-                                player_op.deck.length(),
-                                player_op.hand.length(),
-                                player_op.board,
-                                player_op.graveyard);
+        var data_me = {
+            hp: player_me.hp,
+            mp: player_me.mp,
+            deck_num: player_me.deck.length,
+            hand: player_me.hand,
+            board: player_me.board,
+            graveyard: player_me.graveyard,
+        },
+            data_op = {
+                hp: player_op.hp,
+                mp: player_op.mp,
+                deck_num: player_op.deck.length,
+                hand_num: player_op.hand.length,
+                board: player_op.board,
+                graveyard: player_op.graveyard
+            };
+        socket.to(data[0]).emit('update', data[0], data_me, data_op);
     },
-    creategame: function (room,socket) {
+    creategame: function (room, socket) {
         var player1 = {
             id: 1,
-            hp=30,
-            mp=0,
+            hp: 30,
+            mp: 0,
             deck: [],
             hand: [],
-            board: new Map(),
+            board: [undefined, undefined, undefined, undefined],
             graveyard: []
         }
         var player2 = {
             id: 2,
-            hp=30,
-            mp=0,
+            hp: 30,
+            mp: 0,
             deck: [],
             hand: [],
-            board: new Map(),
+            board: [undefined, undefined, undefined, undefined],
             graveyard: []
         }
         var game = {
             player1: player1,
             player2: player2
         }
-        set_game_state(room,game);
-        socket.to(room).emit('update', game);
+        var n = 0;
+        for (var i = 0; i < 10; i++) {
+            n++;
+            var card = {
+                id: "" + n
+            }
+            player1.deck.push(card);
+        }
+        set_game_state(room, game);
+        var data1 = {
+            hp: player1.hp,
+            mp: player1.mp,
+            deck_num: player1.deck.length,
+            hand: player1.hand,
+            board: player1.board,
+            graveyard: player1.graveyard,
+        },
+            data2 = {
+                hp: player2.hp,
+                mp: player2.mp,
+                deck_num: player2.deck.length,
+                hand_num: player2.hand.length,
+                board: player2.board,
+                graveyard: player2.graveyard
+            };
+        socket.to(room).emit('update', room, data1, data2);
     }
 }
-function set_game_state(room,game){
-    games.set(room,game);
+function set_game_state(room, game) {
+    games.set(room, game);
 }
-function get_game_state(room){
+function get_game_state(room) {
     return games.get(room);
 }
 function check_player(game, id) {
@@ -77,19 +110,22 @@ function check_player(game, id) {
     }
     return game.player2;
 }
-function remove_from_hand(player, card) {
-    player.hand.splice(player.hand.indexOf(card),1);
+function get_card_from_array(id, arr) {
+    for (let i = 0; i < arr.length; i++) {
+        if (arr[i].id == id) {
+            return arr[i];
+        }
+    }
+}
+function remove_card_from_hand(card, player) {
+    player.hand.splice(player.hand.indexOf(card), 1);
     return card;
 }
-function remove_from_deck(player, card) {
-    player.deck.splice(player.deck.indexOf(card),1);
+function remove_card_from_deck(card, player) {
+    player.deck.splice(player.deck.indexOf(card), 1);
     return card;
 }
-function remove_from_graveyard(player, card) {
-    player.graveyard.splice(player.graveyard.indexOf(card),1);
-    return card;
-}
-function add_to_hand(card,player) {
+function add_to_hand(card, player) {
     player.hand.push(card);
     return card;
 }
@@ -101,12 +137,12 @@ function add_to_graveyard(player, card) {
     player.graveyard.push(card);
     return card;
 }
-function add_to_board(x, y, card,player_me,player_op) {
-    if (y == 0) {
-        player_me.board.set(x,card);
+function add_to_board(x, y, card, player_me, player_op) {
+    if (y == 1) {
+        player_me.board[x] = card;
     }
-    else if (y == 1) {
-        player_op.board.set(x,card);
+    else if (y == 0) {
+        player_op.board[x] = card;
     }
     return card;
 }
