@@ -2,18 +2,21 @@ var game=require("../public/javascripts/game"),
     queued = [],
     rooms = [];
 module.exports = {
-    incomingCmd: function (cmd, client, socket) {
+    incomingCmd: function (cmd, client_socket) {
         console.log("recieved websocket cmd: " + cmd)
         cmd = cmd || "noop"
         var data=cmd.split("@#@");
         switch (data[0]) {
             case "join":
-                console.log("client " + client + " added to queue");
-                makegameroom(client,socket);
+                client={
+                    id:data[1],
+                    socket:client_socket
+                }
+                gameroom(client);
                 break;
             case "play":
                 console.log(data[1]);
-                game.incomingPlay(data[1],socket);
+                game.incomingPlay(data[1]);
                 break;
             default:
                 break;
@@ -31,19 +34,29 @@ function addPlayer(client) {
 function removePlayer(client) {
     queued.slice(queued.indexOf(client));
 }
-function makegameroom(client1,socket) {
-    /*
-    if (queued.length > 0) {
+function findroom(id){
+    rooms.forEach(room => {
+        if(room.player_ids.indexOf(id)){
+            return room;
+        }
+    });
+    return undefined;
+}
+function gameroom(client1) {
+    room=findroom(client1.id);
+    if(room!=undefined){
+        client1.socket.join(room.id);
+    }
+    else if (queued.length > 0) {
         client2 = queued.shift();
-        */
-        console.log("make room " + client1.sessionId + ", ");
-        var room="112312";
-        client1.join(room);
-        //client2.join(room);
+        var room={
+            id:"123",
+            player_ids:[client1.id, client2.id]
+        };
         rooms.push(room);
-        game.creategame(room,socket);
-        /*
+        game.creategame(room, client1, client2);
+        console.log(room);
     }else{
-        addPlayer(client);
-    }*/
+        addPlayer(client1);
+    }
 }

@@ -6,6 +6,26 @@ body {
 a {
   color: #00B7FF;
 }
+#me_info{
+  margin: auto;
+  width: 48vw;
+}
+#op_info{
+  margin: auto;
+  width: 48vw;
+}
+.leftPart{
+  width: 16vw;
+}
+.centerPart{
+  width: 16vw;
+}
+.rightPart{
+  width: 16vw;
+}
+.rightPart span{
+  float: right;
+}
 #board{
   margin: auto;
 }

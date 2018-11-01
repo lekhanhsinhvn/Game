@@ -1,9 +1,9 @@
 var socket = io.connect('http://localhost:3000');
 socket.on('connect', function (data) {
-    socket.emit('cmd', 'join');
+    socket.emit('cmd', 'join@#@1');
 });
 var room, data_me, data_op;
-//room #@# id_me #@# id_op #@# action #@# id_card #@# x #@# y
+//room_id #@# id_me #@# id_op #@# action #@# id_card #@# x #@# y
 socket.on('update', function (r, me, op) {
     room = r;
     data_me = me;
@@ -12,11 +12,12 @@ socket.on('update', function (r, me, op) {
     console.log(data_me);
     console.log(data_op);
     updategame();
-    $(".draggable").draggable({
-        connectToSortable: ".droppable",
+    $("#hand .summonable").draggable({
         containment: "document",
+        connectWith: ".placeable",
+        revert: 'invalid',
     });
-    $(".droppable").droppable({
+    $(".placeable").droppable({
         drop: function (event, ui) {
             x = $(this).attr("x");
             y = $(this).attr("y");
@@ -26,11 +27,11 @@ socket.on('update', function (r, me, op) {
     });
 })
 function send(action, id, x, y) {
-    socket.emit("cmd", "play@#@" + room + "#@#" + 1 + "#@#" + 2 + "#@#" + action + "#@#" + id + "#@#" + x + "#@#" + y);
+    socket.emit("cmd", "play@#@" + room.id + "#@#" + 1 + "#@#" + 2 + "#@#" + action + "#@#" + id + "#@#" + x + "#@#" + y);
 
 }
 function loadcard(card) {
-    var str = "<table id='" + card.id + "' class='card-holder draggable'>"
+    var str = "<table id='" + card.id + "' class='card-holder summonable'>"
         + "<tr>"
         + "<td class='name-holder' colspan='3'>"
         + "<p>" + card.id + "</p>"
@@ -47,22 +48,31 @@ function loadcard(card) {
         + "<td class='value-holder atk'>0</td>"
         + "<td class='value-holder rarity' colspan='2'></td>"
         + "<td class='value-holder hp'>0</td>"
-        + "</tr>" +
+        + "</tr>"
         +"</table>";
     return str;
 }
 
 function updategame() {
+    $("#op_info .deck_num").text(data_op.deck_num);
+    $("#op_info .hand_num").text(data_op.hand_num);
+    $("#op_info .mp").text(data_op.mp);
+    $("#me_info .deck_num").text(data_me.deck_num);
+    $("#me_info .mp").text(data_me.mp);
     for (let i = 0; i < 4; i++) {
         $("td[y$='0'][x$='" + i + "']").empty();
         if (data_op.board[i] != undefined) {
             $("td[y$='0'][x$='" + i + "']").append(loadcard(data_op.board[i]));
+            $("td[y$='0'][x$='" + i + "']").removeClass("placeable");
+            $("td[y$='0'][x$='" + i + "']").droppable('disable');
         }
     }
     for (let i = 0; i < 4; i++) {
         $("td[y$='1'][x$='" + i + "']").empty();
         if (data_me.board[i] != undefined) {
             $("td[y$='1'][x$='" + i + "']").append(loadcard(data_me.board[i]));
+            $("td[y$='1'][x$='" + i + "']").removeClass("placeable");
+            $("td[y$='1'][x$='" + i + "']").droppable('disable');
         }
     }
     for (let i = 0; i < 7; i++) {
@@ -72,6 +82,14 @@ function updategame() {
         }
     }
 }
-$("#draw").click(function () {
-    send("draw");
+$("#endTurn").click(function () {
+    send("endTurn");
 });
+function get_card_from_array(id, arr) {
+    for (let i = 0; i < arr.length; i++) {
+        if (arr[i].id == id) {
+            return arr[i];
+        }
+    }
+    return -1;
+}

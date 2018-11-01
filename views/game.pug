@@ -4,18 +4,34 @@ prepend head
     title #{title}
 block content
     .container-fluid
+        table#op_info
+            tr
+                td.leftPart
+                td.centerPart
+                td.rightPart
+                    span.mp
+                    span.hand_num
+                    span.deck_num
         table#board
             tr(id="op_side")
-                td(x=0 y=0 class="zone droppable")
-                td(x=1 y=0 class="zone droppable")
-                td(x=2 y=0 class="zone droppable")
-                td(x=3 y=0 class="zone droppable")
+                td(x=0 y=0 class="zone placeable")
+                td(x=1 y=0 class="zone placeable")
+                td(x=2 y=0 class="zone placeable")
+                td(x=3 y=0 class="zone placeable")
             tr(id="my_side")
-                td(x=0 y=1 class="zone droppable")
-                td(x=1 y=1 class="zone droppable")
-                td(x=2 y=1 class="zone droppable")
-                td(x=3 y=1 class="zone droppable")
-        button#draw Draw
+                td(x=0 y=1 class="zone placeable")
+                td(x=1 y=1 class="zone placeable")
+                td(x=2 y=1 class="zone placeable")
+                td(x=3 y=1 class="zone placeable")
+        table#me_info
+            tr
+                td.leftPart
+                td.centerPart
+                td.rightPart
+                    span.mp
+                    span.hand_num
+                    span.deck_num
+        button#endTurn End Turn
         table#hand
             tr
                 td(x=0 class="zone")
