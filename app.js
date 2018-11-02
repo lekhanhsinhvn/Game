@@ -1,21 +1,18 @@
-var express = require('express');
+const winston = require('winston');
+const express = require('express');
 var path = require('path');
-var cookieParser = require('cookie-parser');
-var logger = require('morgan');
 
-var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
-var gamesRouter = require('./routes/games');
 var app = express();
+
+require('./startup/logging')();
+require('./startup/routes')(app);
+require('./startup/db')();
+require('./startup/config')();
+require('./startup/validation')();
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
-
-app.use(logger('dev'));
-app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
-app.use(cookieParser());
 
 app.use(express.static(path.join(__dirname, 'public')));
 
@@ -27,10 +24,10 @@ app.use('/assets', [
   express.static(__dirname + '/node_modules/socket.io-client/dist')
 ]);
 
-app.use('/', indexRouter);
-app.use('/users/', usersRouter);
-app.use('/games', gamesRouter);
+const port = process.env.PORT || 3000;
+const server = app.listen(port, () => winston.info(`Listening on port ${port}`));
 
-//require("./public/javascripts/socket")(server);
+const io = require('socket.io').listen(server);
+require('./sockets/socket')(io);
 
-module.exports = app;
+module.exports = server;
