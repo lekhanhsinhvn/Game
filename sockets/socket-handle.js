@@ -45,14 +45,16 @@ function findroom(id){
 function gameroom(client1) {
     room=findroom(client1.id);
     if(room!=undefined){
-        client1.socket.join(room.id);
+        game.reconnect(client1,room);
+        console.log("reconnect room "+room.id+" client "+client1.id);
     }
     else if (queued.length > 0) {
         client2 = queued.shift();
         var room={
-            id:"123",
+            id:client1.id +client2.id+Date.now(),
             player_ids:[client1.id, client2.id]
         };
+        console.log("make room "+room.id+" client1 "+client1.id+" client2 "+client2.id);
         rooms.push(room);
         game.creategame(room, client1, client2);
         console.log(room);

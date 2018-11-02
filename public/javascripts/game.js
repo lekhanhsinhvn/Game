@@ -67,6 +67,11 @@ module.exports = {
         }
         set_game_state(room.id, game);
         send(game);
+    },
+    reconnect: function (client,room) {
+        game=get_game_state(room);
+        player=check_player(game,client.id);
+        player.socket=client.socket;
     }
 }
 function send(game) {
