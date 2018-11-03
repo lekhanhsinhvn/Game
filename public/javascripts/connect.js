@@ -1,6 +1,7 @@
 var socket = io.connect('http://localhost:3000');
 socket.on('connect', function (data) {
-    socket.emit('cmd', 'join@#@1');
+    id= $('script[src*=/javascripts/connect.js]').attr("val");
+    socket.emit('cmd', 'join@#@'+ id);
 });
 var room, data_me, data_op;
 //room_id #@# id_me #@# id_op #@# action #@# id_card #@# x #@# y
