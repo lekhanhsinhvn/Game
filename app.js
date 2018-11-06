@@ -1,9 +1,10 @@
 const winston = require('winston');
 const express = require('express');
-var path = require('path');
+const cors = require('cors');
+const path = require('path');
 
-var app = express();
-
+const app = express();
+app.use(cors())
 require('./startup/logging')();
 require('./startup/routes')(app);
 require('./startup/db')();

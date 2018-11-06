@@ -1,6 +1,5 @@
 const Joi = require('joi');
 const mongoose = require('mongoose');
-const {Card} = require('./card')
 
 const deckSchema = new mongoose.Schema({
   cardList: {
@@ -20,7 +19,7 @@ const Deck = mongoose.model('Deck', deckSchema)
 
 function validateDeck(deck) {
   const schema = {
-    cardList: Joi.array().required()
+    cardList: Joi.array()
   }
   return Joi.validate(deck, schema)
 }
