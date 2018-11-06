@@ -48,7 +48,7 @@ const server = app.listen(port, () => winston.info(`Listening on port ${port}`))
 const io = require('socket.io').listen(server);
 require('./sockets/socket')(io);
 
-module.exports ={
-  server:server,
-  app:app
+module.exports = {
+  server: server,
+  app: app
 };

@@ -1,7 +1,7 @@
 var socket = io.connect('http://localhost:3000');
 socket.on('connect', function (data) {
-    id= $('script[src*=/javascripts/connect.js]').attr("val");
-    socket.emit('cmd', 'join@#@'+ id);
+    id = $('script[src*=/javascripts/connect.js]').attr("val");
+    socket.emit('cmd', 'join@#@' + id);
 });
 var room, data_me, data_op;
 //room_id #@# id_me #@# id_op #@# action #@# id_card #@# x #@# y
@@ -22,7 +22,7 @@ socket.on('update', function (r, me, op) {
         drop: function (event, ui) {
             x = $(this).attr("x");
             y = $(this).attr("y");
-            id=ui.draggable.attr("id");
+            id = ui.draggable.attr("id");
             send("summon", id, x, y);
         }
     });
@@ -32,7 +32,7 @@ function send(action, id, x, y) {
 
 }
 function loadcard(card) {
-    var str = "<table id='" + card.id + "' class='card-holder summonable' card='"+JSON.stringify(card)+"'>"
+    var str = "<table id='" + card.id + "' class='card-holder summonable' card='" + JSON.stringify(card) + "'>"
         + "<tr>"
         + "<td class='name-holder' colspan='3'>"
         + "<p>" + card.id + "</p>"
@@ -50,7 +50,7 @@ function loadcard(card) {
         + "<td class='value-holder rarity' colspan='2'></td>"
         + "<td class='value-holder hp'>0</td>"
         + "</tr>"
-        +"</table>";
+        + "</table>";
     return str;
 }
 
