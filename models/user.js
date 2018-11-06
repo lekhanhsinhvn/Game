@@ -1,4 +1,5 @@
 const {Deck} = require('../models/deck')
+
 const mongoose = require('mongoose');
 const jwt = require('jsonwebtoken');
 const config = require('config');
@@ -24,7 +25,7 @@ const userSchema = new mongoose.Schema({
   },
   deckSample: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: 'deck',
+    ref: 'Deck',
   },
   isAdmin: {
     type: Boolean,
@@ -42,12 +43,8 @@ userSchema.methods.generateDeck = async function() {
   let deck = new Deck({
     cardList: []
   })
-  
-  const deckID = await deck.save(function(err, newDeck) {
-    return newDeck.id;
-  });
-  
-  return mongoose.Types.ObjectId(deckID);
+  await deck.save();
+  return deck;
 }
 
 const User = mongoose.model('User', userSchema);
