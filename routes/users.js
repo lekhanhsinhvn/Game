@@ -14,9 +14,12 @@ router.get('/me', auth, async (req, res) => {
 })
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 router.get('/', [auth, admin], async (req, res) => {
   const users = await User.find().sort('name');
 =======
+=======
+>>>>>>> 97d2cdb8efd87f2d1113b8f543c1d4be0f6a0e8d
 router.get('/myCards', auth, async(req, res) => {
   const user = await User
     .find()
@@ -28,6 +31,9 @@ router.get('/myCards', auth, async(req, res) => {
           model: 'Card'
       }
   })
+<<<<<<< HEAD
+>>>>>>> 97d2cdb8efd87f2d1113b8f543c1d4be0f6a0e8d
+=======
 >>>>>>> 97d2cdb8efd87f2d1113b8f543c1d4be0f6a0e8d
 
   res.send(user);
