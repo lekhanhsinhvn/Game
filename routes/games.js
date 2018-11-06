@@ -9,10 +9,8 @@ router.get('/', auth, async (req, res) => {
   const user = await User.findById(req.user._id).select('-password');
   res.render('game', { title: 'Game', user: user });
 });
-router.get('/home', async (req, res) => {
-  res.render('index', { title: 'Home' });
-});
-router.get('/deck', async (req, res) => {
+router.get('/deck', auth, async (req, res) => {
+  const user = await User.findById(req.user._id).select('-password');
   var pageOptions = {
     page: req.query.page || 0,
     limit: req.query.limit || 12
@@ -20,10 +18,11 @@ router.get('/deck', async (req, res) => {
   const cards = await Card.find().sort('name')
     .skip(pageOptions.page * pageOptions.limit)
     .limit(pageOptions.limit)
-  const deck = await User.findById("5bdd20b0c78a2b07cf519389");
-  res.render('deck', { title: 'Deck', cards: cards });
+  
+  var deck=user.deckSample.
+  res.render('deck', { title: 'Deck', cards: cards , deck:user.deckSample});
 });
-router.post('/deck/save', async (req, res) => {
+router.post('/deck/save', auth, async (req, res) => {
   console.log(req.body.deck);
   res.redirect('back');
 });

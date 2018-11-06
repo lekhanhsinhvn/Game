@@ -1,36 +1,10 @@
-doctype html
-html
-  head
-    script(src='https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js')
-  body
+extends layouts/layout.pug
+
+block content
     input#email(type='email', placeholder='Email', name='email')
     input#psw(type='text', placeholder='Password', name='psw')
     button(onclick='login()') Login
     a(href='http://localhost:3000/api/register')
       button Register
-    script.
-      var token = null;
-      let obj = null;
-      function login() {
-        const email = $("#email").val();
-        const password = $('#psw').val();
-        obj = new Object({
-          email: email,
-          password: password
-          })
-        $.ajax({
-          type: "POST",
-          url: "http://localhost:3000/api/auth/",
-          data: JSON.stringify(obj),
-          contentType: "application/json",
-          dataType: "json",
-          success: function(data, status, xhr){
-          alert(JSON.stringify(data));
-            token = data.token;
-          },
-          failure: function(errMsg) {
-            alert(errMsg);
-          }
-        })
-      }
-  
+append foot
+  script(src="/javascripts/account.js")

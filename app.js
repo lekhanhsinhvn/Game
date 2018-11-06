@@ -2,8 +2,24 @@ const winston = require('winston');
 const express = require('express');
 const cors = require('cors');
 const path = require('path');
+const cookieSession = require('cookie-session');
+const bodyParser = require("body-parser");
 
 const app = express();
+
+app.use(bodyParser.urlencoded({
+  extended: true
+}));
+app.use(bodyParser.json());
+
+app.use(cookieSession({
+  name: 'session',
+  keys: ["lekhanhsinh"],
+
+  // Cookie Options
+  maxAge: 24 * 60 * 60 * 1000 // 24 hours
+}))
+
 app.use(cors())
 require('./startup/logging')();
 require('./startup/routes')(app);
@@ -32,4 +48,7 @@ const server = app.listen(port, () => winston.info(`Listening on port ${port}`))
 const io = require('socket.io').listen(server);
 require('./sockets/socket')(io);
 
-module.exports = server;
+module.exports ={
+  server:server,
+  app:app
+};

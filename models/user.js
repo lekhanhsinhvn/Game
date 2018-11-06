@@ -22,25 +22,9 @@ const userSchema = new mongoose.Schema({
     minlength: 5,
     maxlength: 1024,
   },
-<<<<<<< HEAD
-  deckList: {
-    deck1: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: 'deck'
-    },
-    deck2: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: 'deck'
-    },
-    deck3: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: 'deck'
-    },
-=======
   deckSample: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'deck',
->>>>>>> 5123547602ddd1042a787575b7a973cb78ab1244
   },
   isAdmin: {
     type: Boolean,
