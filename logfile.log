@@ -1098,3 +1098,72 @@
 {"level":"info","message":"Connected to mongodb://localhost/underdog...","timestamp":"2018-11-06T13:17:05.254Z"}
 {"level":"info","message":"Listening on port 3000","timestamp":"2018-11-06T13:17:07.908Z"}
 {"level":"info","message":"Connected to mongodb://localhost/underdog...","timestamp":"2018-11-06T13:17:08.958Z"}
+{"level":"info","message":"Listening on port 3000","timestamp":"2018-11-06T14:08:26.224Z"}
+{"level":"info","message":"Connected to mongodb://localhost/underdog...","timestamp":"2018-11-06T14:08:27.280Z"}
+{"level":"info","message":"Listening on port 3000","timestamp":"2018-11-06T14:11:26.422Z"}
+{"level":"info","message":"Connected to mongodb://localhost/underdog...","timestamp":"2018-11-06T14:11:27.489Z"}
+{"level":"info","message":"Listening on port 3000","timestamp":"2018-11-06T14:11:45.456Z"}
+{"level":"info","message":"Connected to mongodb://localhost/underdog...","timestamp":"2018-11-06T14:11:46.526Z"}
+{"level":"info","message":"Listening on port 3000","timestamp":"2018-11-06T14:16:33.779Z"}
+{"level":"info","message":"Connected to mongodb://localhost/underdog...","timestamp":"2018-11-06T14:16:34.842Z"}
+{"message":"Schema hasn't been registered for model \"deck\".\nUse mongoose.model(name, schema)","stack":"MissingSchemaError: Schema hasn't been registered for model \"deck\".\nUse mongoose.model(name, schema)\n    at new MissingSchemaError (E:\\Code\\My_Project\\ProjectSem2\\Game2\\Game\\node_modules\\mongoose\\lib\\error\\missingSchema.js:22:11)\n    at NativeConnection.Connection.model (E:\\Code\\My_Project\\ProjectSem2\\Game2\\Game\\node_modules\\mongoose\\lib\\connection.js:813:11)\n    at getModelsMapForPopulate (E:\\Code\\My_Project\\ProjectSem2\\Game2\\Game\\node_modules\\mongoose\\lib\\model.js:4032:20)\n    at populate (E:\\Code\\My_Project\\ProjectSem2\\Game2\\Game\\node_modules\\mongoose\\lib\\model.js:3566:21)\n    at _populate (E:\\Code\\My_Project\\ProjectSem2\\Game2\\Game\\node_modules\\mongoose\\lib\\model.js:3536:5)\n    at utils.promiseOrCallback.cb (E:\\Code\\My_Project\\ProjectSem2\\Game2\\Game\\node_modules\\mongoose\\lib\\model.js:3509:5)\n    at Object.promiseOrCallback (E:\\Code\\My_Project\\ProjectSem2\\Game2\\Game\\node_modules\\mongoose\\lib\\utils.js:235:14)\n    at Function.Model.populate (E:\\Code\\My_Project\\ProjectSem2\\Game2\\Game\\node_modules\\mongoose\\lib\\model.js:3508:16)\n    at cb (E:\\Code\\My_Project\\ProjectSem2\\Game2\\Game\\node_modules\\mongoose\\lib\\query.js:1746:17)\n    at result (E:\\Code\\My_Project\\ProjectSem2\\Game2\\Game\\node_modules\\mongodb\\lib\\utils.js:414:17)\n    at executeCallback (E:\\Code\\My_Project\\ProjectSem2\\Game2\\Game\\node_modules\\mongodb\\lib\\utils.js:406:9)\n    at handleCallback (E:\\Code\\My_Project\\ProjectSem2\\Game2\\Game\\node_modules\\mongodb\\lib\\utils.js:128:55)\n    at cursor.close (E:\\Code\\My_Project\\ProjectSem2\\Game2\\Game\\node_modules\\mongodb\\lib\\operations\\cursor_ops.js:211:62)\n    at handleCallback (E:\\Code\\My_Project\\ProjectSem2\\Game2\\Game\\node_modules\\mongodb\\lib\\utils.js:128:55)\n    at completeClose (E:\\Code\\My_Project\\ProjectSem2\\Game2\\Game\\node_modules\\mongodb\\lib\\cursor.js:893:14)\n    at _endSession (E:\\Code\\My_Project\\ProjectSem2\\Game2\\Game\\node_modules\\mongodb\\lib\\cursor.js:904:37)","name":"MissingSchemaError","level":"error","timestamp":"2018-11-06T14:17:18.267Z"}
+{"level":"info","message":"Listening on port 3000","timestamp":"2018-11-06T14:18:37.213Z"}
+{"level":"info","message":"Connected to mongodb://localhost/underdog...","timestamp":"2018-11-06T14:18:38.289Z"}
+{"level":"info","message":"Listening on port 3000","timestamp":"2018-11-06T14:24:22.914Z"}
+{"level":"info","message":"Connected to mongodb://localhost/underdog...","timestamp":"2018-11-06T14:24:23.992Z"}
+{"level":"info","message":"Listening on port 3000","timestamp":"2018-11-06T14:24:38.978Z"}
+{"level":"info","message":"Connected to mongodb://localhost/underdog...","timestamp":"2018-11-06T14:24:40.042Z"}
+{"message":"Deck is not defined","stack":"ReferenceError: Deck is not defined\n    at router.post (E:\\Code\\My_Project\\ProjectSem2\\Game2\\Game\\routes\\users.js:31:14)\n    at <anonymous>","level":"error","timestamp":"2018-11-06T14:25:05.942Z"}
+{"level":"info","message":"Listening on port 3000","timestamp":"2018-11-06T14:25:37.575Z"}
+{"level":"info","message":"Connected to mongodb://localhost/underdog...","timestamp":"2018-11-06T14:25:38.642Z"}
+{"level":"info","message":"Listening on port 3000","timestamp":"2018-11-06T14:31:59.604Z"}
+{"level":"info","message":"Connected to mongodb://localhost/underdog...","timestamp":"2018-11-06T14:32:00.670Z"}
+{"level":"info","message":"Listening on port 3000","timestamp":"2018-11-06T14:32:44.723Z"}
+{"level":"info","message":"Connected to mongodb://localhost/underdog...","timestamp":"2018-11-06T14:32:45.789Z"}
+{"level":"info","message":"Listening on port 3000","timestamp":"2018-11-06T14:33:30.633Z"}
+{"level":"info","message":"Connected to mongodb://localhost/underdog...","timestamp":"2018-11-06T14:33:31.705Z"}
+{"level":"info","message":"Listening on port 3000","timestamp":"2018-11-06T14:33:50.554Z"}
+{"level":"info","message":"Connected to mongodb://localhost/underdog...","timestamp":"2018-11-06T14:33:51.624Z"}
+{"level":"info","message":"Listening on port 3000","timestamp":"2018-11-06T14:34:45.874Z"}
+{"level":"info","message":"Connected to mongodb://localhost/underdog...","timestamp":"2018-11-06T14:34:46.937Z"}
+{"level":"info","message":"Listening on port 3000","timestamp":"2018-11-06T14:35:44.438Z"}
+{"level":"info","message":"Connected to mongodb://localhost/underdog...","timestamp":"2018-11-06T14:35:45.507Z"}
+{"level":"info","message":"Listening on port 3000","timestamp":"2018-11-06T14:37:03.982Z"}
+{"level":"info","message":"Connected to mongodb://localhost/underdog...","timestamp":"2018-11-06T14:37:05.047Z"}
+{"level":"info","message":"Listening on port 3000","timestamp":"2018-11-06T14:38:11.026Z"}
+{"level":"info","message":"Connected to mongodb://localhost/underdog...","timestamp":"2018-11-06T14:38:12.087Z"}
+{"level":"info","message":"Listening on port 3000","timestamp":"2018-11-06T15:17:38.769Z"}
+{"level":"info","message":"Connected to mongodb://localhost/underdog...","timestamp":"2018-11-06T15:17:39.833Z"}
+{"message":"mongoose is not defined","stack":"ReferenceError: mongoose is not defined\n    at router.post (E:\\Code\\My_Project\\ProjectSem2\\Game2\\Game\\routes\\users.js:31:21)\n    at <anonymous>\n    at process._tickCallback (internal/process/next_tick.js:188:7)","level":"error","timestamp":"2018-11-06T15:18:30.980Z"}
+{"level":"info","message":"Listening on port 3000","timestamp":"2018-11-06T15:19:02.129Z"}
+{"level":"info","message":"Connected to mongodb://localhost/underdog...","timestamp":"2018-11-06T15:19:03.188Z"}
+{"level":"info","message":"Listening on port 3000","timestamp":"2018-11-06T15:23:41.823Z"}
+{"level":"info","message":"Connected to mongodb://localhost/underdog...","timestamp":"2018-11-06T15:23:42.889Z"}
+{"message":"Schema hasn't been registered for model \"deck\".\nUse mongoose.model(name, schema)","stack":"MissingSchemaError: Schema hasn't been registered for model \"deck\".\nUse mongoose.model(name, schema)\n    at new MissingSchemaError (E:\\Code\\My_Project\\ProjectSem2\\Game2\\Game\\node_modules\\mongoose\\lib\\error\\missingSchema.js:22:11)\n    at NativeConnection.Connection.model (E:\\Code\\My_Project\\ProjectSem2\\Game2\\Game\\node_modules\\mongoose\\lib\\connection.js:813:11)\n    at getModelsMapForPopulate (E:\\Code\\My_Project\\ProjectSem2\\Game2\\Game\\node_modules\\mongoose\\lib\\model.js:4032:20)\n    at populate (E:\\Code\\My_Project\\ProjectSem2\\Game2\\Game\\node_modules\\mongoose\\lib\\model.js:3566:21)\n    at _populate (E:\\Code\\My_Project\\ProjectSem2\\Game2\\Game\\node_modules\\mongoose\\lib\\model.js:3536:5)\n    at utils.promiseOrCallback.cb (E:\\Code\\My_Project\\ProjectSem2\\Game2\\Game\\node_modules\\mongoose\\lib\\model.js:3509:5)\n    at Object.promiseOrCallback (E:\\Code\\My_Project\\ProjectSem2\\Game2\\Game\\node_modules\\mongoose\\lib\\utils.js:235:14)\n    at Function.Model.populate (E:\\Code\\My_Project\\ProjectSem2\\Game2\\Game\\node_modules\\mongoose\\lib\\model.js:3508:16)\n    at cb (E:\\Code\\My_Project\\ProjectSem2\\Game2\\Game\\node_modules\\mongoose\\lib\\query.js:1746:17)\n    at result (E:\\Code\\My_Project\\ProjectSem2\\Game2\\Game\\node_modules\\mongodb\\lib\\utils.js:414:17)\n    at executeCallback (E:\\Code\\My_Project\\ProjectSem2\\Game2\\Game\\node_modules\\mongodb\\lib\\utils.js:406:9)\n    at handleCallback (E:\\Code\\My_Project\\ProjectSem2\\Game2\\Game\\node_modules\\mongodb\\lib\\utils.js:128:55)\n    at cursor.close (E:\\Code\\My_Project\\ProjectSem2\\Game2\\Game\\node_modules\\mongodb\\lib\\operations\\cursor_ops.js:211:62)\n    at handleCallback (E:\\Code\\My_Project\\ProjectSem2\\Game2\\Game\\node_modules\\mongodb\\lib\\utils.js:128:55)\n    at completeClose (E:\\Code\\My_Project\\ProjectSem2\\Game2\\Game\\node_modules\\mongodb\\lib\\cursor.js:893:14)\n    at _endSession (E:\\Code\\My_Project\\ProjectSem2\\Game2\\Game\\node_modules\\mongodb\\lib\\cursor.js:904:37)","name":"MissingSchemaError","level":"error","timestamp":"2018-11-06T15:23:54.641Z"}
+{"level":"info","message":"Listening on port 3000","timestamp":"2018-11-06T15:27:14.634Z"}
+{"level":"info","message":"Connected to mongodb://localhost/underdog...","timestamp":"2018-11-06T15:27:15.694Z"}
+{"level":"info","message":"Listening on port 3000","timestamp":"2018-11-06T15:28:41.079Z"}
+{"level":"info","message":"Connected to mongodb://localhost/underdog...","timestamp":"2018-11-06T15:28:42.149Z"}
+{"level":"info","message":"Listening on port 3000","timestamp":"2018-11-06T15:30:35.219Z"}
+{"level":"info","message":"Connected to mongodb://localhost/underdog...","timestamp":"2018-11-06T15:30:36.285Z"}
+{"level":"info","message":"Listening on port 3000","timestamp":"2018-11-06T15:34:50.249Z"}
+{"level":"info","message":"Connected to mongodb://localhost/underdog...","timestamp":"2018-11-06T15:34:51.315Z"}
+{"level":"info","message":"Listening on port 3000","timestamp":"2018-11-06T15:36:41.298Z"}
+{"level":"info","message":"Connected to mongodb://localhost/underdog...","timestamp":"2018-11-06T15:36:42.377Z"}
+{"level":"info","message":"Listening on port 3000","timestamp":"2018-11-06T15:40:25.698Z"}
+{"level":"info","message":"Connected to mongodb://localhost/underdog...","timestamp":"2018-11-06T15:40:26.745Z"}
+{"level":"info","message":"Listening on port 3000","timestamp":"2018-11-06T15:41:16.318Z"}
+{"level":"info","message":"Connected to mongodb://localhost/underdog...","timestamp":"2018-11-06T15:41:17.384Z"}
+{"level":"info","message":"Listening on port 3000","timestamp":"2018-11-06T15:41:21.168Z"}
+{"level":"info","message":"Connected to mongodb://localhost/underdog...","timestamp":"2018-11-06T15:41:22.214Z"}
+{"level":"info","message":"Listening on port 3000","timestamp":"2018-11-06T15:43:48.083Z"}
+{"level":"info","message":"Listening on port 3000","timestamp":"2018-11-06T15:43:49.490Z"}
+{"level":"info","message":"Connected to mongodb://localhost/underdog...","timestamp":"2018-11-06T15:43:50.560Z"}
+{"level":"info","message":"Listening on port 3000","timestamp":"2018-11-06T15:45:45.204Z"}
+{"level":"info","message":"Connected to mongodb://localhost/underdog...","timestamp":"2018-11-06T15:45:46.270Z"}
+{"level":"info","message":"Listening on port 3000","timestamp":"2018-11-06T15:51:01.205Z"}
+{"level":"info","message":"Connected to mongodb://localhost/underdog...","timestamp":"2018-11-06T15:51:02.269Z"}
+{"level":"info","message":"Listening on port 3000","timestamp":"2018-11-06T15:52:42.292Z"}
+{"level":"info","message":"Connected to mongodb://localhost/underdog...","timestamp":"2018-11-06T15:52:43.359Z"}
+{"level":"info","message":"Listening on port 3000","timestamp":"2018-11-06T15:53:00.752Z"}
+{"level":"info","message":"Connected to mongodb://localhost/underdog...","timestamp":"2018-11-06T15:53:01.812Z"}
