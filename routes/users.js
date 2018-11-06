@@ -12,31 +12,22 @@ router.get('/me', auth, async (req, res) => {
   const user = await User.findById(req.user._id).select('-password');
   res.send(user);
 })
-
-<<<<<<< HEAD
-<<<<<<< HEAD
 router.get('/', [auth, admin], async (req, res) => {
   const users = await User.find().sort('name');
-=======
-=======
->>>>>>> 97d2cdb8efd87f2d1113b8f543c1d4be0f6a0e8d
-router.get('/myCards', auth, async(req, res) => {
-  const user = await User
+  res.send(user);
+})
+router.get('/myCards', auth, async (req, res) => {
+  const cards = await User
     .find()
     .sort('name')
     .populate({
       path: 'deckSample',
       populate: {
-          path: 'cardList.card', 
-          model: 'Card'
+        path: 'cardList.card',
+        model: 'Card'
       }
-  })
-<<<<<<< HEAD
->>>>>>> 97d2cdb8efd87f2d1113b8f543c1d4be0f6a0e8d
-=======
->>>>>>> 97d2cdb8efd87f2d1113b8f543c1d4be0f6a0e8d
-
-  res.send(user);
+    })
+  res.send(cards);
 })
 router.post('/', validator(validate), async (req, res) => {
   let user = await User.findOne({ email: req.body.email });
@@ -47,7 +38,7 @@ router.post('/', validator(validate), async (req, res) => {
   user.password = await bcrypt.hash(user.password, salt);
   const deck = await user.generateDeck();
   user.deckSample = mongoose.Types.ObjectId(deck._id)
-  
+
   await user.save();
 
   const token = user.generateAuthToken();
