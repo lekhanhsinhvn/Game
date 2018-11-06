@@ -32,7 +32,7 @@ function send(action, id, x, y) {
 
 }
 function loadcard(card) {
-    var str = "<table id='" + card.id + "' class='card-holder summonable'>"
+    var str = "<table id='" + card.id + "' class='card-holder summonable' card='"+JSON.stringify(card)+"'>"
         + "<tr>"
         + "<td class='name-holder' colspan='3'>"
         + "<p>" + card.id + "</p>"

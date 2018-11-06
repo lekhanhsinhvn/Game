@@ -3,4 +3,6 @@ extends layouts/layout.pug
 block content
   h1= title
   p Welcome to #{title}
-  a(href="/games/game") Play
+  a(href="http://localhost:3000/api/games/") Play
+append foot
+  script(src="/javascripts/login.js")

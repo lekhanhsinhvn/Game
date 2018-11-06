@@ -34,11 +34,6 @@ const userSchema = new mongoose.Schema({
       type: mongoose.Schema.Types.ObjectId,
       ref: 'deck'
     },
-
-    card1: {
-      
-      info:{}
-    }
   },
   isAdmin: {
     type: Boolean,
