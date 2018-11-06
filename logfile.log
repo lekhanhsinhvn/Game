@@ -147,6 +147,7 @@
 {"level":"info","message":"Connected to mongodb://localhost/underdog...","timestamp":"2018-11-03T04:58:12.282Z"}
 {"level":"info","message":"Listening on port 3000","timestamp":"2018-11-03T04:58:25.962Z"}
 {"level":"info","message":"Connected to mongodb://localhost/underdog...","timestamp":"2018-11-03T04:58:27.109Z"}
+<<<<<<< HEAD
 {"level":"info","message":"Listening on port 3000","timestamp":"2018-11-03T05:00:06.849Z"}
 {"level":"info","message":"Connected to mongodb://localhost/underdog...","timestamp":"2018-11-03T05:00:07.963Z"}
 {"level":"info","message":"Listening on port 3000","timestamp":"2018-11-03T05:19:17.111Z"}
@@ -651,3 +652,218 @@
 {"level":"info","message":"Listening on port 3000","timestamp":"2018-11-05T12:28:28.397Z"}
 {"level":"info","message":"Listening on port 3000","timestamp":"2018-11-05T12:28:30.374Z"}
 {"level":"info","message":"Connected to mongodb://localhost/underdog...","timestamp":"2018-11-05T12:28:31.415Z"}
+=======
+{"level":"info","message":"Listening on port 3000","timestamp":"2018-11-04T03:44:18.828Z"}
+{"level":"info","message":"Connected to mongodb://localhost/underdog...","timestamp":"2018-11-04T03:44:19.897Z"}
+{"level":"info","message":"Listening on port 3000","timestamp":"2018-11-04T04:18:01.404Z"}
+{"level":"info","message":"Listening on port 3000","timestamp":"2018-11-04T14:17:56.120Z"}
+{"level":"info","message":"Listening on port 3000","timestamp":"2018-11-04T14:17:57.199Z"}
+{"level":"info","message":"Connected to mongodb://localhost/underdog...","timestamp":"2018-11-04T14:17:58.265Z"}
+{"level":"info","message":"Listening on port 3000","timestamp":"2018-11-04T14:50:32.985Z"}
+{"level":"info","message":"Connected to mongodb://localhost/underdog...","timestamp":"2018-11-04T14:50:34.040Z"}
+{"level":"info","message":"Listening on port 3000","timestamp":"2018-11-04T15:21:26.542Z"}
+{"level":"info","message":"Connected to mongodb://localhost/underdog...","timestamp":"2018-11-04T15:21:27.574Z"}
+{"level":"info","message":"Listening on port 3000","timestamp":"2018-11-04T17:27:40.536Z"}
+{"level":"info","message":"Listening on port 3000","timestamp":"2018-11-05T09:10:32.883Z"}
+{"level":"info","message":"Connected to mongodb://localhost/underdog...","timestamp":"2018-11-05T09:10:33.947Z"}
+{"level":"info","message":"Listening on port 3000","timestamp":"2018-11-05T09:13:41.796Z"}
+{"level":"info","message":"Connected to mongodb://localhost/underdog...","timestamp":"2018-11-05T09:13:42.858Z"}
+{"level":"info","message":"Listening on port 3000","timestamp":"2018-11-05T09:15:32.104Z"}
+{"level":"info","message":"Connected to mongodb://localhost/underdog...","timestamp":"2018-11-05T09:15:33.171Z"}
+{"level":"info","message":"Listening on port 3000","timestamp":"2018-11-05T09:16:52.378Z"}
+{"level":"info","message":"Connected to mongodb://localhost/underdog...","timestamp":"2018-11-05T09:16:53.444Z"}
+{"level":"info","message":"Listening on port 3000","timestamp":"2018-11-05T09:40:49.968Z"}
+{"level":"info","message":"Connected to mongodb://localhost/underdog...","timestamp":"2018-11-05T09:40:51.023Z"}
+{"level":"info","message":"Listening on port 3000","timestamp":"2018-11-05T09:41:49.362Z"}
+{"level":"info","message":"Connected to mongodb://localhost/underdog...","timestamp":"2018-11-05T09:41:50.423Z"}
+{"level":"info","message":"Listening on port 3000","timestamp":"2018-11-05T09:47:04.796Z"}
+{"level":"info","message":"Connected to mongodb://localhost/underdog...","timestamp":"2018-11-05T09:47:05.863Z"}
+{"level":"info","message":"Listening on port 3000","timestamp":"2018-11-05T09:47:38.657Z"}
+{"level":"info","message":"Connected to mongodb://localhost/underdog...","timestamp":"2018-11-05T09:47:39.711Z"}
+{"level":"info","message":"Listening on port 3000","timestamp":"2018-11-05T09:48:14.677Z"}
+{"level":"info","message":"Connected to mongodb://localhost/underdog...","timestamp":"2018-11-05T09:48:15.759Z"}
+{"level":"info","message":"Listening on port 3000","timestamp":"2018-11-05T09:48:57.413Z"}
+{"level":"info","message":"Connected to mongodb://localhost/underdog...","timestamp":"2018-11-05T09:48:58.482Z"}
+{"level":"info","message":"Listening on port 3000","timestamp":"2018-11-05T09:49:28.654Z"}
+{"level":"info","message":"Connected to mongodb://localhost/underdog...","timestamp":"2018-11-05T09:49:29.692Z"}
+{"level":"info","message":"Listening on port 3000","timestamp":"2018-11-05T09:52:41.579Z"}
+{"level":"info","message":"Connected to mongodb://localhost/underdog...","timestamp":"2018-11-05T09:52:42.646Z"}
+{"level":"info","message":"Listening on port 3000","timestamp":"2018-11-05T09:53:22.230Z"}
+{"level":"info","message":"Connected to mongodb://localhost/underdog...","timestamp":"2018-11-05T09:53:23.302Z"}
+{"level":"info","message":"Listening on port 3000","timestamp":"2018-11-05T09:53:32.144Z"}
+{"level":"info","message":"Connected to mongodb://localhost/underdog...","timestamp":"2018-11-05T09:53:33.195Z"}
+{"level":"info","message":"Listening on port 3000","timestamp":"2018-11-05T09:57:47.229Z"}
+{"level":"info","message":"Connected to mongodb://localhost/underdog...","timestamp":"2018-11-05T09:57:48.279Z"}
+{"level":"info","message":"Listening on port 3000","timestamp":"2018-11-05T09:59:04.135Z"}
+{"level":"info","message":"Connected to mongodb://localhost/underdog...","timestamp":"2018-11-05T09:59:05.205Z"}
+{"level":"info","message":"Listening on port 3000","timestamp":"2018-11-05T10:00:39.811Z"}
+{"level":"info","message":"Listening on port 3000","timestamp":"2018-11-05T10:00:40.966Z"}
+{"level":"info","message":"Connected to mongodb://localhost/underdog...","timestamp":"2018-11-05T10:00:42.026Z"}
+{"level":"info","message":"Listening on port 3000","timestamp":"2018-11-05T10:02:44.967Z"}
+{"level":"info","message":"Connected to mongodb://localhost/underdog...","timestamp":"2018-11-05T10:02:46.059Z"}
+{"level":"info","message":"Listening on port 3000","timestamp":"2018-11-05T10:10:24.804Z"}
+{"level":"info","message":"Connected to mongodb://localhost/underdog...","timestamp":"2018-11-05T10:10:25.936Z"}
+{"level":"info","message":"Listening on port 3000","timestamp":"2018-11-05T10:13:10.490Z"}
+{"level":"info","message":"Connected to mongodb://localhost/underdog...","timestamp":"2018-11-05T10:13:11.523Z"}
+{"level":"info","message":"Listening on port 3000","timestamp":"2018-11-05T10:15:38.064Z"}
+{"level":"info","message":"Connected to mongodb://localhost/underdog...","timestamp":"2018-11-05T10:15:39.120Z"}
+{"level":"info","message":"Listening on port 3000","timestamp":"2018-11-05T10:15:41.394Z"}
+{"level":"info","message":"Connected to mongodb://localhost/underdog...","timestamp":"2018-11-05T10:15:42.461Z"}
+{"level":"info","message":"Listening on port 3000","timestamp":"2018-11-05T11:39:37.554Z"}
+{"level":"info","message":"Listening on port 3000","timestamp":"2018-11-05T11:39:38.724Z"}
+{"level":"info","message":"Connected to mongodb://localhost/underdog...","timestamp":"2018-11-05T11:39:39.808Z"}
+{"level":"info","message":"Listening on port 3000","timestamp":"2018-11-05T11:43:46.390Z"}
+{"level":"info","message":"Connected to mongodb://localhost/underdog...","timestamp":"2018-11-05T11:43:47.463Z"}
+{"level":"info","message":"Listening on port 3000","timestamp":"2018-11-05T11:44:40.719Z"}
+{"level":"info","message":"Connected to mongodb://localhost/underdog...","timestamp":"2018-11-05T11:44:41.795Z"}
+{"level":"info","message":"Listening on port 3000","timestamp":"2018-11-05T11:44:50.160Z"}
+{"level":"info","message":"Connected to mongodb://localhost/underdog...","timestamp":"2018-11-05T11:44:51.225Z"}
+{"level":"info","message":"Listening on port 3000","timestamp":"2018-11-05T11:48:38.417Z"}
+{"level":"info","message":"Connected to mongodb://localhost/underdog...","timestamp":"2018-11-05T11:48:39.488Z"}
+{"level":"info","message":"Listening on port 3000","timestamp":"2018-11-05T11:49:33.324Z"}
+{"level":"info","message":"Connected to mongodb://localhost/underdog...","timestamp":"2018-11-05T11:49:34.370Z"}
+{"message":"Invalid status code: [object Object]","stack":"RangeError: Invalid status code: [object Object]\n    at ServerResponse.writeHead (_http_server.js:194:11)\n    at ServerResponse._implicitHeader (_http_server.js:185:8)\n    at write_ (_http_outgoing.js:632:9)\n    at ServerResponse.end (_http_outgoing.js:751:5)\n    at ServerResponse.send (E:\\Code\\My_Project\\ProjectSem2\\Game\\node_modules\\express\\lib\\response.js:221:10)\n    at router.post (E:\\Code\\My_Project\\ProjectSem2\\Game\\routes\\users.js:32:7)\n    at <anonymous>\n    at process._tickCallback (internal/process/next_tick.js:188:7)","level":"error","timestamp":"2018-11-05T11:49:43.292Z"}
+{"level":"info","message":"Listening on port 3000","timestamp":"2018-11-05T11:50:39.568Z"}
+{"level":"info","message":"Connected to mongodb://localhost/underdog...","timestamp":"2018-11-05T11:50:40.657Z"}
+{"message":"Invalid status code: [object Object]","stack":"RangeError: Invalid status code: [object Object]\n    at ServerResponse.writeHead (_http_server.js:194:11)\n    at ServerResponse._implicitHeader (_http_server.js:185:8)\n    at write_ (_http_outgoing.js:632:9)\n    at ServerResponse.end (_http_outgoing.js:751:5)\n    at ServerResponse.send (E:\\Code\\My_Project\\ProjectSem2\\Game\\node_modules\\express\\lib\\response.js:221:10)\n    at router.post (E:\\Code\\My_Project\\ProjectSem2\\Game\\routes\\users.js:33:7)\n    at <anonymous>\n    at process._tickCallback (internal/process/next_tick.js:188:7)","level":"error","timestamp":"2018-11-05T11:50:46.344Z"}
+{"level":"info","message":"Listening on port 3000","timestamp":"2018-11-05T11:51:04.206Z"}
+{"level":"info","message":"Connected to mongodb://localhost/underdog...","timestamp":"2018-11-05T11:51:05.253Z"}
+{"level":"info","message":"Listening on port 3000","timestamp":"2018-11-05T11:51:21.774Z"}
+{"level":"info","message":"Connected to mongodb://localhost/underdog...","timestamp":"2018-11-05T11:51:22.843Z"}
+{"level":"info","message":"Listening on port 3000","timestamp":"2018-11-05T11:51:59.539Z"}
+{"level":"info","message":"Connected to mongodb://localhost/underdog...","timestamp":"2018-11-05T11:52:00.611Z"}
+{"level":"info","message":"Listening on port 3000","timestamp":"2018-11-05T11:53:19.192Z"}
+{"level":"info","message":"Connected to mongodb://localhost/underdog...","timestamp":"2018-11-05T11:53:20.275Z"}
+{"level":"info","message":"Listening on port 3000","timestamp":"2018-11-05T11:53:30.793Z"}
+{"level":"info","message":"Connected to mongodb://localhost/underdog...","timestamp":"2018-11-05T11:53:31.868Z"}
+{"message":"Can't set headers after they are sent.","stack":"Error: Can't set headers after they are sent.\n    at validateHeader (_http_outgoing.js:491:11)\n    at ServerResponse.setHeader (_http_outgoing.js:498:3)\n    at ServerResponse.header (E:\\Code\\My_Project\\ProjectSem2\\Game\\node_modules\\express\\lib\\response.js:767:10)\n    at ServerResponse.send (E:\\Code\\My_Project\\ProjectSem2\\Game\\node_modules\\express\\lib\\response.js:170:12)\n    at router.post (E:\\Code\\My_Project\\ProjectSem2\\Game\\routes\\auth.js:19:7)\n    at <anonymous>","level":"error","timestamp":"2018-11-05T11:53:35.002Z"}
+{"level":"info","message":"Listening on port 3000","timestamp":"2018-11-05T11:54:03.933Z"}
+{"level":"info","message":"Connected to mongodb://localhost/underdog...","timestamp":"2018-11-05T11:54:04.995Z"}
+{"level":"info","message":"Listening on port 3000","timestamp":"2018-11-05T11:54:24.831Z"}
+{"level":"info","message":"Connected to mongodb://localhost/underdog...","timestamp":"2018-11-05T11:54:25.898Z"}
+{"level":"info","message":"Listening on port 3000","timestamp":"2018-11-05T12:34:02.900Z"}
+{"level":"info","message":"Connected to mongodb://localhost/underdog...","timestamp":"2018-11-05T12:34:03.945Z"}
+{"level":"info","message":"Listening on port 3000","timestamp":"2018-11-05T12:38:18.812Z"}
+{"level":"info","message":"Connected to mongodb://localhost/underdog...","timestamp":"2018-11-05T12:38:19.877Z"}
+{"level":"info","message":"Listening on port 3000","timestamp":"2018-11-05T12:39:04.689Z"}
+{"level":"info","message":"Connected to mongodb://localhost/underdog...","timestamp":"2018-11-05T12:39:05.753Z"}
+{"level":"info","message":"Listening on port 3000","timestamp":"2018-11-05T12:39:50.333Z"}
+{"level":"info","message":"Listening on port 3000","timestamp":"2018-11-05T12:39:51.790Z"}
+{"level":"info","message":"Connected to mongodb://localhost/underdog...","timestamp":"2018-11-05T12:39:52.875Z"}
+{"level":"info","message":"Listening on port 3000","timestamp":"2018-11-05T12:40:02.511Z"}
+{"level":"info","message":"Connected to mongodb://localhost/underdog...","timestamp":"2018-11-05T12:40:03.579Z"}
+{"level":"info","message":"Listening on port 3000","timestamp":"2018-11-05T12:44:26.275Z"}
+{"level":"info","message":"Connected to mongodb://localhost/underdog...","timestamp":"2018-11-05T12:44:27.341Z"}
+{"level":"info","message":"Listening on port 3000","timestamp":"2018-11-05T12:47:03.034Z"}
+{"level":"info","message":"Connected to mongodb://localhost/underdog...","timestamp":"2018-11-05T12:47:04.102Z"}
+{"level":"info","message":"Listening on port 3000","timestamp":"2018-11-05T12:47:54.239Z"}
+{"level":"info","message":"Connected to mongodb://localhost/underdog...","timestamp":"2018-11-05T12:47:55.308Z"}
+{"level":"info","message":"Listening on port 3000","timestamp":"2018-11-05T12:53:27.237Z"}
+{"level":"info","message":"Connected to mongodb://localhost/underdog...","timestamp":"2018-11-05T12:53:28.313Z"}
+{"level":"info","message":"Listening on port 3000","timestamp":"2018-11-05T12:54:32.077Z"}
+{"level":"info","message":"Connected to mongodb://localhost/underdog...","timestamp":"2018-11-05T12:54:33.162Z"}
+{"message":"User validation failed: deckSample: Cast to ObjectID failed for value \"\" at path \"deckSample\"","errors":{"deckSample":{"message":"Cast to ObjectID failed for value \"\" at path \"deckSample\"","name":"CastError","stringValue":"\"\"","kind":"ObjectID","value":"","path":"deckSample","reason":{"message":"Cast to ObjectId failed for value \"\" at path \"deckSample\"","name":"CastError","stringValue":"\"\"","kind":"ObjectId","value":"","path":"deckSample"}}},"_message":"User validation failed","stack":"ValidationError: User validation failed: deckSample: Cast to ObjectID failed for value \"\" at path \"deckSample\"\n    at new ValidationError (E:\\Code\\My_Project\\ProjectSem2\\Game\\node_modules\\mongoose\\lib\\error\\validation.js:30:11)\n    at model.Document.invalidate (E:\\Code\\My_Project\\ProjectSem2\\Game\\node_modules\\mongoose\\lib\\document.js:2026:32)\n    at model.$set (E:\\Code\\My_Project\\ProjectSem2\\Game\\node_modules\\mongoose\\lib\\document.js:989:10)\n    at model.set [as deckSample] (E:\\Code\\My_Project\\ProjectSem2\\Game\\node_modules\\mongoose\\lib\\helpers\\document\\compile.js:124:26)\n    at router.post (E:\\Code\\My_Project\\ProjectSem2\\Game\\routes\\users.js:38:19)\n    at <anonymous>","name":"ValidationError","level":"error","timestamp":"2018-11-05T12:54:38.067Z"}
+{"level":"info","message":"Listening on port 3000","timestamp":"2018-11-05T12:56:01.623Z"}
+{"level":"info","message":"Connected to mongodb://localhost/underdog...","timestamp":"2018-11-05T12:56:02.673Z"}
+{"level":"info","message":"Listening on port 3000","timestamp":"2018-11-05T12:57:38.477Z"}
+{"level":"info","message":"Connected to mongodb://localhost/underdog...","timestamp":"2018-11-05T12:57:39.552Z"}
+{"level":"info","message":"Listening on port 3000","timestamp":"2018-11-05T12:58:09.538Z"}
+{"level":"info","message":"Connected to mongodb://localhost/underdog...","timestamp":"2018-11-05T12:58:10.607Z"}
+{"level":"info","message":"Listening on port 3000","timestamp":"2018-11-05T12:58:19.629Z"}
+{"level":"info","message":"Connected to mongodb://localhost/underdog...","timestamp":"2018-11-05T12:58:20.696Z"}
+{"level":"info","message":"Listening on port 3000","timestamp":"2018-11-05T12:59:16.064Z"}
+{"level":"info","message":"Connected to mongodb://localhost/underdog...","timestamp":"2018-11-05T12:59:17.133Z"}
+{"level":"info","message":"Listening on port 3000","timestamp":"2018-11-05T13:03:51.924Z"}
+{"level":"info","message":"Connected to mongodb://localhost/underdog...","timestamp":"2018-11-05T13:03:52.993Z"}
+{"level":"info","message":"Listening on port 3000","timestamp":"2018-11-05T13:06:48.744Z"}
+{"level":"info","message":"Connected to mongodb://localhost/underdog...","timestamp":"2018-11-05T13:06:49.819Z"}
+{"level":"info","message":"Listening on port 3000","timestamp":"2018-11-05T13:07:55.684Z"}
+{"level":"info","message":"Connected to mongodb://localhost/underdog...","timestamp":"2018-11-05T13:07:56.749Z"}
+{"level":"info","message":"Listening on port 3000","timestamp":"2018-11-05T13:08:04.604Z"}
+{"level":"info","message":"Connected to mongodb://localhost/underdog...","timestamp":"2018-11-05T13:08:05.674Z"}
+{"level":"info","message":"Listening on port 3000","timestamp":"2018-11-05T13:10:12.058Z"}
+{"level":"info","message":"Connected to mongodb://localhost/underdog...","timestamp":"2018-11-05T13:10:13.148Z"}
+{"level":"info","message":"Listening on port 3000","timestamp":"2018-11-05T13:10:55.815Z"}
+{"level":"info","message":"Connected to mongodb://localhost/underdog...","timestamp":"2018-11-05T13:10:56.884Z"}
+{"level":"info","message":"Listening on port 3000","timestamp":"2018-11-05T13:11:19.526Z"}
+{"level":"info","message":"Connected to mongodb://localhost/underdog...","timestamp":"2018-11-05T13:11:20.612Z"}
+{"level":"info","message":"Listening on port 3000","timestamp":"2018-11-05T13:11:30.156Z"}
+{"level":"info","message":"Connected to mongodb://localhost/underdog...","timestamp":"2018-11-05T13:11:31.224Z"}
+{"level":"info","message":"Listening on port 3000","timestamp":"2018-11-05T13:13:49.527Z"}
+{"level":"info","message":"Connected to mongodb://localhost/underdog...","timestamp":"2018-11-05T13:13:50.600Z"}
+{"level":"info","message":"Listening on port 3000","timestamp":"2018-11-05T13:14:09.190Z"}
+{"level":"info","message":"Connected to mongodb://localhost/underdog...","timestamp":"2018-11-05T13:14:10.267Z"}
+{"level":"info","message":"Listening on port 3000","timestamp":"2018-11-05T13:14:57.188Z"}
+{"level":"info","message":"Connected to mongodb://localhost/underdog...","timestamp":"2018-11-05T13:14:58.257Z"}
+{"level":"info","message":"Listening on port 3000","timestamp":"2018-11-05T13:15:19.691Z"}
+{"level":"info","message":"Connected to mongodb://localhost/underdog...","timestamp":"2018-11-05T13:15:20.762Z"}
+{"level":"info","message":"Listening on port 3000","timestamp":"2018-11-05T13:17:46.781Z"}
+{"level":"info","message":"Connected to mongodb://localhost/underdog...","timestamp":"2018-11-05T13:17:47.832Z"}
+{"level":"info","message":"Listening on port 3000","timestamp":"2018-11-05T13:18:44.545Z"}
+{"level":"info","message":"Connected to mongodb://localhost/underdog...","timestamp":"2018-11-05T13:18:45.620Z"}
+{"level":"info","message":"Listening on port 3000","timestamp":"2018-11-05T15:04:54.674Z"}
+{"level":"info","message":"Listening on port 3000","timestamp":"2018-11-05T15:05:05.732Z"}
+{"level":"info","message":"Connected to mongodb://localhost/underdog...","timestamp":"2018-11-05T15:05:06.796Z"}
+{"level":"info","message":"Listening on port 3000","timestamp":"2018-11-05T16:18:46.830Z"}
+{"level":"info","message":"Listening on port 3000","timestamp":"2018-11-06T04:20:45.835Z"}
+{"level":"info","message":"Listening on port 3000","timestamp":"2018-11-06T04:20:46.886Z"}
+{"level":"info","message":"Connected to mongodb://localhost/underdog...","timestamp":"2018-11-06T04:20:47.954Z"}
+{"message":"Unexpected token n in JSON at position 0","stack":"SyntaxError: Unexpected token n in JSON at position 0\n    at JSON.parse (<anonymous>)\n    at createStrictSyntaxError (E:\\Code\\My_Project\\ProjectSem2\\Game\\node_modules\\body-parser\\lib\\types\\json.js:158:10)\n    at parse (E:\\Code\\My_Project\\ProjectSem2\\Game\\node_modules\\body-parser\\lib\\types\\json.js:83:15)\n    at E:\\Code\\My_Project\\ProjectSem2\\Game\\node_modules\\body-parser\\lib\\read.js:121:18\n    at invokeCallback (E:\\Code\\My_Project\\ProjectSem2\\Game\\node_modules\\raw-body\\index.js:224:16)\n    at done (E:\\Code\\My_Project\\ProjectSem2\\Game\\node_modules\\raw-body\\index.js:213:7)\n    at IncomingMessage.onEnd (E:\\Code\\My_Project\\ProjectSem2\\Game\\node_modules\\raw-body\\index.js:273:7)\n    at emitNone (events.js:106:13)\n    at IncomingMessage.emit (events.js:208:7)\n    at endReadableNT (_stream_readable.js:1064:12)\n    at _combinedTickCallback (internal/process/next_tick.js:138:11)\n    at process._tickCallback (internal/process/next_tick.js:180:9)","expose":true,"statusCode":400,"status":400,"body":"null","type":"entity.parse.failed","level":"error","timestamp":"2018-11-06T04:38:28.634Z"}
+{"message":"Unexpected token n in JSON at position 0","stack":"SyntaxError: Unexpected token n in JSON at position 0\n    at JSON.parse (<anonymous>)\n    at createStrictSyntaxError (E:\\Code\\My_Project\\ProjectSem2\\Game\\node_modules\\body-parser\\lib\\types\\json.js:158:10)\n    at parse (E:\\Code\\My_Project\\ProjectSem2\\Game\\node_modules\\body-parser\\lib\\types\\json.js:83:15)\n    at E:\\Code\\My_Project\\ProjectSem2\\Game\\node_modules\\body-parser\\lib\\read.js:121:18\n    at invokeCallback (E:\\Code\\My_Project\\ProjectSem2\\Game\\node_modules\\raw-body\\index.js:224:16)\n    at done (E:\\Code\\My_Project\\ProjectSem2\\Game\\node_modules\\raw-body\\index.js:213:7)\n    at IncomingMessage.onEnd (E:\\Code\\My_Project\\ProjectSem2\\Game\\node_modules\\raw-body\\index.js:273:7)\n    at emitNone (events.js:106:13)\n    at IncomingMessage.emit (events.js:208:7)\n    at endReadableNT (_stream_readable.js:1064:12)\n    at _combinedTickCallback (internal/process/next_tick.js:138:11)\n    at process._tickCallback (internal/process/next_tick.js:180:9)","expose":true,"statusCode":400,"status":400,"body":"null","type":"entity.parse.failed","level":"error","timestamp":"2018-11-06T04:38:30.214Z"}
+{"message":"Unexpected token n in JSON at position 0","stack":"SyntaxError: Unexpected token n in JSON at position 0\n    at JSON.parse (<anonymous>)\n    at createStrictSyntaxError (E:\\Code\\My_Project\\ProjectSem2\\Game\\node_modules\\body-parser\\lib\\types\\json.js:158:10)\n    at parse (E:\\Code\\My_Project\\ProjectSem2\\Game\\node_modules\\body-parser\\lib\\types\\json.js:83:15)\n    at E:\\Code\\My_Project\\ProjectSem2\\Game\\node_modules\\body-parser\\lib\\read.js:121:18\n    at invokeCallback (E:\\Code\\My_Project\\ProjectSem2\\Game\\node_modules\\raw-body\\index.js:224:16)\n    at done (E:\\Code\\My_Project\\ProjectSem2\\Game\\node_modules\\raw-body\\index.js:213:7)\n    at IncomingMessage.onEnd (E:\\Code\\My_Project\\ProjectSem2\\Game\\node_modules\\raw-body\\index.js:273:7)\n    at emitNone (events.js:106:13)\n    at IncomingMessage.emit (events.js:208:7)\n    at endReadableNT (_stream_readable.js:1064:12)\n    at _combinedTickCallback (internal/process/next_tick.js:138:11)\n    at process._tickCallback (internal/process/next_tick.js:180:9)","expose":true,"statusCode":400,"status":400,"body":"null","type":"entity.parse.failed","level":"error","timestamp":"2018-11-06T04:38:31.896Z"}
+{"message":"Unexpected token n in JSON at position 0","stack":"SyntaxError: Unexpected token n in JSON at position 0\n    at JSON.parse (<anonymous>)\n    at createStrictSyntaxError (E:\\Code\\My_Project\\ProjectSem2\\Game\\node_modules\\body-parser\\lib\\types\\json.js:158:10)\n    at parse (E:\\Code\\My_Project\\ProjectSem2\\Game\\node_modules\\body-parser\\lib\\types\\json.js:83:15)\n    at E:\\Code\\My_Project\\ProjectSem2\\Game\\node_modules\\body-parser\\lib\\read.js:121:18\n    at invokeCallback (E:\\Code\\My_Project\\ProjectSem2\\Game\\node_modules\\raw-body\\index.js:224:16)\n    at done (E:\\Code\\My_Project\\ProjectSem2\\Game\\node_modules\\raw-body\\index.js:213:7)\n    at IncomingMessage.onEnd (E:\\Code\\My_Project\\ProjectSem2\\Game\\node_modules\\raw-body\\index.js:273:7)\n    at emitNone (events.js:106:13)\n    at IncomingMessage.emit (events.js:208:7)\n    at endReadableNT (_stream_readable.js:1064:12)\n    at _combinedTickCallback (internal/process/next_tick.js:138:11)\n    at process._tickCallback (internal/process/next_tick.js:180:9)","expose":true,"statusCode":400,"status":400,"body":"null","type":"entity.parse.failed","level":"error","timestamp":"2018-11-06T04:38:33.041Z"}
+{"message":"Unexpected token n in JSON at position 0","stack":"SyntaxError: Unexpected token n in JSON at position 0\n    at JSON.parse (<anonymous>)\n    at createStrictSyntaxError (E:\\Code\\My_Project\\ProjectSem2\\Game\\node_modules\\body-parser\\lib\\types\\json.js:158:10)\n    at parse (E:\\Code\\My_Project\\ProjectSem2\\Game\\node_modules\\body-parser\\lib\\types\\json.js:83:15)\n    at E:\\Code\\My_Project\\ProjectSem2\\Game\\node_modules\\body-parser\\lib\\read.js:121:18\n    at invokeCallback (E:\\Code\\My_Project\\ProjectSem2\\Game\\node_modules\\raw-body\\index.js:224:16)\n    at done (E:\\Code\\My_Project\\ProjectSem2\\Game\\node_modules\\raw-body\\index.js:213:7)\n    at IncomingMessage.onEnd (E:\\Code\\My_Project\\ProjectSem2\\Game\\node_modules\\raw-body\\index.js:273:7)\n    at emitNone (events.js:106:13)\n    at IncomingMessage.emit (events.js:208:7)\n    at endReadableNT (_stream_readable.js:1064:12)\n    at _combinedTickCallback (internal/process/next_tick.js:138:11)\n    at process._tickCallback (internal/process/next_tick.js:180:9)","expose":true,"statusCode":400,"status":400,"body":"null","type":"entity.parse.failed","level":"error","timestamp":"2018-11-06T04:38:35.417Z"}
+{"message":"Unexpected token n in JSON at position 0","stack":"SyntaxError: Unexpected token n in JSON at position 0\n    at JSON.parse (<anonymous>)\n    at createStrictSyntaxError (E:\\Code\\My_Project\\ProjectSem2\\Game\\node_modules\\body-parser\\lib\\types\\json.js:158:10)\n    at parse (E:\\Code\\My_Project\\ProjectSem2\\Game\\node_modules\\body-parser\\lib\\types\\json.js:83:15)\n    at E:\\Code\\My_Project\\ProjectSem2\\Game\\node_modules\\body-parser\\lib\\read.js:121:18\n    at invokeCallback (E:\\Code\\My_Project\\ProjectSem2\\Game\\node_modules\\raw-body\\index.js:224:16)\n    at done (E:\\Code\\My_Project\\ProjectSem2\\Game\\node_modules\\raw-body\\index.js:213:7)\n    at IncomingMessage.onEnd (E:\\Code\\My_Project\\ProjectSem2\\Game\\node_modules\\raw-body\\index.js:273:7)\n    at emitNone (events.js:106:13)\n    at IncomingMessage.emit (events.js:208:7)\n    at endReadableNT (_stream_readable.js:1064:12)\n    at _combinedTickCallback (internal/process/next_tick.js:138:11)\n    at process._tickCallback (internal/process/next_tick.js:180:9)","expose":true,"statusCode":400,"status":400,"body":"null","type":"entity.parse.failed","level":"error","timestamp":"2018-11-06T04:41:20.393Z"}
+{"message":"Unexpected token n in JSON at position 0","stack":"SyntaxError: Unexpected token n in JSON at position 0\n    at JSON.parse (<anonymous>)\n    at createStrictSyntaxError (E:\\Code\\My_Project\\ProjectSem2\\Game\\node_modules\\body-parser\\lib\\types\\json.js:158:10)\n    at parse (E:\\Code\\My_Project\\ProjectSem2\\Game\\node_modules\\body-parser\\lib\\types\\json.js:83:15)\n    at E:\\Code\\My_Project\\ProjectSem2\\Game\\node_modules\\body-parser\\lib\\read.js:121:18\n    at invokeCallback (E:\\Code\\My_Project\\ProjectSem2\\Game\\node_modules\\raw-body\\index.js:224:16)\n    at done (E:\\Code\\My_Project\\ProjectSem2\\Game\\node_modules\\raw-body\\index.js:213:7)\n    at IncomingMessage.onEnd (E:\\Code\\My_Project\\ProjectSem2\\Game\\node_modules\\raw-body\\index.js:273:7)\n    at emitNone (events.js:106:13)\n    at IncomingMessage.emit (events.js:208:7)\n    at endReadableNT (_stream_readable.js:1064:12)\n    at _combinedTickCallback (internal/process/next_tick.js:138:11)\n    at process._tickCallback (internal/process/next_tick.js:180:9)","expose":true,"statusCode":400,"status":400,"body":"null","type":"entity.parse.failed","level":"error","timestamp":"2018-11-06T04:44:25.587Z"}
+{"level":"info","message":"Listening on port 3000","timestamp":"2018-11-06T04:46:15.166Z"}
+{"level":"info","message":"Connected to mongodb://localhost/underdog...","timestamp":"2018-11-06T04:46:16.213Z"}
+{"level":"info","message":"Listening on port 3000","timestamp":"2018-11-06T05:03:23.953Z"}
+{"level":"info","message":"Connected to mongodb://localhost/underdog...","timestamp":"2018-11-06T05:03:25.015Z"}
+{"message":"User validation failed: deckSample: Cast to ObjectID failed for value \"Promise { <pending> }\" at path \"deckSample\"","errors":{"deckSample":{"message":"Cast to ObjectID failed for value \"Promise { <pending> }\" at path \"deckSample\"","name":"CastError","stringValue":"\"Promise { <pending> }\"","kind":"ObjectID","value":{},"path":"deckSample","reason":{"message":"Cast to ObjectId failed for value \"Promise { <pending> }\" at path \"deckSample\"","name":"CastError","stringValue":"\"Promise { <pending> }\"","kind":"ObjectId","value":{},"path":"deckSample"}}},"_message":"User validation failed","stack":"ValidationError: User validation failed: deckSample: Cast to ObjectID failed for value \"Promise { <pending> }\" at path \"deckSample\"\n    at new ValidationError (E:\\Code\\My_Project\\ProjectSem2\\Game\\node_modules\\mongoose\\lib\\error\\validation.js:30:11)\n    at model.Document.invalidate (E:\\Code\\My_Project\\ProjectSem2\\Game\\node_modules\\mongoose\\lib\\document.js:2026:32)\n    at model.$set (E:\\Code\\My_Project\\ProjectSem2\\Game\\node_modules\\mongoose\\lib\\document.js:989:10)\n    at model.set [as deckSample] (E:\\Code\\My_Project\\ProjectSem2\\Game\\node_modules\\mongoose\\lib\\helpers\\document\\compile.js:124:26)\n    at router.post (E:\\Code\\My_Project\\ProjectSem2\\Game\\routes\\users.js:30:19)\n    at <anonymous>","name":"ValidationError","level":"error","timestamp":"2018-11-06T05:04:23.680Z"}
+{"level":"info","message":"Listening on port 3000","timestamp":"2018-11-06T05:08:40.488Z"}
+{"level":"info","message":"Connected to mongodb://localhost/underdog...","timestamp":"2018-11-06T05:08:41.557Z"}
+{"level":"info","message":"Listening on port 3000","timestamp":"2018-11-06T05:10:14.804Z"}
+{"level":"info","message":"Connected to mongodb://localhost/underdog...","timestamp":"2018-11-06T05:10:15.863Z"}
+{"level":"info","message":"Listening on port 3000","timestamp":"2018-11-06T05:21:46.316Z"}
+{"level":"info","message":"Connected to mongodb://localhost/underdog...","timestamp":"2018-11-06T05:21:47.366Z"}
+{"level":"info","message":"Listening on port 3000","timestamp":"2018-11-06T05:22:07.394Z"}
+{"level":"info","message":"Connected to mongodb://localhost/underdog...","timestamp":"2018-11-06T05:22:08.425Z"}
+{"level":"info","message":"Listening on port 3000","timestamp":"2018-11-06T05:23:54.484Z"}
+{"level":"info","message":"Connected to mongodb://localhost/underdog...","timestamp":"2018-11-06T05:23:55.549Z"}
+{"level":"info","message":"Listening on port 3000","timestamp":"2018-11-06T05:25:05.421Z"}
+{"level":"info","message":"Connected to mongodb://localhost/underdog...","timestamp":"2018-11-06T05:25:06.494Z"}
+{"level":"info","message":"Listening on port 3000","timestamp":"2018-11-06T05:25:11.412Z"}
+{"level":"info","message":"Connected to mongodb://localhost/underdog...","timestamp":"2018-11-06T05:25:12.488Z"}
+{"level":"info","message":"Listening on port 3000","timestamp":"2018-11-06T05:29:00.253Z"}
+{"level":"info","message":"Connected to mongodb://localhost/underdog...","timestamp":"2018-11-06T05:29:01.335Z"}
+{"code":"PUG:INVALID_TOKEN","msg":"unexpected token \"indent\"","line":2,"column":1,"filename":"E:\\Code\\My_Project\\ProjectSem2\\Game\\views\\register.pug"}
+{"level":"info","message":"Listening on port 3000","timestamp":"2018-11-06T05:30:25.895Z"}
+{"level":"info","message":"Connected to mongodb://localhost/underdog...","timestamp":"2018-11-06T05:30:26.962Z"}
+{"code":"PUG:INVALID_TOKEN","msg":"unexpected token \"indent\"","line":2,"column":1,"filename":"E:\\Code\\My_Project\\ProjectSem2\\Game\\views\\register.pug"}
+{"level":"info","message":"Listening on port 3000","timestamp":"2018-11-06T05:32:44.661Z"}
+{"level":"info","message":"Connected to mongodb://localhost/underdog...","timestamp":"2018-11-06T05:32:45.725Z"}
+{"code":"PUG:INVALID_TOKEN","msg":"unexpected token \"indent\"","line":2,"column":1,"filename":"E:\\Code\\My_Project\\ProjectSem2\\Game\\views\\register.pug"}
+{"code":"PUG:INVALID_TOKEN","msg":"unexpected token \"indent\"","line":2,"column":1,"filename":"E:\\Code\\My_Project\\ProjectSem2\\Game\\views\\register.pug"}
+{"level":"info","message":"Listening on port 3000","timestamp":"2018-11-06T05:34:50.409Z"}
+{"level":"info","message":"Connected to mongodb://localhost/underdog...","timestamp":"2018-11-06T05:34:51.470Z"}
+{"code":"PUG:INVALID_TOKEN","msg":"unexpected token \"indent\"","line":2,"column":1,"filename":"E:\\Code\\My_Project\\ProjectSem2\\Game\\views\\register.pug"}
+{"message":"Failed to lookup view \"register\" in views directory \"E:\\Code\\My_Project\\ProjectSem2\\Game\\views\"","stack":"Error: Failed to lookup view \"register\" in views directory \"E:\\Code\\My_Project\\ProjectSem2\\Game\\views\"\n    at Function.render (E:\\Code\\My_Project\\ProjectSem2\\Game\\node_modules\\express\\lib\\application.js:580:17)\n    at ServerResponse.render (E:\\Code\\My_Project\\ProjectSem2\\Game\\node_modules\\express\\lib\\response.js:1008:7)\n    at router.get (E:\\Code\\My_Project\\ProjectSem2\\Game\\routes\\login.js:5:7)\n    at newFn (E:\\Code\\My_Project\\ProjectSem2\\Game\\node_modules\\express-async-errors\\index.js:16:20)\n    at Layer.handle [as handle_request] (E:\\Code\\My_Project\\ProjectSem2\\Game\\node_modules\\express\\lib\\router\\layer.js:95:5)\n    at next (E:\\Code\\My_Project\\ProjectSem2\\Game\\node_modules\\express\\lib\\router\\route.js:137:13)\n    at Route.dispatch (E:\\Code\\My_Project\\ProjectSem2\\Game\\node_modules\\express\\lib\\router\\route.js:112:3)\n    at newFn (E:\\Code\\My_Project\\ProjectSem2\\Game\\node_modules\\express-async-errors\\index.js:16:20)\n    at Layer.handle [as handle_request] (E:\\Code\\My_Project\\ProjectSem2\\Game\\node_modules\\express\\lib\\router\\layer.js:95:5)\n    at E:\\Code\\My_Project\\ProjectSem2\\Game\\node_modules\\express\\lib\\router\\index.js:281:22\n    at Function.process_params (E:\\Code\\My_Project\\ProjectSem2\\Game\\node_modules\\express\\lib\\router\\index.js:335:12)\n    at next (E:\\Code\\My_Project\\ProjectSem2\\Game\\node_modules\\express\\lib\\router\\index.js:275:10)\n    at Function.handle (E:\\Code\\My_Project\\ProjectSem2\\Game\\node_modules\\express\\lib\\router\\index.js:174:3)\n    at router (E:\\Code\\My_Project\\ProjectSem2\\Game\\node_modules\\express\\lib\\router\\index.js:47:12)\n    at newFn (E:\\Code\\My_Project\\ProjectSem2\\Game\\node_modules\\express-async-errors\\index.js:16:20)\n    at Layer.handle [as handle_request] (E:\\Code\\My_Project\\ProjectSem2\\Game\\node_modules\\express\\lib\\router\\layer.js:95:5)","view":{"defaultEngine":"pug","ext":".pug","name":"register","root":"E:\\Code\\My_Project\\ProjectSem2\\Game\\views"},"level":"error","timestamp":"2018-11-06T05:35:16.587Z"}
+{"level":"info","message":"Listening on port 3000","timestamp":"2018-11-06T05:35:25.996Z"}
+{"level":"info","message":"Connected to mongodb://localhost/underdog...","timestamp":"2018-11-06T05:35:27.055Z"}
+{"message":"Failed to lookup view \"register\" in views directory \"E:\\Code\\My_Project\\ProjectSem2\\Game\\views\"","stack":"Error: Failed to lookup view \"register\" in views directory \"E:\\Code\\My_Project\\ProjectSem2\\Game\\views\"\n    at Function.render (E:\\Code\\My_Project\\ProjectSem2\\Game\\node_modules\\express\\lib\\application.js:580:17)\n    at ServerResponse.render (E:\\Code\\My_Project\\ProjectSem2\\Game\\node_modules\\express\\lib\\response.js:1008:7)\n    at router.get (E:\\Code\\My_Project\\ProjectSem2\\Game\\routes\\login.js:5:7)\n    at newFn (E:\\Code\\My_Project\\ProjectSem2\\Game\\node_modules\\express-async-errors\\index.js:16:20)\n    at Layer.handle [as handle_request] (E:\\Code\\My_Project\\ProjectSem2\\Game\\node_modules\\express\\lib\\router\\layer.js:95:5)\n    at next (E:\\Code\\My_Project\\ProjectSem2\\Game\\node_modules\\express\\lib\\router\\route.js:137:13)\n    at Route.dispatch (E:\\Code\\My_Project\\ProjectSem2\\Game\\node_modules\\express\\lib\\router\\route.js:112:3)\n    at newFn (E:\\Code\\My_Project\\ProjectSem2\\Game\\node_modules\\express-async-errors\\index.js:16:20)\n    at Layer.handle [as handle_request] (E:\\Code\\My_Project\\ProjectSem2\\Game\\node_modules\\express\\lib\\router\\layer.js:95:5)\n    at E:\\Code\\My_Project\\ProjectSem2\\Game\\node_modules\\express\\lib\\router\\index.js:281:22\n    at Function.process_params (E:\\Code\\My_Project\\ProjectSem2\\Game\\node_modules\\express\\lib\\router\\index.js:335:12)\n    at next (E:\\Code\\My_Project\\ProjectSem2\\Game\\node_modules\\express\\lib\\router\\index.js:275:10)\n    at Function.handle (E:\\Code\\My_Project\\ProjectSem2\\Game\\node_modules\\express\\lib\\router\\index.js:174:3)\n    at router (E:\\Code\\My_Project\\ProjectSem2\\Game\\node_modules\\express\\lib\\router\\index.js:47:12)\n    at newFn (E:\\Code\\My_Project\\ProjectSem2\\Game\\node_modules\\express-async-errors\\index.js:16:20)\n    at Layer.handle [as handle_request] (E:\\Code\\My_Project\\ProjectSem2\\Game\\node_modules\\express\\lib\\router\\layer.js:95:5)","view":{"defaultEngine":"pug","ext":".pug","name":"register","root":"E:\\Code\\My_Project\\ProjectSem2\\Game\\views"},"level":"error","timestamp":"2018-11-06T05:35:31.377Z"}
+{"level":"info","message":"Listening on port 3000","timestamp":"2018-11-06T05:36:30.895Z"}
+{"level":"info","message":"Connected to mongodb://localhost/underdog...","timestamp":"2018-11-06T05:36:31.962Z"}
+{"code":"PUG:INVALID_TOKEN","msg":"unexpected token \"indent\"","line":3,"column":1,"filename":"E:\\Code\\My_Project\\ProjectSem2\\Game\\views\\login.pug"}
+{"level":"info","message":"Listening on port 3000","timestamp":"2018-11-06T05:37:25.726Z"}
+{"level":"info","message":"Connected to mongodb://localhost/underdog...","timestamp":"2018-11-06T05:37:26.800Z"}
+{"level":"info","message":"Listening on port 3000","timestamp":"2018-11-06T05:42:31.899Z"}
+{"level":"info","message":"Connected to mongodb://localhost/underdog...","timestamp":"2018-11-06T05:42:32.927Z"}
+{"level":"info","message":"Listening on port 3000","timestamp":"2018-11-06T05:43:13.650Z"}
+{"level":"info","message":"Connected to mongodb://localhost/underdog...","timestamp":"2018-11-06T05:43:14.705Z"}
+{"level":"info","message":"Listening on port 3000","timestamp":"2018-11-06T05:43:58.729Z"}
+{"level":"info","message":"Connected to mongodb://localhost/underdog...","timestamp":"2018-11-06T05:43:59.800Z"}
+{"level":"info","message":"Listening on port 3000","timestamp":"2018-11-06T05:44:06.284Z"}
+{"level":"info","message":"Connected to mongodb://localhost/underdog...","timestamp":"2018-11-06T05:44:07.343Z"}
+{"level":"info","message":"Listening on port 3000","timestamp":"2018-11-06T05:51:51.764Z"}
+{"level":"info","message":"Connected to mongodb://localhost/underdog...","timestamp":"2018-11-06T05:51:52.822Z"}
+>>>>>>> 5123547602ddd1042a787575b7a973cb78ab1244
