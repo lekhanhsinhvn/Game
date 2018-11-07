@@ -16,6 +16,21 @@ router.get('/', [auth, admin], async (req, res) => {
   const users = await User.find().sort('name');
   res.send(user);
 })
+
+router.get('/myCards', auth, async (req, res) => {
+  const cards = await User
+    .find()
+    .sort('name')
+    .populate({
+      path: 'deckSample',
+      populate: {
+        path: 'cardList.card',
+        model: 'Card'
+      }
+    })
+  res.send(cards);
+})
+
 router.post('/', validator(validate), async (req, res) => {
   let user = await User.findOne({ email: req.body.email });
   if (user) return res.status(400).send('User already registered');

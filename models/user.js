@@ -27,11 +27,6 @@ const userSchema = new mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: 'Deck',
   },
-  isAdmin: {
-    type: Boolean,
-    default: false,
-    required: true
-  },
 });
 
 userSchema.methods.generateAuthToken = function() {

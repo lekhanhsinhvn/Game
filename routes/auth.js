@@ -15,6 +15,7 @@ router.post('/', validator(validate), async (req, res) => {
 
   const token = user.generateAuthToken();
   req.session.token = token;
+  res.header('x-auth-token', token).send(`Welcome ${user.name}`)
   res.end();
 });
 function validate(req) {

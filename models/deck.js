@@ -19,6 +19,7 @@ const Deck = mongoose.model('Deck', deckSchema)
 
 function validateDeck(deck) {
   const schema = {
+    _id: Joi.string(),
     cardList: Joi.array()
   }
   return Joi.validate(deck, schema)

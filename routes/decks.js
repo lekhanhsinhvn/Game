@@ -31,6 +31,23 @@ router.post('/', [auth, validator(validate)], async (req, res) => {
   res.send(deck)
 })
 
+router.put('/:id', [auth, validator(validate)], async(req, res) => {
+  const deck = await Deck.findByIdAndUpdate(req.params.id, {
+    cardList: req.body.cardList
+  }, {new: true})
+  if(!deck) return res.status(404).send('The deck with the given Id not found')
 
+  res.send(deck);
+})
+
+
+router.put('/', [auth, validator(validate)], async(req, res) => {
+  const deck = await Deck.findByIdAndUpdate(req.body._id, {
+    cardList: req.body.cardList
+  }, {new: true})
+  if(!deck) return res.status(404).send('The deck with the given Id not found')
+
+  res.send(deck);
+})
 
 module.exports = router;
