@@ -16,9 +16,6 @@ $("#deck").droppable({
         updatedeck();
     }
 });
-$.ajax({
-
-});
 jQuery(function ($) {
     $("#deck_num").change(function () {
         $.ajax({
@@ -28,20 +25,27 @@ jQuery(function ($) {
                 console.log(data);
                 deck = data;
             },
+            error: function (errMsg, status, xhr) {
+                alert(errMsg.responseText);
+            },
             contentType: "application/json",
             dataType: 'json'
         });
     }).change();
 });
 $("#save").click(function () {
+    var obj={
+        deck:deck
+    };
     $.ajax({
-        type: "POST",
-        url: "http://localhost:3000/api/games/deck/save",
-        data: JSON.stringify({
-            "deck": deck
-        }),
+        type: "PUT",
+        url: "http://localhost:3000/api/decks/",
+        data: JSON.stringify(obj),
         success: function (data) {
-            console.log("saved");
+            alert("saved");
+        },
+        error: function (errMsg, status, xhr) {
+            alert(errMsg.responseText);
         },
         contentType: "application/json",
         dataType: 'json'

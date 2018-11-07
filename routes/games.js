@@ -30,12 +30,15 @@ router.get('/myCards', auth, async (req, res) => {
         model: 'Card'
       }
     })
-  const cards=(user.deckSample).cardList;
+  const cards = (user.deckSample).cardList;
+  console.log(cards)
   res.send(cards);
 });
+/*
 router.post('/deck/save', auth, async (req, res) => {
   let id = (await User.findById(req.user._id).select('-password')).deckSample;
   console.log(req.body.deck);
   res.end();
 });
+*/
 module.exports = router;
