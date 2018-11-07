@@ -28,12 +28,12 @@ block content
                                         td.value-holder.hp
                                             span= val.health
             .col-md-2
-                select#decknum(name="deck_num")
+                select#deck_num(name="deck_num")
                     option(value=1) Deck 1
                     option(value=2) Deck 2
                     option(value=3) Deck 3
                 button#save Save
                 #deck
 append foot
-    script(src="/javascripts/script.js" /*val=user._id*/)
+    script(src="/javascripts/deck.js")
 

@@ -10,7 +10,7 @@ module.exports = {
             case "endTurn":
                 var card = remove_card_from_deck(player_op.deck[0], player_me)
                 if (player_op.hand.length < 7) {
-                    add_to_hand(card, player_me);
+                    add_to_hand(card, player_op);
                 }
                 break;
             case "attack":
@@ -29,7 +29,7 @@ module.exports = {
             player2: player_op
         }
         set_game_state(data[0], game);
-        send(game);
+        send(data[0], game);
     },
     creategame: function (room, client1, client2) {
         var player1 = {
@@ -66,7 +66,7 @@ module.exports = {
             player2.deck.push(card);
         }
         set_game_state(room.id, game);
-        send(game);
+        send(room.id, game);
     },
     reconnect: function (client,room) {
         game=get_game_state(room);
@@ -74,48 +74,53 @@ module.exports = {
         player.socket=client.socket;
     }
 }
-function send(game) {
+function send(room_id, game) {
     //me(hp,mp,deck_num,hand,board,graveyard) op(hp,mp,deck_num,hand_num,board,graveyard)
+    
     var data1 = {
-        hp: player1.hp,
-        mp: player1.mp,
-        deck_num: player1.deck.length,
-        hand: player1.hand,
-        board: player1.board,
-        graveyard: player1.graveyard,
+        id: game.player1.id,
+        hp: game.player1.hp,
+        mp: game.player1.mp,
+        deck_num: game.player1.deck.length,
+        hand: game.player1.hand,
+        board: game.player1.board,
+        graveyard: game.player1.graveyard,
     },
         data2 = {
-            hp: player2.hp,
-            mp: player2.mp,
-            deck_num: player2.deck.length,
-            hand_num: player2.hand.length,
-            board: player2.board,
-            graveyard: player2.graveyard
+            id: game.player2.id,
+            hp: game.player2.hp,
+            mp: game.player2.mp,
+            deck_num: game.player2.deck.length,
+            hand_num: game.player2.hand.length,
+            board: game.player2.board,
+            graveyard: game.player2.graveyard
         };
-    game.player1.socket.emit('update', room, data1, data2);
+    game.player1.socket.emit('update', room_id, data1, data2);
     var data1 = {
-        hp: player2.hp,
-        mp: player2.mp,
-        deck_num: player2.deck.length,
-        hand: player2.hand,
-        board: player2.board,
-        graveyard: player2.graveyard,
+        id: game.player2.id,
+        hp: game.player2.hp,
+        mp: game.player2.mp,
+        deck_num: game.player2.deck.length,
+        hand: game.player2.hand,
+        board: game.player2.board,
+        graveyard: game.player2.graveyard,
     },
         data2 = {
-            hp: player1.hp,
-            mp: player1.mp,
-            deck_num: player1.deck.length,
-            hand_num: player1.hand.length,
-            board: player1.board,
-            graveyard: player1.graveyard
+            id: game.player1.id,
+            hp: game.player1.hp,
+            mp: game.player1.mp,
+            deck_num: game.player1.deck.length,
+            hand_num: game.player1.hand.length,
+            board: game.player1.board,
+            graveyard: game.player1.graveyard
         };
-    game.player2.socket.emit('update', room, data1, data2);
+    game.player2.socket.emit('update', room_id, data1, data2);
 }
-function set_game_state(room, game) {
-    games.set(room, game);
+function set_game_state(room_id, game) {
+    games.set(room_id, game);
 }
-function get_game_state(room) {
-    return games.get(room);
+function get_game_state(room_id) {
+    return games.get(room_id);
 }
 function check_player(game, id) {
     if (game.player1.id == id) {

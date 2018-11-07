@@ -1,15 +1,15 @@
-var socket = io.connect('http://localhost:3000');
+var socket = io.connect('/');
 socket.on('connect', function (data) {
-    id = $('script[src*=/javascripts/connect.js]').attr("val");
+    id = $("script[src*='/javascripts/connect.js']").attr("val");
     socket.emit('cmd', 'join@#@' + id);
 });
-var room, data_me, data_op;
+var room_id, data_me, data_op;
 //room_id #@# id_me #@# id_op #@# action #@# id_card #@# x #@# y
 socket.on('update', function (r, me, op) {
-    room = r;
+    room_id = r;
     data_me = me;
     data_op = op;
-    console.log(room);
+    console.log(room_id);
     console.log(data_me);
     console.log(data_op);
     updategame();
@@ -28,7 +28,7 @@ socket.on('update', function (r, me, op) {
     });
 })
 function send(action, id, x, y) {
-    socket.emit("cmd", "play@#@" + room.id + "#@#" + 1 + "#@#" + 2 + "#@#" + action + "#@#" + id + "#@#" + x + "#@#" + y);
+    socket.emit("cmd", "play@#@" + room_id + "#@#" + data_me.id + "#@#" + data_op.id + "#@#" + action + "#@#" + id + "#@#" + x + "#@#" + y);
 
 }
 function loadcard(card) {
