@@ -6,7 +6,8 @@ const validator = require('../middleware/validator')
 const auth = require('../middleware/auth')
 const admin = require('../middleware/admin')
 const express = require('express');
-const router = express.Router()
+const router = express.Router();
+const _ = require('lodash');
 
 router.get('/:id', [auth, validateObjectId], async (req, res) => {
   const deck = await Deck
@@ -22,7 +23,7 @@ router.get('/', [auth, admin], async (req, res) => {
 
   res.send(deck)
 })
-/*
+
 router.post('/', [auth, validator(validate)], async (req, res) => {
   const deck = new Deck({
     cardList: req.body.cardList
@@ -31,7 +32,7 @@ router.post('/', [auth, validator(validate)], async (req, res) => {
   await deck.save()
   res.send(deck)
 })
-*/
+
 router.put('/:id', [auth, validator(validate)], async (req, res) => {
   const deck = await Deck.findByIdAndUpdate(req.params.id, {
     cardList: req.body.cardList
@@ -43,10 +44,8 @@ router.put('/:id', [auth, validator(validate)], async (req, res) => {
 
 
 router.put('/', [auth, validator(validate)], async (req, res) => {
-  let id = (await User.findById(req.user._id).select('-password')).deckSample;
-  console.log(req.body.deck);
-  const deck = await Deck.findByIdAndUpdate(id, {
-    cardList: req.body.deck
+  const deck = await Deck.findByIdAndUpdate(req.body._id, {
+    cardList: req.body.cardList
   }, { new: true })
   if (!deck) return res.status(404).send('The deck with the given Id not found')
   res.send(deck);

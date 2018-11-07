@@ -1,4 +1,4 @@
-var game=require("../public/javascripts/game"),
+var game=require("./game"),
     queued = [],
     rooms = [];
 module.exports = {
@@ -23,7 +23,7 @@ module.exports = {
         }
     },
     disconnect: function (client) {
-        console.log("client " + client.sessionId + " disconnected");
+        console.log("client " + client.id + " disconnected");
         removePlayer(client);
     }
 }

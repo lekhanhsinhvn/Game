@@ -1,4 +1,5 @@
 var deck = [];
+var deck_id="";
 $(".item").draggable({
     helper: "clone",
     containment: "document",
@@ -18,12 +19,13 @@ $("#deck").droppable({
 });
 jQuery(function ($) {
     $("#deck_num").change(function () {
+        deck_id=$("#deck_num").val();
         $.ajax({
             type: "GET",
             url: "/api/games/myCards",
             success: function (data) {
-                console.log(data);
                 deck = data;
+                updatedeck();
             },
             error: function (errMsg, status, xhr) {
                 alert(errMsg.responseText);
@@ -34,9 +36,15 @@ jQuery(function ($) {
     }).change();
 });
 $("#save").click(function () {
-    var obj={
-        deck:deck
+    var cardList = [];
+    deck.forEach(card => {
+        cardList.push({ card: card._id });
+    });
+    var obj = {
+        _id: deck_id,
+        cardList: cardList
     };
+    console.log(obj);
     $.ajax({
         type: "PUT",
         url: "http://localhost:3000/api/decks/",

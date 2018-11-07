@@ -32,23 +32,25 @@ function send(action, id, x, y) {
 
 }
 function loadcard(card) {
-    var str = "<table id='" + card.id + "' class='card-holder summonable' card='" + JSON.stringify(card) + "'>"
+    var str = "<table id='" + card._id + "' class='card-holder summonable' card='" + JSON.stringify(card) + "'>"
         + "<tr>"
         + "<td class='name-holder' colspan='3'>"
-        + "<p>" + card.id + "</p>"
+        + "<p>" + card.card.name + "</p>"
         + "</td>"
-        + "<td class='value-holder cost'>0</td>"
+        + "<td class='value-holder cost'>"+card.card.cost+"</td>"
         + "</tr>"
         + "<tr>"
-        + "<td class='image-holder' colspan='4'></td>"
+        + "<td class='image-holder' colspan='4'>"
+        + "<img src='"+card.card.avatar+"'>"
+        +"</td>"
         + "</tr>"
         + "<tr>"
-        + "<td class='effect-holder' colspan='4'></td>"
+        + "<td class='effect-holder' colspan='4'>"+card.card.effect.name+"</td>"
         + "</tr>"
         + "<tr>"
-        + "<td class='value-holder atk'>0</td>"
-        + "<td class='value-holder rarity' colspan='2'></td>"
-        + "<td class='value-holder hp'>0</td>"
+        + "<td class='value-holder atk'>"+card.card.attack+"</td>"
+        + "<td class='value-holder rarity' colspan='2'>"+card.card.grade+"</td>"
+        + "<td class='value-holder hp'>"+card.card.health+"</td>"
         + "</tr>"
         + "</table>";
     return str;

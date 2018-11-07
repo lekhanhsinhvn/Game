@@ -1,3 +1,7 @@
+const { User } = require('../models/user');
+const { Card } = require('../models/card');
+const { Deck } = require('../models/deck');
+const _ = require('lodash');
 var games = new Map();
 module.exports = {
     incomingPlay: function (str) {
@@ -8,7 +12,7 @@ module.exports = {
         var player_op = check_player(game, data[2]);
         switch (data[3]) {
             case "endTurn":
-                var card = remove_card_from_deck(player_op.deck[0], player_me)
+                var card = remove_card_from_deck(player_op.deck[0], player_op)
                 if (player_op.hand.length < 7) {
                     add_to_hand(card, player_op);
                 }
@@ -31,23 +35,43 @@ module.exports = {
         set_game_state(data[0], game);
         send(data[0], game);
     },
-    creategame: function (room, client1, client2) {
+    creategame: async (room, client1, client2) => {
+        const user1 = await User
+            .findById(client1.id)
+            .select('-password')
+            .populate({
+                path: 'deckSample',
+                populate: {
+                    path: 'cardList.card',
+                    model: 'Card'
+                }
+            })
         var player1 = {
-            id: 1,
+            id: client1.id,
             socket: client1.socket,
             hp: 30,
             mp: 0,
-            deck: [],
+            deck:  (user1.deckSample).cardList,
             hand: [],
             board: [undefined, undefined, undefined, undefined],
             graveyard: []
         }
+        const user2 = await User
+            .findById(client2.id)
+            .select('-password')
+            .populate({
+                path: 'deckSample',
+                populate: {
+                    path: 'cardList.card',
+                    model: 'Card'
+                }
+            })
         var player2 = {
-            id: 2,
+            id: client2.id,
             socket: client2.socket,
             hp: 30,
             mp: 0,
-            deck: [],
+            deck: (user2.deckSample).cardList,
             hand: [],
             board: [undefined, undefined, undefined, undefined],
             graveyard: []
@@ -56,27 +80,18 @@ module.exports = {
             player1: player1,
             player2: player2
         }
-        var n = 0;
-        for (var i = 0; i < 10; i++) {
-            n++;
-            var card = {
-                id: "" + n
-            }
-            player1.deck.push(card);
-            player2.deck.push(card);
-        }
         set_game_state(room.id, game);
         send(room.id, game);
     },
-    reconnect: function (client,room) {
-        game=get_game_state(room);
-        player=check_player(game,client.id);
-        player.socket=client.socket;
+    reconnect: function (client, room) {
+        game = get_game_state(room);
+        player = check_player(game, client.id);
+        player.socket = client.socket;
     }
 }
 function send(room_id, game) {
     //me(hp,mp,deck_num,hand,board,graveyard) op(hp,mp,deck_num,hand_num,board,graveyard)
-    
+
     var data1 = {
         id: game.player1.id,
         hp: game.player1.hp,
@@ -136,11 +151,13 @@ function get_card_from_array(id, arr) {
     }
 }
 function remove_card_from_hand(card, player) {
-    player.hand.splice(player.hand.indexOf(card), 1);
+    player.hand.splice(_.findIndex(player.hand, { _id: card._id }), 1);
     return card;
 }
 function remove_card_from_deck(card, player) {
-    player.deck.splice(player.deck.indexOf(card), 1);
+    player.deck.splice(_.findIndex(player.deck, { _id: card._id }), 1);
+    console.log(card);
+    console.log(_.findIndex(player.deck, { _id: card._id }));
     return card;
 }
 function add_to_hand(card, player) {
