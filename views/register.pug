@@ -1,11 +1,26 @@
 extends layouts/layout.pug
-
+prepend head
+  meta(charset='UTF-8')
+  title Register form
+  link(rel='stylesheet', href='/stylesheets/style-login-register.css')
 block content
-    input#name(type='text', placeholder='Name')
-    input#email(type='email', placeholder='Email')
-    input#psw(type='text', placeholder='Password')
-    button(onclick='register()') Register
-    a(href='http://localhost:3000/api/login')
-      button Login
+  .box
+    form
+      .textbox
+        i.fa.fa-user-o(aria-hidden='true')
+        input(type='text', placeholder='Name', name='', value='', required='true')
+      .textbox
+        i.fa.fa-envelope-o(aria-hidden='true')
+        input(type='text', placeholder='Email', name='', value='', required='')
+      .textbox
+        i.fa.fa-lock(aria-hidden='true')
+        input(type='password', placeholder='Password', name='', value='', required='')
+      .textbox
+        i.fa.fa-lock(aria-hidden='true')
+        input(type='password', placeholder='Confirm Password', name='', value='', required='')
+      input.btn.register(onclick='register()', type='button', name='', value='REGISTER')
+      a(href='http://localhost:3000/api/login')
+        input.btn.login(type='button', name='', value='Already have a account')
+
 append foot
   script(src="/javascripts/account.js")
