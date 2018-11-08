@@ -13,6 +13,7 @@ function login() {
     contentType: "application/json",
     dataType: "json",
     success: function (data, status, xhr) {
+      window.location.href = data.redirect;
     },
     error: function (errMsg, status, xhr) {
       alert(errMsg.responseText);
@@ -35,6 +36,7 @@ function register() {
     contentType: "application/json",
     dataType: "json",
     success: function (data, status, xhr) {
+      window.location.href = data.redirect;
     },
     error: function (errMsg) {
       alert(errMsg.responseText);

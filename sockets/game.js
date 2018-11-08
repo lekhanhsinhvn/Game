@@ -84,9 +84,16 @@ module.exports = {
         send(room.id, game);
     },
     reconnect: function (client, room) {
-        game = get_game_state(room);
-        player = check_player(game, client.id);
-        player.socket = client.socket;
+        game = get_game_state(room.id);
+        player_me = check_player(game, client.id);
+        player_op = check_op(game, client.id);
+        player_me.socket = client.socket;
+        var game = {
+            player1: player_me,
+            player2: player_op
+        }
+        set_game_state(room.id, game);
+        send(room.id, game);
     }
 }
 function send(room_id, game) {
@@ -143,6 +150,12 @@ function check_player(game, id) {
     }
     return game.player2;
 }
+function check_op(game, id) {
+    if (game.player1.id != id) {
+        return game.player1;
+    }
+    return game.player2;
+}
 function get_card_from_array(id, arr) {
     for (let i = 0; i < arr.length; i++) {
         if (arr[i].id == id) {
@@ -156,8 +169,6 @@ function remove_card_from_hand(card, player) {
 }
 function remove_card_from_deck(card, player) {
     player.deck.splice(_.findIndex(player.deck, { _id: card._id }), 1);
-    console.log(card);
-    console.log(_.findIndex(player.deck, { _id: card._id }));
     return card;
 }
 function add_to_hand(card, player) {

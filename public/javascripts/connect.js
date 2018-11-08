@@ -41,7 +41,7 @@ function loadcard(card) {
         + "</tr>"
         + "<tr>"
         + "<td class='image-holder' colspan='4'>"
-        + "<img src='"+card.card.avatar+"'>"
+        + "<img src='/images/"+card.card.avatar+"'>"
         +"</td>"
         + "</tr>"
         + "<tr>"
