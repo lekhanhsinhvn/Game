@@ -24,11 +24,16 @@ function register() {
   const name = $("#name").val();
   const email = $("#email").val();
   const password = $("#psw").val();
+  const cfmPassword = $("#cfmPsw").val();
+
+  if (password !== cfmPassword) return alert('Password is not match')
+
   obj = new Object({
     name: name,
     email: email,
     password: password
   })
+  console.log(obj)
   $.ajax({
     type: "POST",
     url: "/api/users/",
@@ -42,4 +47,5 @@ function register() {
       alert(errMsg.responseText);
     }
   })
+  
 }
