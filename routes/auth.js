@@ -4,6 +4,7 @@ const bcrypt = require('bcrypt')
 const validator = require('../middleware/validator')
 const { User } = require('../models/user')
 const express = require('express');
+const auth = require('../middleware/auth');
 const router = express.Router();
 
 router.post('/', validator(validate), async (req, res) => {
@@ -27,4 +28,8 @@ function validate(req) {
   return Joi.validate(req, schema);
 }
 
+router.post('/getToken', auth, async (req, res) => {
+  res.send(req.session.token);
+  res.end();
+});
 module.exports = router;

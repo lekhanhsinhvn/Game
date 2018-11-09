@@ -39,7 +39,7 @@ app.use('/assets', [
   express.static(__dirname + '/node_modules/jquery-ui-dist'),
   express.static(__dirname + '/node_modules/popper.js/dist/umd/'),
   express.static(__dirname + '/node_modules/socket.io-client/dist'),
-  express.static(__dirname + '/node_modules/lodash')
+  express.static(__dirname + '/node_modules/lodash'),
 ]);
 
 const port = process.env.PORT || 3000;

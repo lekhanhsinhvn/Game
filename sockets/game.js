@@ -4,26 +4,32 @@ const { Deck } = require('../models/deck');
 const _ = require('lodash');
 var games = new Map();
 module.exports = {
-    incomingPlay: function (str) {
-        //room_id #@# id_me #@# id_op #@# action #@# id_card #@# x #@# y
-        var data = str.split("#@#");
-        var game = get_game_state(data[0]);
-        var player_me = check_player(game, data[1]);
-        var player_op = check_player(game, data[2]);
-        switch (data[3]) {
+    incomingPlay: function (room, play) {
+        //id_me #@# id_op #@# action #@# id_card #@# x #@# y
+        var data = play.split("#@#");
+        var game = get_game_state(room._id);
+        var player_me = check_player(game, data[0]);
+        var player_op = check_player(game, data[1]);
+        switch (data[2]) {
             case "endTurn":
                 var card = remove_card_from_deck(player_op.deck[0], player_op)
-                if (player_op.hand.length < 7) {
+                if (player_op.hand.length < 5) {
                     add_to_hand(card, player_op);
                 }
+                player_me.turn = false;
+                player_op.turn = true;
                 break;
             case "attack":
+                if (player_me.turn == true) {
 
+                }
                 break;
             case "summon":
-                var card = get_card_from_array(data[4], player_me.hand);
-                remove_card_from_hand(card, player_me);
-                add_to_board(parseInt(data[5]), parseInt(data[6]), card, player_me, player_op);
+                if (player_me.turn == true) {
+                    var card = get_card_from_array(data[3], player_me.hand);
+                    remove_card_from_hand(card, player_me);
+                    add_to_board(parseInt(data[4]), parseInt(data[5]), card, player_me, player_op);
+                }
                 break;
             default:
                 break;
@@ -32,12 +38,12 @@ module.exports = {
             player1: player_me,
             player2: player_op
         }
-        set_game_state(data[0], game);
-        send(data[0], game);
+        set_game_state(room._id, game);
+        send(game);
     },
-    creategame: async (room, client1, client2) => {
+    creategame: async (client1, client2, room) => {
         const user1 = await User
-            .findById(client1.id)
+            .findById(client1._id)
             .select('-password')
             .populate({
                 path: 'deckSample',
@@ -48,16 +54,18 @@ module.exports = {
             })
         var player1 = {
             id: client1.id,
+            name: client1.name,
             socket: client1.socket,
+            turn: false,
             hp: 30,
             mp: 0,
-            deck:  (user1.deckSample).cardList,
+            deck: _.shuffle((user1.deckSample).cardList),
             hand: [],
             board: [undefined, undefined, undefined, undefined],
             graveyard: []
         }
         const user2 = await User
-            .findById(client2.id)
+            .findById(client2._id)
             .select('-password')
             .populate({
                 path: 'deckSample',
@@ -68,10 +76,12 @@ module.exports = {
             })
         var player2 = {
             id: client2.id,
+            name: client2.name,
             socket: client2.socket,
+            turn: false,
             hp: 30,
             mp: 0,
-            deck: (user2.deckSample).cardList,
+            deck: _.shuffle((user2.deckSample).cardList),
             hand: [],
             board: [undefined, undefined, undefined, undefined],
             graveyard: []
@@ -80,27 +90,28 @@ module.exports = {
             player1: player1,
             player2: player2
         }
-        set_game_state(room.id, game);
-        send(room.id, game);
+        set_game_state(room._id, game);
+        send(game);
     },
-    reconnect: function (client, room) {
-        game = get_game_state(room.id);
-        player_me = check_player(game, client.id);
-        player_op = check_op(game, client.id);
-        player_me.socket = client.socket;
+    reconnect: function (user, room) {
+        game = get_game_state(room._id);
+        player_me = check_player(game, user._id);
+        player_op = check_op(game, user._id);
+        player_me.socket = user.socket;
         var game = {
             player1: player_me,
             player2: player_op
         }
-        set_game_state(room.id, game);
-        send(room.id, game);
+        set_game_state(room._id, game);
+        send(game);
     }
 }
-function send(room_id, game) {
+function send(game) {
     //me(hp,mp,deck_num,hand,board,graveyard) op(hp,mp,deck_num,hand_num,board,graveyard)
 
     var data1 = {
         id: game.player1.id,
+        turn: game.player1.turn,
         hp: game.player1.hp,
         mp: game.player1.mp,
         deck_num: game.player1.deck.length,
@@ -110,6 +121,7 @@ function send(room_id, game) {
     },
         data2 = {
             id: game.player2.id,
+            turn: game.player2.turn,
             hp: game.player2.hp,
             mp: game.player2.mp,
             deck_num: game.player2.deck.length,
@@ -117,9 +129,10 @@ function send(room_id, game) {
             board: game.player2.board,
             graveyard: game.player2.graveyard
         };
-    game.player1.socket.emit('update', room_id, data1, data2);
+    game.player1.socket.emit('updateGame', data1, data2);
     var data1 = {
         id: game.player2.id,
+        turn: game.player2.turn,
         hp: game.player2.hp,
         mp: game.player2.mp,
         deck_num: game.player2.deck.length,
@@ -129,6 +142,7 @@ function send(room_id, game) {
     },
         data2 = {
             id: game.player1.id,
+            turn: game.player1.turn,
             hp: game.player1.hp,
             mp: game.player1.mp,
             deck_num: game.player1.deck.length,
@@ -136,7 +150,7 @@ function send(room_id, game) {
             board: game.player1.board,
             graveyard: game.player1.graveyard
         };
-    game.player2.socket.emit('update', room_id, data1, data2);
+    game.player2.socket.emit('updateGame', data1, data2);
 }
 function set_game_state(room_id, game) {
     games.set(room_id, game);

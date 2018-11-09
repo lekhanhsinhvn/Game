@@ -1,75 +1,122 @@
+const _ = require('lodash');
 var game = require("./game"),
-    queued = [],
     rooms = [];
+const { User } = require('../models/user');
 module.exports = {
-    incomingCmd: function (cmd, client_socket) {
-        console.log("recieved websocket cmd: " + cmd)
-        cmd = cmd || "noop"
-        var data = cmd.split("@#@");
-        switch (data[0]) {
-            case "join":
-                client = {
-                    id: data[1],
-                    socket: client_socket
+    host: async function (user, io) {
+        const acc = await User
+            .findById(user._id)
+            .select('-password')
+            .populate({
+                path: 'deckSample',
+                populate: {
+                    path: 'cardList.card',
+                    model: 'Card'
                 }
-                gameroom(client);
-                break;
-            case "play":
-                var a = data[1].split("#@#");
-                if (findroom(a[0]) != undefined) {
-                    console.log(data[1]);
-                    game.incomingPlay(data[1]);
-                }
-                break;
-            default:
-                break;
+            })
+        if (find_room_of_user_as_player(user) == undefined && (acc.deckSample).cardList == 25) {
+            var room = {
+                _id: user._id + Date.now(),
+                players: [user],
+                spectators: []
+            };
+            rooms.push(room);
+            refreshRoom(io);
         }
     },
-    disconnect: function (client) {
-        console.log("client " + client.id + " disconnected");
-        removePlayer(client);
+    join: async function (user, room_id, io) {
+        const acc = await User
+            .findById(user._id)
+            .select('-password')
+            .populate({
+                path: 'deckSample',
+                populate: {
+                    path: 'cardList.card',
+                    model: 'Card'
+                }
+            })
+        if ((room = find_room_of_user_as_player(user)) != undefined && (acc.deckSample).cardList == 25) {
+        }
+        else {
+            var room = _.find(rooms, { _id: room_id });
+            if (room.players.length == 1) {
+                game.creategame(user, room.players[0], room);
+                room.players.push(user);
+                _.remove(rooms, { _id: room_id });
+                rooms.push(room);
+                refreshRoom(io);
+            }
+        }
+    },
+    random: async function (user, io) {
+        const acc = await User
+            .findById(user._id)
+            .select('-password')
+            .populate({
+                path: 'deckSample',
+                populate: {
+                    path: 'cardList.card',
+                    model: 'Card'
+                }
+            })
+        if ((room = find_room_of_user_as_player(user)) != undefined && (acc.deckSample).cardList == 25) {
+        }
+        else {
+            var room = _.shuffle(rooms)[0];
+            if (room.players.length == 1) {
+                game.creategame(user, room.players[0], room);
+                room.players.push(user);
+                _.remove(rooms, { _id: room_id });
+                rooms.push(room);
+                refreshRoom(io);
+            }
+        }
+    },
+    play: function (user, play) {
+        if ((room = find_room_of_user_as_player(user)) != undefined) {
+            game.incomingPlay(room, play)
+        }
+    },
+    refreshRoom: function (io) {
+        refreshRoom(io);
+    },
+    disconnect: function (client_socket, io) {
+        for (let i = 0; i < rooms.length; i++) {
+            if (_.find(rooms[i].players, { socket_id: client_socket.id }) != undefined) {
+                _.remove(rooms[i].players, { socket_id: client_socket.id });
+            }
+            if (_.find(rooms[i].spectators, { socket_id: client_socket.id }) != undefined) {
+                _.remove(rooms[i].spectators, { socket_id: client_socket.id });
+            }
+        }
+        _.remove(rooms, { players: [undefined] });
+        refreshRoom(io)
     }
 }
-
-function addPlayer(client) {
-    queued.push(client);
+function refreshRoom(io) {
+    temp = [];
+    rooms.forEach(room => {
+        r = {
+            _id: room._id,
+            players_name: _.map(room.players, 'name')
+        }
+        temp.push(r);
+    });
+    io.sockets.emit('updateRooms', temp);
 }
-function removePlayer(client) {
-    queued.slice(queued.indexOf(client));
-}
-function findroom(id) {
+function find_room_of_user_as_player(user) {
     for (let i = 0; i < rooms.length; i++) {
-        const room = rooms[i];
-        if (room.id == id) {
-            return room;
+        if (_.find(rooms[i].players, { _id: user._id }) != undefined) {
+            return rooms[i];
         }
     }
     return undefined;
 }
-function findroom_client(id) {
+function find_room_of_user_as_spectators(user) {
     for (let i = 0; i < rooms.length; i++) {
-        const room = rooms[i];
-        if (room.player_ids.includes(id)) {
-            return room;
+        if (_.find(rooms[i].spectators, { _id: user._id }) != undefined) {
+            return room[i];
         }
     }
     return undefined;
-}
-function gameroom(client1) {
-    room = findroom_client(client1.id);
-    if (room != undefined) {
-        game.reconnect(client1, room);
-        console.log("reconnect room " + room.id + " \nclient: " + client1.id);
-    }
-    else if (queued.length > 0 && (client2 = queued.shift()) != client1.id) {
-        var room = {
-            id: client1.id + client2.id + Date.now(),
-            player_ids: [client1.id, client2.id]
-        };
-        console.log("make room " + room.id + " \nclient1: " + client1.id + " \nclient2: " + client2.id);
-        rooms.push(room);
-        game.creategame(room, client1, client2);
-    } else {
-        addPlayer(client1);
-    }
 }
