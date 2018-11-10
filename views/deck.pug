@@ -2,6 +2,7 @@ extends layouts/layout.pug
 
 prepend head
     title #{title}
+    link(rel="stylesheet", href="/stylesheets/style.css", attr)
 block content
     .container-fluid
         .row
@@ -36,4 +37,4 @@ block content
                 #deck
 append foot
     script(src="/javascripts/deck.js")
-
+    

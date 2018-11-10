@@ -8,7 +8,12 @@ const deckSchema = new mongoose.Schema({
     }],
     validate: {
       validator: function(v) {
-        return v && v.length <= 25;
+        let count = [];
+        v.forEach(function(i) {
+          count[i.card] = (count[i.card]||0) + 1;
+          if(count[i.card] > 3) return console.log('Something failed')
+        });
+        return v && v.length <= 25 ;
       },
       message: 'a Deck should have equal or less than 25 cards'
     }

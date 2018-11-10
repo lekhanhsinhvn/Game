@@ -4,7 +4,7 @@ body{
   margin: 0;
   padding: 0;
   font-family: sans-serif;
-  background: url(bg.jpg);
+  background: url(../images/bg.jpg);
   background-size: cover;
   background-position: center center;
   background-attachment: fixed;
@@ -18,16 +18,23 @@ body{
   transform: translate(-50%, -50%);
   color: white;
   padding: 40px 20px 20px;
-
   border-radius: 5px;
   background-color: rgb(229, 130, 67, 0.05);
   box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+  border: 2px solid rgb(222, 102, 26, 0.1);
+  animation-name: box;
+  animation-duration: 0.5s;
+}
+
+@keyframes box {
+  from {top: -20%;}
+  to {top: 50%}
 }
 
 .box:hover{
   box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
   background-color: rgb(229, 130, 67, 0.1);
-    border: 2px solid rgb(222, 102, 26, 0.1);
+  border: 2px solid rgb(222, 102, 26, 0.3);
 }
 
 /*.login-box h1{
@@ -51,7 +58,7 @@ body{
 }
 
 .textbox i{
-  width: 30px;
+  width: 25px;
   float: left;
   text-align: center;
   color: yellow;
@@ -63,27 +70,37 @@ body{
   outline: none;
   background: none;
   color: yellow;
-  font-size: 24px;
+  font-size: 20px;
   font-family: 'Poor Story', cursive;
   width: 80%;
   float: left;
   margin: 0 10px;
 }
+input::placeholder {
+  color: yellow;
+  font-style: italic;
+  opacity: 0.8;
+}
+input:focus {
+  background-color: rgba(255, 255, 0, 0.089);
+}
+input:focus::-webkit-input-placeholder { color:transparent; }
+
+input.btn{
+  font-family: 'Poor Story', cursive;
+  font-weight: bold;
+  font-size: 18px;
+}
 
 .btn{
   width: 100%;
   background: none;
-  border: 2px solid rgb(222, 102, 26, 0.3);
   color: white;
   padding: 5px;
-  font-size: 20px;
   cursor: pointer;
   margin: 12px 0;
   border-radius: 4px;
   transition-duration: 0.4s;
-  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
-  font-family: 'Poor Story', cursive;
-  font-weight: bold;
 }
 
 .register{
@@ -96,11 +113,7 @@ body{
 
 .register:hover {
   background-color: #62ba65;
-  border: 2px solid #62ba65;
-  box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
 }
 .login:hover {
   background-color: #fc3a3a;
-  border: 2px solid #fc3a3a;
-  box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
 }
