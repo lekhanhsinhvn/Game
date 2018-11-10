@@ -3053,6 +3053,7 @@
 {"level":"info","message":"Connected to mongodb://localhost/underdog...","timestamp":"2018-11-09T12:14:19.210Z"}
 {"level":"info","message":"Listening on port 3000","timestamp":"2018-11-09T12:14:25.463Z"}
 {"level":"info","message":"Connected to mongodb://localhost/underdog...","timestamp":"2018-11-09T12:14:26.527Z"}
+<<<<<<< HEAD
 {"level":"info","message":"Listening on port 3000","timestamp":"2018-11-09T12:17:05.774Z"}
 {"level":"info","message":"Connected to mongodb://localhost/underdog...","timestamp":"2018-11-09T12:17:06.824Z"}
 {"level":"info","message":"Listening on port 3000","timestamp":"2018-11-09T12:17:27.755Z"}
@@ -3166,3 +3167,37 @@
 {"level":"info","message":"Connected to mongodb://localhost/underdog...","timestamp":"2018-11-09T12:41:28.834Z"}
 {"level":"info","message":"Listening on port 3000","timestamp":"2018-11-09T12:41:37.765Z"}
 {"level":"info","message":"Connected to mongodb://localhost/underdog...","timestamp":"2018-11-09T12:41:38.832Z"}
+=======
+{"level":"info","message":"Listening on port 3000","timestamp":"2018-11-10T13:08:39.404Z"}
+{"level":"info","message":"Connected to mongodb://localhost/underdog...","timestamp":"2018-11-10T13:08:40.481Z"}
+{"level":"info","message":"Listening on port 3000","timestamp":"2018-11-10T13:11:43.287Z"}
+{"level":"info","message":"Connected to mongodb://localhost/underdog...","timestamp":"2018-11-10T13:11:44.356Z"}
+{"level":"info","message":"Listening on port 3000","timestamp":"2018-11-10T13:13:44.715Z"}
+{"level":"info","message":"Connected to mongodb://localhost/underdog...","timestamp":"2018-11-10T13:13:45.795Z"}
+{"level":"info","message":"Listening on port 3000","timestamp":"2018-11-10T13:14:31.531Z"}
+{"level":"info","message":"Connected to mongodb://localhost/underdog...","timestamp":"2018-11-10T13:14:32.595Z"}
+{"level":"info","message":"Listening on port 3000","timestamp":"2018-11-10T13:34:10.321Z"}
+{"level":"info","message":"Connected to mongodb://localhost/underdog...","timestamp":"2018-11-10T13:34:11.379Z"}
+{"level":"info","message":"Listening on port 3000","timestamp":"2018-11-10T14:08:32.682Z"}
+{"level":"info","message":"Connected to mongodb://localhost/underdog...","timestamp":"2018-11-10T14:08:33.744Z"}
+{"level":"info","message":"Listening on port 3000","timestamp":"2018-11-10T14:12:34.159Z"}
+{"level":"info","message":"Connected to mongodb://localhost/underdog...","timestamp":"2018-11-10T14:12:35.218Z"}
+{"level":"info","message":"Listening on port 3000","timestamp":"2018-11-10T14:16:47.803Z"}
+{"level":"info","message":"Connected to mongodb://localhost/underdog...","timestamp":"2018-11-10T14:16:48.863Z"}
+{"level":"info","message":"Listening on port 3000","timestamp":"2018-11-10T14:17:09.684Z"}
+{"level":"info","message":"Connected to mongodb://localhost/underdog...","timestamp":"2018-11-10T14:17:10.750Z"}
+{"level":"info","message":"Listening on port 3000","timestamp":"2018-11-10T14:17:31.488Z"}
+{"level":"info","message":"Connected to mongodb://localhost/underdog...","timestamp":"2018-11-10T14:17:32.544Z"}
+{"level":"info","message":"Listening on port 3000","timestamp":"2018-11-10T14:19:28.421Z"}
+{"level":"info","message":"Connected to mongodb://localhost/underdog...","timestamp":"2018-11-10T14:19:29.481Z"}
+{"level":"info","message":"Listening on port 3000","timestamp":"2018-11-10T14:20:09.887Z"}
+{"level":"info","message":"Connected to mongodb://localhost/underdog...","timestamp":"2018-11-10T14:20:10.948Z"}
+{"level":"info","message":"Listening on port 3000","timestamp":"2018-11-10T14:20:33.532Z"}
+{"level":"info","message":"Connected to mongodb://localhost/underdog...","timestamp":"2018-11-10T14:20:34.590Z"}
+{"level":"info","message":"Listening on port 3000","timestamp":"2018-11-10T14:24:12.454Z"}
+{"level":"info","message":"Connected to mongodb://localhost/underdog...","timestamp":"2018-11-10T14:24:13.528Z"}
+{"level":"info","message":"Listening on port 3000","timestamp":"2018-11-10T14:24:15.328Z"}
+{"level":"info","message":"Connected to mongodb://localhost/underdog...","timestamp":"2018-11-10T14:24:16.396Z"}
+{"level":"info","message":"Listening on port 3000","timestamp":"2018-11-10T14:29:54.799Z"}
+{"level":"info","message":"Connected to mongodb://localhost/underdog...","timestamp":"2018-11-10T14:29:55.857Z"}
+>>>>>>> 54b70ed5f3d17d5ac674b336ad99e4526f9d6996

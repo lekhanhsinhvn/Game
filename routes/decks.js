@@ -46,8 +46,9 @@ router.put('/:id', [auth, validator(validate)], async (req, res) => {
 router.put('/', [auth, validator(validate)], async (req, res) => {
   const deck = await Deck.findByIdAndUpdate(req.body._id, {
     cardList: req.body.cardList
-  }, { new: true })
+  }, { new: true, runValidators: true })
   if (!deck) return res.status(404).send('The deck with the given Id not found')
+  
   res.send(deck);
 })
 
