@@ -50,6 +50,10 @@ module.exports = function (io) {
             if ((user = findUser(id)) != undefined)
                 handle.chat(user, room_id, chat);
         });
+        client_socket.on("surrender", function (id) {
+            if ((user = findUser(id)) != undefined)
+                handle.surrender(user, io);
+        });
         client_socket.on("disconnect", function () {
             handle.disconnect(client_socket, io);
             _.remove(online, { socket_id: client_socket.id });

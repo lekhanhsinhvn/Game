@@ -43,6 +43,7 @@ $(document).ready(function () {
         });
         socket.on('leaveRoom', function (data) {
             room_id = undefined;
+            updateRooms();
         });
         socket.on('updateGame', function (me, op) {
             showGame();
@@ -68,6 +69,9 @@ $(document).ready(function () {
                 });
             }
         });
+        socket.on('err', function (data) {
+            alert(data);
+        });
     });
 
     $("#host").click(function () {
@@ -77,7 +81,7 @@ $(document).ready(function () {
         socket.emit('random', id);
     });
     function sendPlay(action, card_id, x, y) {
-        socket.emit("play", id, data_me._id + "#@#" + data_op._id + "#@#" + action + "#@#" + id + "#@#" + x + "#@#" + y);
+        socket.emit("play", id, data_me._id + "#@#" + data_op._id + "#@#" + action + "#@#" + card_id + "#@#" + x + "#@#" + y);
     }
     $("#endTurn").click(function () {
         sendPlay("endTurn");
@@ -85,12 +89,13 @@ $(document).ready(function () {
 });
 
 function loadcard(card) {
-    var str = "<table id='" + card._id + "' class='card-holder summonable' card='" + JSON.stringify(card) + "'>"
+    var attr = status
+    var str = "<table id='" + card._id + "' class='card-holder " + attr + "' card='" + JSON.stringify(card) + "'>"
         + "<tr>"
         + "<td class='name-holder' colspan='3'>"
         + "<p>" + card.card.name + "</p>"
         + "</td>"
-        + "<td class='value-holder cost'>" + card.card.cost + "</td>"
+        + "<td class='value-holder cost'>" + card.card.temp_cost + "</td>"
         + "</tr>"
         + "<tr>"
         + "<td class='image-holder' colspan='4'>"
@@ -101,9 +106,9 @@ function loadcard(card) {
         + "<td class='effect-holder' colspan='4'>" + card.card.effect.name + "</td>"
         + "</tr>"
         + "<tr>"
-        + "<td class='value-holder atk'>" + card.card.attack + "</td>"
+        + "<td class='value-holder atk'>" + card.card.temp_attack + "</td>"
         + "<td class='value-holder rarity' colspan='2'>" + card.card.grade + "</td>"
-        + "<td class='value-holder hp'>" + card.card.health + "</td>"
+        + "<td class='value-holder hp'>" + card.card.temp_health + "</td>"
         + "</tr>"
         + "</table>";
     return str;
@@ -152,6 +157,12 @@ function loadRoom(room) {
             + "<p>" + room._id + "</p>"
             + "<span>" + room.players_name + "</span>"
             + "<button class='btn-success' id='spectate' val='" + room._id + "'>Spectate</button>"
+            + "</div>";
+    }
+    else{
+        str += "<div class='room'>"
+            + "<p>" + room._id + "</p>"
+            + "<span>" + room.players_name + "</span>"
             + "</div>";
     }
     return str;

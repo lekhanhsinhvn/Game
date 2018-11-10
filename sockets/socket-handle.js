@@ -23,6 +23,7 @@ module.exports = {
             rooms.push(room);
             refreshRoom(io);
         }
+        else user.socket.emit("err", "Deck must have 25 cards");
     },
     join: async function (user, room_id, io) {
         const acc = await User
@@ -35,17 +36,18 @@ module.exports = {
                     model: 'Card'
                 }
             })
-        if ((room = find_room_of_user_as_player(user)) != undefined && (acc.deckSample).cardList == 25) {
+        if ((room = find_room_of_user_as_player(user)) != undefined) {
         }
         else {
             var room = _.find(rooms, { _id: room_id });
-            if (room.players.length == 1) {
+            if (room.players.length == 1 && (acc.deckSample).cardList == 25) {
                 game.creategame(user, room.players[0], room);
                 room.players.push(user);
                 _.remove(rooms, { _id: room_id });
                 rooms.push(room);
                 refreshRoom(io);
             }
+            else user.socket.emit("err", "Deck must have 25 cards");
         }
     },
     random: async function (user, io) {
@@ -59,22 +61,30 @@ module.exports = {
                     model: 'Card'
                 }
             })
-        if ((room = find_room_of_user_as_player(user)) != undefined && (acc.deckSample).cardList == 25) {
+        if ((room = find_room_of_user_as_player(user)) != undefined) {
         }
         else {
             var room = _.shuffle(rooms)[0];
-            if (room.players.length == 1) {
+            if (room != undefined && room.players.length == 1 && (acc.deckSample).cardList == 25) {
                 game.creategame(user, room.players[0], room);
                 room.players.push(user);
                 _.remove(rooms, { _id: room_id });
                 rooms.push(room);
                 refreshRoom(io);
             }
+            else user.socket.emit("err", "Deck must have 25 cards");
         }
     },
     play: function (user, play) {
         if ((room = find_room_of_user_as_player(user)) != undefined) {
             game.incomingPlay(room, play)
+        }
+    },
+    surrender: function (user, io) {
+        if ((room = find_room_of_user_as_player(user)) != undefined) {
+            game.endGame(room);
+            _.remove(rooms, { _id: room._id });
+            refreshRoom(io);
         }
     },
     refreshRoom: function (io) {
@@ -89,11 +99,11 @@ module.exports = {
                 _.remove(rooms[i].spectators, { socket_id: client_socket.id });
             }
         }
-        _.remove(rooms, { players: [undefined] });
         refreshRoom(io)
     }
 }
 function refreshRoom(io) {
+    _.remove(rooms, { players: [undefined] });
     temp = [];
     rooms.forEach(room => {
         r = {
