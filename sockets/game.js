@@ -175,20 +175,33 @@ module.exports = {
         }
         game.timer.start({
             startValues: {
-                minutes: 2,
+                minutes: 1,
             },
             target: {
                 seconds: 0,
             },
             countdown: true,
         })
-        game.timer.addEventListener("targetAchieved", function () {
-            if (game.player1.turn == true) {
-                endTurn(game, game.player1, game.player2);
-            } else {
-                endTurn(game, game.player2, game.player1);
+        game.timer.addEventListener("targetAchieved", function (room) {
+            if (game != undefined) {
+                if (game.player1.turn == true) {
+                    endTurn(game, game.player1, game.player2);
+                    update_hand(game.player1, game.player2);
+                    update_broad(game.player1, game.player2);
+                } else {
+                    endTurn(game, game.player2, game.player1);
+                    update_hand(game.player2, game.player1);
+                    update_broad(game.player2, game.player1);
+                }
+                var temp = {
+                    turn_num: game.turn_num,
+                    timer: game.timer,
+                    player1: game.player1,
+                    player2: game.player2
+                }
+                set_game_state(room._id, temp);
+                send(room._id, temp);
             }
-
         })
         for (let i = 0; i < 3; i++) {
             if ((card = remove_card_from_array(game.player1.deck[0], game.player1.deck)) != undefined) {
@@ -261,7 +274,7 @@ function send(room_id, game) {
             graveyard: game.player2.graveyard,
             status: game.player2.status,
         };
-    game.player1.socket.emit('updateGame', room_id, game.timer.getTimeValues().toString(), data1, data2);
+    game.player1.socket.emit('updateGame', room_id, game.timer.getTimeValues(), data1, data2);
     var data1 = {
         _id: game.player2._id,
         player_name: game.player2.name,
@@ -286,7 +299,7 @@ function send(room_id, game) {
             graveyard: game.player1.graveyard,
             status: game.player1.status,
         };
-    game.player2.socket.emit('updateGame', room_id, game.timer.getTimeValues().toString(), data1, data2);
+    game.player2.socket.emit('updateGame', room_id, game.timer.getTimeValues(), data1, data2);
 }
 function set_game_state(room_id, game) {
     games.set(room_id, game);

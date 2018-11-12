@@ -37,11 +37,23 @@ $(document).ready(function () {
             rooms = data;
             updateRooms();
         });
-        socket.on('updateGame', function (r, timer, me, op) {
+        socket.on('updateGame', function (r, t, me, op) {
             showGame();
+            $("#leaveRoom").css("display", "none");
             room_id = r;
             data_me = me;
             data_op = op;
+            timer=new Timer();
+            timer.start({
+                startValues:t,
+                target: {
+                    seconds: 0,
+                },
+                countdown: true,
+            })
+            timer.addEventListener('secondsUpdated', function (e) {
+                $('#timer').html(timer.getTimeValues().toString());
+            });
             // console.log(room_id);
             // console.log(data_me);
             // console.log(data_op);
@@ -126,15 +138,8 @@ $(document).ready(function () {
     function showGame() {
         $("#game").css("display", "block");
         $("#loader").css("display", "none");
-        $("#leaveRoom").css("display", "none");
     }
     function hideGame() {
-        if (room_id != undefined || data_op != undefined && data_op.hp <= 0 || data_me != undefined && data_me.hp <= 0) {
-            $("#leaveRoom").css("display", "block");
-        }
-        else {
-            $("#leaveRoom").css("display", "none");
-        }
         $("#game").css("display", "none");
         $("#loader").css("display", "block");
     }
@@ -250,8 +255,10 @@ function loadRoom(room) {
 }
 function updateRooms() {
     $("#rooms").empty();
+    $("#leaveRoom").css("display", "none");
     rooms.forEach(room => {
         if (_.find(room.players, { _id: user_id }) != undefined) {
+            $("#leaveRoom").css("display", "block");
             if (room_id == undefined && room.players.length == 2) {
                 socket.emit('recon', user_id, room._id);
                 $("#leaveRoom").css("display", "none");
