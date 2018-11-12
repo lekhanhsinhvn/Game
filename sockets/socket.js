@@ -17,7 +17,13 @@ module.exports = function (io) {
                 socket: socket,
                 socket_id: socket.id
             }
-            online.push(user);
+            if((_.find(online, {_id: user._id}))!=undefined){
+                (_.find(online, {_id: user._id})).socket=socket;
+                (_.find(online, {_id: user._id})).socket_id=user.socket_id;
+            }
+            else{
+                online.push(user);
+            }
             socket.emit("id", user._id);
             next();
         }
@@ -25,7 +31,6 @@ module.exports = function (io) {
             next(new Error("not authorized"));
         }
     });
-
     io.on("connection", function (client_socket) {
         client_socket.on("refreshRoom", function () {
             handle.refreshRoom(io);
@@ -49,6 +54,14 @@ module.exports = function (io) {
         client_socket.on("chat", function (id, room_id, chat) {
             if ((user = findUser(id)) != undefined)
                 handle.chat(user, room_id, chat);
+        });
+        client_socket.on("recon", function (id, room_id) {
+            if ((user = findUser(id)) != undefined)
+                handle.reconnect(user, room_id);
+        });
+        client_socket.on("leaveRoom", function (id, room_id) {
+            if ((user = findUser(id)) != undefined)
+                handle.leaveRoom(user, room_id, io);
         });
         client_socket.on("surrender", function (id) {
             if ((user = findUser(id)) != undefined)

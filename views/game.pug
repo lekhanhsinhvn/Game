@@ -10,12 +10,16 @@ block content
             button#host.btn Host
             button#random.btn-primary Random
         .col-md-9.container-fluid(style='min-height: 80vh;')
-            #loader
+            .load
+                #loader
+                button#leaveRoom Leave Room
             #game
                 table#op_info
                     tr
                         td.leftPart
+                            span.player_name
                         td.centerPart
+                            .hp
                         td.rightPart
                             span.mp
                             span.hand_num
@@ -34,12 +38,14 @@ block content
                 table#me_info
                     tr
                         td.leftPart
+                            span.player_name
                         td.centerPart
+                            .hp
                         td.rightPart
+                            button#endTurn End Turn
                             span.mp
                             span.hand_num
                             span.deck_num
-                button#endTurn End Turn
                 table#hand
                     tr
                         td(x=0 class="zone")

@@ -14,7 +14,7 @@ module.exports = {
                     model: 'Card'
                 }
             })
-        if (find_room_of_user_as_player(user) == undefined && (acc.deckSample).cardList == 25) {
+        if (find_room_of_user_as_player(user) == undefined && (acc.deckSample).cardList.length == 25) {
             var room = {
                 _id: user._id + Date.now(),
                 players: [user],
@@ -22,6 +22,7 @@ module.exports = {
             };
             rooms.push(room);
             refreshRoom(io);
+            user.socket.emit("room_id", room._id);
         }
         else user.socket.emit("err", "Deck must have 25 cards");
     },
@@ -40,7 +41,7 @@ module.exports = {
         }
         else {
             var room = _.find(rooms, { _id: room_id });
-            if (room.players.length == 1 && (acc.deckSample).cardList == 25) {
+            if (room != undefined && room.players.length == 1 && (acc.deckSample).cardList.length == 25) {
                 game.creategame(user, room.players[0], room);
                 room.players.push(user);
                 _.remove(rooms, { _id: room_id });
@@ -65,10 +66,10 @@ module.exports = {
         }
         else {
             var room = _.shuffle(rooms)[0];
-            if (room != undefined && room.players.length == 1 && (acc.deckSample).cardList == 25) {
+            if (room != undefined && room.players.length == 1 && (acc.deckSample).cardList.length == 25) {
                 game.creategame(user, room.players[0], room);
                 room.players.push(user);
-                _.remove(rooms, { _id: room_id });
+                _.remove(rooms, { _id: room._id });
                 rooms.push(room);
                 refreshRoom(io);
             }
@@ -80,10 +81,25 @@ module.exports = {
             game.incomingPlay(room, play)
         }
     },
+    reconnect: function (user, room_id) {
+        if ((room = find_room_of_user_as_player(user)) != undefined && room_id == room._id) {
+            (_.find(room.players, { _id: user._id })).socket_id = user.socket_id;
+            (_.find(room.players, { _id: user._id })).socket = user.socket;
+            game.reconnect(user, room)
+        }
+    },
     surrender: function (user, io) {
         if ((room = find_room_of_user_as_player(user)) != undefined) {
             game.endGame(room);
             _.remove(rooms, { _id: room._id });
+            refreshRoom(io);
+        }
+    },
+    leaveRoom: function (user, room_id, io) {
+        if ((room = find_room_of_user_as_player(user)) != undefined && room_id == room._id) {
+            _.remove(room.players, { _id: user._id });
+            _.remove(room.spectators, { _id: user._id });
+            user.socket.emit("err", "Leave Room");
             refreshRoom(io);
         }
     },
@@ -92,7 +108,7 @@ module.exports = {
     },
     disconnect: function (client_socket, io) {
         for (let i = 0; i < rooms.length; i++) {
-            if (_.find(rooms[i].players, { socket_id: client_socket.id }) != undefined) {
+            if (_.find(rooms[i].players, { socket_id: client_socket.id }) != undefined && rooms[i].players.length == 1) {
                 _.remove(rooms[i].players, { socket_id: client_socket.id });
             }
             if (_.find(rooms[i].spectators, { socket_id: client_socket.id }) != undefined) {
@@ -100,15 +116,27 @@ module.exports = {
             }
         }
         refreshRoom(io)
-    }
+    },
 }
 function refreshRoom(io) {
-    _.remove(rooms, { players: [undefined] });
+
+    _.remove(rooms, function (room) {
+        if (room.players.length == 0)
+            return room;
+    });
     temp = [];
     rooms.forEach(room => {
+        let players = [];
+        for (let i = 0; i < room.players.length; i++) {
+            user = {
+                _id: room.players[i]._id,
+                name: room.players[i].name
+            }
+            players.push(user);
+        }
         r = {
             _id: room._id,
-            players_name: _.map(room.players, 'name')
+            players: players
         }
         temp.push(r);
     });
