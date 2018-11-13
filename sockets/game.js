@@ -242,10 +242,14 @@ module.exports = {
         }
     },
     surrender: function (room) {
-        game = get_game_state(room._id);
-        player_me.socket.emit("err", "YOU LOSE");
-        player_op.socket.emit("err", "YOU WIN");
-        games.delete(room._id);
+        if ((game = get_game_state(room._id)) != undefined) {
+            game = get_game_state(room._id);
+            player_me = check_player(game, user._id);
+            player_op = check_op(game, user._id);
+            player_me.socket.emit("err", "YOU LOSE");
+            player_op.socket.emit("err", "YOU WIN");
+            games.delete(room._id);
+        }
     }
 }
 function send(room_id, game) {

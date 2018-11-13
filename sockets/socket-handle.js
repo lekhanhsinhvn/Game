@@ -90,9 +90,9 @@ module.exports = {
     },
     surrender: function (user, io) {
         if ((room = find_room_of_user_as_player(user)) != undefined) {
-            game.endGame(room);
-            _.remove(rooms, { _id: room._id });
-            refreshRoom(io);
+            game.surrender(room);
+            // _.remove(rooms, { _id: room._id });
+            // refreshRoom(io);
         }
     },
     leaveRoom: function (user, room_id, io) {

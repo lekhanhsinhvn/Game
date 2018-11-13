@@ -154,6 +154,9 @@ $(document).ready(function () {
     $("#endTurn").click(function () {
         sendPlay("endTurn");
     });
+    $("#surrender").click(function () {
+        socket.emit("surrender", user_id, room_id);
+    });
     $("#leaveRoom").click(function () {
         socket.emit("leaveRoom", user_id, room_id);
     });
