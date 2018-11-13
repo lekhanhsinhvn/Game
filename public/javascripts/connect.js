@@ -256,7 +256,7 @@ function updategame() {
             }
         }
     }
-    for (let i = 0; i < 7; i++) {
+    for (let i = 0; i < 6; i++) {
         $("#hand td[x$='" + i + "']").empty();
         if (data_me.hand[i] != undefined) {
             if (data_me.turn == true) {

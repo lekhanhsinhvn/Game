@@ -19,21 +19,18 @@ module.exports = {
                 }
                 break;
             case "attack":
-                if (player_me.turn == true && (card = get_card_from_array(data[3], player_me.board)) != undefined && card.card.status.includes("attackable")) {
+                if (player_me.turn == true && (card = get_card_from_array(data[3], player_me.board)) != undefined && card.card.hidden.includes("attackable")) {
                     let guards = get_array_has_status("guard", player_op.board);
                     if ((card_target = get_card_from_array(data[6], player_op.board)) != undefined && card_target.card.hidden.includes("targetable")) {
                         card_target.card.temp_health -= card.card.temp_attack;
                         add_to_board(player_op.board.indexOf(card_target), 0, card_target, player_me, player_op);
                         card.card.temp_health -= card_target.card.temp_attack;
-                        if (card_target.card.effect.name == "on_death") {
-                            eval(card_target.card.effect.description);
-                        }
                     }
                     else if (guards.length == 0 && data[6] == "player") {
                         player_op.hp -= card.card.temp_attack;
                     }
                     add_to_board(player_op.board.indexOf(card), 1, card, player_me, player_op);
-                    card.card.status = card.card.status.replace("attackable ", "");
+                    card.card.hidden = card.card.hidden.replace("attackable ", "");
                     card.card.hidden = card.card.hidden.replace("selected ", "");
                 }
                 if (player_op.hp <= 0) {
@@ -45,14 +42,14 @@ module.exports = {
                 reset_suggestion(player_me, player_op);
                 break;
             case "summon":
-                if (player_me.turn == true && (card = get_card_from_array(data[3], player_me.hand)) != undefined && card.card.status.includes("summonable") == true && (zone = get_card_from_board(parseInt(data[4]), parseInt(data[5]), player_me, player_op)) != undefined && zone == "targetable") {
+                if (player_me.turn == true && (card = get_card_from_array(data[3], player_me.hand)) != undefined && card.card.hidden.includes("summonable") == true && (zone = get_card_from_board(parseInt(data[4]), parseInt(data[5]), player_me, player_op)) != undefined && zone == "targetable") {
                     remove_card_from_array(card, player_me.hand);
                     add_to_board(parseInt(data[4]), parseInt(data[5]), card, player_me, player_op);
                     player_me.mp -= card.card.temp_cost;
-                    card.card.status = card.card.status.replace("summonable ", "");
+                    card.card.hidden = card.card.hidden.replace("summonable ", "");
                     card.card.hidden = card.card.hidden.replace("selected ", "");
-                    if (card.card.effect.name == "on_summon") {
-                        eval(card.card.effect.description);
+                    if (card.card.effect.event == "on_summon") {
+                        eval(card.card.effect.code);
                     }
                 }
                 reset_suggestion(player_me, player_op);
@@ -62,7 +59,7 @@ module.exports = {
                     if ((card = get_card_from_array(data[3], player_me.board)) != undefined) {
                         if (!card.card.hidden.includes("selected")) {
                             reset_suggestion(player_me, player_op);
-                            if (card.card.status.includes("attackable")) {
+                            if (card.card.hidden.includes("attackable")) {
                                 card.card.hidden += "selected ";
                                 let guards = get_array_has_status("guard", player_op.board);
                                 if (guards.length > 0) {
@@ -74,8 +71,8 @@ module.exports = {
                                         if (player_op.board[i] != undefined && player_op.board[i] != "targetable")
                                             player_op.board[i].card.hidden += "targetable ";
                                     }
-                                    if (!player_op.status.includes("targetable"))
-                                        player_op.status += "targetable ";
+                                    if (!player_op.hidden.includes("targetable"))
+                                        player_op.hidden += "targetable ";
                                 }
                             }
                         }
@@ -87,7 +84,7 @@ module.exports = {
                     if ((card = get_card_from_array(data[3], player_me.hand)) != undefined) {
                         if (!card.card.hidden.includes("selected")) {
                             reset_suggestion(player_me, player_op);
-                            if (card.card.status.includes("summonable")) {
+                            if (card.card.hidden.includes("summonable")) {
                                 card.card.hidden += "selected ";
                                 for (let i = 0; i < player_me.board.length; i++) {
                                     if (player_me.board[i] == undefined) {
@@ -113,8 +110,8 @@ module.exports = {
             default:
                 break;
         }
-        update_hand(player_me, player_op);
-        update_broad(player_me, player_op);
+        update_hand(game, player_me, player_op);
+        update_broad(game, player_me, player_op);
         var temp = {
             turn_num: game.turn_num,
             timer: game.timer,
@@ -147,7 +144,7 @@ module.exports = {
             hand: [],
             board: [undefined, undefined, undefined, undefined],
             graveyard: [],
-            status: "",
+            hidden: "",
         }
         const user2 = await User
             .findById(client2._id)
@@ -171,7 +168,7 @@ module.exports = {
             hand: [],
             board: [undefined, undefined, undefined, undefined],
             graveyard: [],
-            status: "",
+            hidden: "",
         }
         var game = {
             turn_num: 0,
@@ -192,12 +189,12 @@ module.exports = {
             if (game != undefined) {
                 if (game.player1.turn == true) {
                     endTurn(game, game.player1, game.player2);
-                    update_hand(game.player1, game.player2);
-                    update_broad(game.player1, game.player2);
+                    update_hand(game, game.player1, game.player2);
+                    update_broad(game, game.player1, game.player2);
                 } else {
                     endTurn(game, game.player2, game.player1);
-                    update_hand(game.player2, game.player1);
-                    update_broad(game.player2, game.player1);
+                    update_hand(game, game.player2, game.player1);
+                    update_broad(game, game.player2, game.player1);
                 }
                 var temp = {
                     turn_num: game.turn_num,
@@ -223,11 +220,11 @@ module.exports = {
         }
         player1 = _.sample([true, false])
         if (player1.turn == true) {
-            update_hand(game.player1, game.player2);
+            update_hand(game, game.player1, game.player2);
         }
         else {
             player2.turn = true;
-            update_hand(game.player2, game.player1);
+            update_hand(game, game.player2, game.player1);
         }
         set_game_state(room._id, game);
         send(room._id, game);
@@ -270,7 +267,7 @@ function send(room_id, game) {
         hand: game.player1.hand,
         board: game.player1.board,
         graveyard: game.player1.graveyard,
-        status: game.player1.status,
+        hidden: game.player1.hidden,
     },
         data2 = {
             _id: game.player2._id,
@@ -282,7 +279,7 @@ function send(room_id, game) {
             hand_num: game.player2.hand.length,
             board: game.player2.board,
             graveyard: game.player2.graveyard,
-            status: game.player2.status,
+            hidden: game.player2.hidden,
         };
     game.player1.socket.emit('updateGame', room_id, game.timer.getTimeValues(), data1, data2);
     var data1 = {
@@ -295,7 +292,7 @@ function send(room_id, game) {
         hand: game.player2.hand,
         board: game.player2.board,
         graveyard: game.player2.graveyard,
-        status: game.player2.status,
+        hidden: game.player2.hidden,
     },
         data2 = {
             _id: game.player1._id,
@@ -307,7 +304,7 @@ function send(room_id, game) {
             hand_num: game.player1.hand.length,
             board: game.player1.board,
             graveyard: game.player1.graveyard,
-            status: game.player1.status,
+            hidden: game.player1.hidden,
         };
     game.player2.socket.emit('updateGame', room_id, game.timer.getTimeValues(), data1, data2);
 }
@@ -392,10 +389,13 @@ function reset_card(card) {
     card.card.temp_cost = card.card.cost;
     return card;
 }
-function update_broad(player_me, player_op) {
+function update_broad(game, player_me, player_op) {
     for (let i = 0; i < player_me.board.length; i++) {
         if (player_me.board[i] != undefined && typeof (player_me.board[i]) === 'object' && player_me.board[i].card.temp_health <= 0) {
             let card = player_me.board[i];
+            if (card.card.effect.event == "on_death") {
+                eval(card.card.effect.code);
+            }
             player_me.board[i] = undefined;
             reset_card(card);
             player_me.graveyard.push(card);
@@ -405,27 +405,37 @@ function update_broad(player_me, player_op) {
     for (let i = 0; i < player_op.board.length; i++) {
         if (player_op.board[i] != undefined && typeof (player_op.board[i]) === 'object' && player_op.board[i].card.temp_health <= 0) {
             let card = player_op.board[i];
+            if (card.card.effect.event == "on_death") {
+                eval(card.card.effect.code);
+            }
             player_op.board[i] = undefined;
             reset_card(card);
             player_op.graveyard.push(card);
         }
     }
 }
-function update_hand(player_me, player_op) {
+function update_hand(game, player_me, player_op) {
     for (let i = 0; i < player_me.hand.length; i++) {
         if (player_me.hand[i].card.temp_cost <= player_me.mp && player_me.turn == true) {
-            if (!player_me.hand[i].card.status.includes("summonable"))
-                player_me.hand[i].card.status += "summonable ";
+            if (!player_me.hand[i].card.hidden.includes("summonable"))
+                player_me.hand[i].card.hidden += "summonable ";
         } else {
-            player_me.hand[i].card.status = player_me.hand[i].card.status.replace("summonable ", "");
+            player_me.hand[i].card.hidden = player_me.hand[i].card.hidden.replace("summonable ", "");
         }
     }
     for (let i = 0; i < player_op.hand.length; i++) {
         if (player_op.hand[i].card.temp_cost <= player_op.mp && player_op.turn == true) {
-            if (!player_op.hand[i].card.status.includes("summonable"))
-                player_op.hand[i].card.status += "summonable ";
+            if (!player_op.hand[i].card.hidden.includes("summonable"))
+                player_op.hand[i].card.hidden += "summonable ";
         } else {
-            player_op.hand[i].card.status = player_op.hand[i].card.status.replace("summonable ", "");
+            player_op.hand[i].card.hidden = player_op.hand[i].card.hidden.replace("summonable ", "");
+        }
+    }
+}
+function draw(player) {
+    if ((card = remove_card_from_array(player.deck[0], player.deck)) != undefined) {
+        if (player.hand.length < 6) {
+            player.hand.push(card);
         }
     }
 }
@@ -433,30 +443,26 @@ function endTurn(game, player_me, player_op) {
     game.turn_num += 1;
     reset_suggestion(player_me, player_op);
     for (let i = 0; i < player_op.board.length; i++) {
-        if (player_op.board[i] != undefined && player_op.board[i] != "targetable" && !player_op.board[i].card.status.includes("attackable"))
-            player_op.board[i].card.status += "attackable ";
+        if (player_op.board[i] != undefined && player_op.board[i] != "targetable" && !player_op.board[i].card.hidden.includes("attackable"))
+            player_op.board[i].card.hidden += "attackable ";
     }
-    if ((card = remove_card_from_array(player_op.deck[0], player_op.deck)) != undefined) {
-        if (player_op.hand.length < 5) {
-            player_op.hand.push(card);
-        }
-    }
+    draw(player_op);
     if (game.turn_num <= 10) {
         player_op.mp += game.turn_num;
     } else {
         player_op.mp += 10;
     }
     for (let i = 0; i < player_op.board.length; i++) {
-        if (player_op.board[i] != undefined && player_op.board[i] != "targetable" && player_op.board[i].card.effect.name == "on_startTurn") {
+        if (player_op.board[i] != undefined && player_op.board[i] != "targetable" && player_op.board[i].card.effect.event == "on_startTurn") {
             let card = player_op.board[i];
-            eval(player_op.board[i].card.effect.description);
+            eval(player_op.board[i].card.effect.code);
             player_op.board[i] = card;
         }
     }
     for (let i = 0; i < player_me.board.length; i++) {
-        if (player_me.board[i] != undefined && player_me.board[i] != "targetable" && player_me.board[i].card.effect.name == "on_endTurn") {
+        if (player_me.board[i] != undefined && player_me.board[i] != "targetable" && player_me.board[i].card.effect.event == "on_endTurn") {
             let card = player_me.board[i];
-            eval(player_me.board[i].card.effect.description);
+            eval(player_me.board[i].card.effect.code);
             player_me.board[i] = card;
         }
     }
@@ -474,8 +480,8 @@ function get_array_has_status(status, arr) {
     return temp;
 }
 function reset_suggestion(player_me, player_op) {
-    player_op.status = player_op.status.replace("targetable ", "");
-    player_me.status = player_me.status.replace("targetable ", "");
+    player_op.hidden = player_op.hidden.replace("targetable ", "");
+    player_me.hidden = player_me.hidden.replace("targetable ", "");
     for (let i = 0; i < player_op.board.length; i++) {
         if (player_op.board[i] != undefined && player_op.board[i] != "targetable")
             player_op.board[i].card.hidden = player_op.board[i].card.hidden.replace("targetable ", "");
@@ -498,4 +504,3 @@ function reduce(varl, val) {
     }
     return varl;
 }
-
