@@ -7,7 +7,7 @@ var games = new Map();
 module.exports = {
     incomingPlay: function (room, play) {
         //id_me #@# id_op #@# action #@# id_card1 #@# x #@# y #@# id_card2
-        console.log(play);
+        //console.log(play);
         var data = play.split("#@#");
         var game = get_game_state(room._id);
         var player_me = check_player(game, data[0]);
@@ -21,7 +21,7 @@ module.exports = {
             case "attack":
                 if (player_me.turn == true && (card = get_card_from_array(data[3], player_me.board)) != undefined && card.card.status.includes("attackable")) {
                     let guards = get_array_has_status("guard", player_op.board);
-                    if ((card_target = get_card_from_array(data[6], player_op.board)) != undefined && card_target.card.status.includes("targetable")) {
+                    if ((card_target = get_card_from_array(data[6], player_op.board)) != undefined && card_target.card.hidden.includes("targetable")) {
                         card_target.card.temp_health -= card.card.temp_attack;
                         add_to_board(player_op.board.indexOf(card_target), 0, card_target, player_me, player_op);
                         card.card.temp_health -= card_target.card.temp_attack;
@@ -31,7 +31,7 @@ module.exports = {
                     }
                     add_to_board(player_op.board.indexOf(card), 1, card, player_me, player_op);
                     card.card.status = card.card.status.replace("attackable ", "");
-                    card.card.status = card.card.status.replace("selected ", "");
+                    card.card.hidden = card.card.hidden.replace("selected ", "");
                 }
                 if (player_op.hp <= 0) {
                     game = get_game_state(room._id);
@@ -42,31 +42,31 @@ module.exports = {
                 reset_suggestion(player_me, player_op);
                 break;
             case "summon":
-                if (player_me.turn == true && (card = get_card_from_array(data[3], player_me.hand)) != undefined && card.card.status.includes("summonable") == true && (zone = get_card_from_board(parseInt(data[4]), parseInt(data[5]), player_me, player_op)) != undefined && zone.includes("targetable")) {
+                if (player_me.turn == true && (card = get_card_from_array(data[3], player_me.hand)) != undefined && card.card.status.includes("summonable") == true && (zone = get_card_from_board(parseInt(data[4]), parseInt(data[5]), player_me, player_op)) != undefined && zone == "targetable") {
                     remove_card_from_array(card, player_me.hand);
                     add_to_board(parseInt(data[4]), parseInt(data[5]), card, player_me, player_op);
                     player_me.mp -= card.card.temp_cost;
                     card.card.status = card.card.status.replace("summonable ", "");
-                    card.card.status = card.card.status.replace("selected ", "");
+                    card.card.hidden = card.card.hidden.replace("selected ", "");
                 }
                 reset_suggestion(player_me, player_op);
                 break;
             case "select":
                 if (player_me.turn == true) {
                     if ((card = get_card_from_array(data[3], player_me.board)) != undefined) {
-                        if (!card.card.status.includes("selected")) {
+                        if (!card.card.hidden.includes("selected")) {
                             reset_suggestion(player_me, player_op);
                             if (card.card.status.includes("attackable")) {
-                                card.card.status += "selected ";
+                                card.card.hidden += "selected ";
                                 let guards = get_array_has_status("guard", player_op.board);
                                 if (guards.length > 0) {
                                     for (let i = 0; i < guards.length; i++) {
-                                        guards[i].card.status += "targetable ";
+                                        guards[i].card.hidden += "targetable ";
                                     }
                                 } else {
                                     for (let i = 0; i < player_op.board.length; i++) {
                                         if (player_op.board[i] != undefined && player_op.board[i] != "targetable")
-                                            player_op.board[i].card.status += "targetable ";
+                                            player_op.board[i].card.hidden += "targetable ";
                                     }
                                     if (!player_op.status.includes("targetable"))
                                         player_op.status += "targetable ";
@@ -75,14 +75,14 @@ module.exports = {
                         }
                         else {
                             reset_suggestion(player_me, player_op);
-                            card.card.status = card.card.status.replace("selected ", "");
+                            card.card.hidden = card.card.hidden.replace("selected ", "");
                         }
                     }
                     if ((card = get_card_from_array(data[3], player_me.hand)) != undefined) {
-                        if (!card.card.status.includes("selected")) {
+                        if (!card.card.hidden.includes("selected")) {
                             reset_suggestion(player_me, player_op);
                             if (card.card.status.includes("summonable")) {
-                                card.card.status += "selected ";
+                                card.card.hidden += "selected ";
                                 for (let i = 0; i < player_me.board.length; i++) {
                                     if (player_me.board[i] == undefined) {
                                         player_me.board[i] = "targetable";
@@ -93,7 +93,7 @@ module.exports = {
                         }
                         else {
                             reset_suggestion(player_me, player_op);
-                            card.card.status = card.card.status.replace("selected ", "");
+                            card.card.hidden = card.card.hidden.replace("selected ", "");
                         }
                     }
                 }
@@ -369,6 +369,7 @@ function add_temp_attr(deck) {
                 temp_attack: c.card.attack,
                 temp_health: c.card.health,
                 status: "",
+                hidden: "",
             }
         }
         temp.push(card);
@@ -453,15 +454,15 @@ function reset_suggestion(player_me, player_op) {
     player_me.status = player_me.status.replace("targetable ", "");
     for (let i = 0; i < player_op.board.length; i++) {
         if (player_op.board[i] != undefined && player_op.board[i] != "targetable")
-            player_op.board[i].card.status = player_op.board[i].card.status.replace("targetable ", "");
+            player_op.board[i].card.hidden = player_op.board[i].card.hidden.replace("targetable ", "");
     }
     for (let i = 0; i < player_me.board.length; i++) {
         if (player_me.board[i] != undefined && player_me.board[i] != "targetable")
-            player_me.board[i].card.status = player_me.board[i].card.status.replace("selected ", "");
+            player_me.board[i].card.hidden = player_me.board[i].card.hidden.replace("selected ", "");
         if (player_me.board[i] == "targetable")
             player_me.board[i] = undefined;
     }
     for (let i = 0; i < player_me.hand.length; i++) {
-        player_me.hand[i].card.status = player_me.hand[i].card.status.replace("selected ", "");
+        player_me.hand[i].card.hidden = player_me.hand[i].card.hidden.replace("selected ", "");
     }
 }

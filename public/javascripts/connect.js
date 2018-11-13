@@ -1,6 +1,12 @@
 var user_id, rooms, room_id, data_me, data_op, socket;
+var down = false;
 //room_id #@# id_me #@# id_op #@# action #@# id_card #@# x #@# y
 $(document).ready(function () {
+    $(document).mousedown(function () {
+        down = true;
+    }).mouseup(function () {
+        down = false;
+    });
     var token = undefined;
     $.ajax({
         type: "POST",
@@ -43,9 +49,9 @@ $(document).ready(function () {
             room_id = r;
             data_me = me;
             data_op = op;
-            timer=new Timer();
+            timer = new Timer();
             timer.start({
-                startValues:t,
+                startValues: t,
                 target: {
                     seconds: 0,
                 },
@@ -59,13 +65,29 @@ $(document).ready(function () {
             // console.log(data_op);
             updategame();
             if (data_me.turn == true) {
-                $(".summonable").click(function () {
-                    card_id = $(this).attr("id");
-                    sendPlay("select", card_id);
+                $(".summonable").mouseenter(function () {
+                    if (!$(this).hasClass("selected") && down == false) {
+                        card_id = $(this).attr("id");
+                        sendPlay("select", card_id);
+                    }
                 })
-                $(".attackable").click(function () {
-                    card_id = $(this).attr("id");
-                    sendPlay("select", card_id);
+                $(".summonable").mouseleave(function () {
+                    if ($(this).hasClass("selected") && down == false) {
+                        card_id = $(this).attr("id");
+                        sendPlay("select", card_id);
+                    }
+                })
+                $(".attackable").mouseenter(function () {
+                    if (!$(this).hasClass("selected") && down == false) {
+                        card_id = $(this).attr("id");
+                        sendPlay("select", card_id);
+                    }
+                })
+                $(".attackable").mouseleave(function () {
+                    if ($(this).hasClass("selected") && down == false) {
+                        card_id = $(this).attr("id");
+                        sendPlay("select", card_id);
+                    }
                 })
                 $(".summonable.selected").draggable({
                     containment: "document",
@@ -145,9 +167,13 @@ $(document).ready(function () {
     }
 });
 
-function loadcard(card) {
-    var attr = card.card.status
-    var str = "<table id='" + card._id + "' class='card-holder " + attr + "' card='" + JSON.stringify(card) + "'>"
+function loadcard(card, hide) {
+    var attr = card.card.status;
+    var hidden = "";
+    if (hide == true) {
+        hidden = card.card.hidden;
+    }
+    var str = "<table id='" + card._id + "' class='card-holder " + attr + hidden + "' card='" + JSON.stringify(card) + "'>"
         + "<tr>"
         + "<td class='name-holder' colspan='3'>"
         + "<p>" + card.card.name + "</p>"
@@ -203,7 +229,11 @@ function updategame() {
         $("td[y$='0'][x$='" + i + "']").removeClass("targetable");
         if (data_op.board[i] != undefined) {
             if (typeof (data_op.board[i]) === 'object') {
-                $("td[y$='0'][x$='" + i + "']").append(loadcard(data_op.board[i]));
+                if (data_me.turn == true) {
+                    $("td[y$='0'][x$='" + i + "']").append(loadcard(data_op.board[i], true));
+                } else {
+                    $("td[y$='0'][x$='" + i + "']").append(loadcard(data_op.board[i], false));
+                }
             }
         }
     }
@@ -213,8 +243,12 @@ function updategame() {
         $("td[y$='1'][x$='" + i + "']").removeClass("targetable");
         if (data_me.board[i] != undefined) {
             if (typeof (data_me.board[i]) === 'object') {
-                $("td[y$='1'][x$='" + i + "']").append(loadcard(data_me.board[i]));
-            } else if (data_me.board[i].includes("targetable")) {
+                if (data_me.turn == true) {
+                    $("td[y$='1'][x$='" + i + "']").append(loadcard(data_me.board[i], true));
+                } else {
+                    $("td[y$='1'][x$='" + i + "']").append(loadcard(data_me.board[i], false));
+                }
+            } else if (data_me.board[i] == "targetable") {
                 $("td[y$='1'][x$='" + i + "']").addClass("placeable targetable");
             }
         }
@@ -222,7 +256,11 @@ function updategame() {
     for (let i = 0; i < 7; i++) {
         $("#hand td[x$='" + i + "']").empty();
         if (data_me.hand[i] != undefined) {
-            $("#hand td[x$='" + i + "']").append(loadcard(data_me.hand[i]));
+            if (data_me.turn == true) {
+                $("#hand td[x$='" + i + "']").append(loadcard(data_me.hand[i], true));
+            } else {
+                $("#hand td[x$='" + i + "']").append(loadcard(data_me.hand[i], false));
+            }
         }
     }
 }
