@@ -25,6 +25,9 @@ module.exports = {
                         card_target.card.temp_health -= card.card.temp_attack;
                         add_to_board(player_op.board.indexOf(card_target), 0, card_target, player_me, player_op);
                         card.card.temp_health -= card_target.card.temp_attack;
+                        if (card_target.card.effect.name == "on_death") {
+                            eval(card_target.card.effect.description);
+                        }
                     }
                     else if (guards.length == 0 && data[6] == "player") {
                         player_op.hp -= card.card.temp_attack;
@@ -48,6 +51,9 @@ module.exports = {
                     player_me.mp -= card.card.temp_cost;
                     card.card.status = card.card.status.replace("summonable ", "");
                     card.card.hidden = card.card.hidden.replace("selected ", "");
+                    if (card.card.effect.name == "on_summon") {
+                        eval(card.card.effect.description);
+                    }
                 }
                 reset_suggestion(player_me, player_op);
                 break;
@@ -440,6 +446,20 @@ function endTurn(game, player_me, player_op) {
     } else {
         player_op.mp += 10;
     }
+    for (let i = 0; i < player_op.board.length; i++) {
+        if (player_op.board[i] != undefined && player_op.board[i] != "targetable" && player_op.board[i].card.effect.name == "on_startTurn") {
+            let card = player_op.board[i];
+            eval(player_op.board[i].card.effect.description);
+            player_op.board[i] = card;
+        }
+    }
+    for (let i = 0; i < player_me.board.length; i++) {
+        if (player_me.board[i] != undefined && player_me.board[i] != "targetable" && player_me.board[i].card.effect.name == "on_endTurn") {
+            let card = player_me.board[i];
+            eval(player_me.board[i].card.effect.description);
+            player_me.board[i] = card;
+        }
+    }
     player_me.turn = false;
     player_op.turn = true;
     game.timer.reset();
@@ -470,3 +490,12 @@ function reset_suggestion(player_me, player_op) {
         player_me.hand[i].card.hidden = player_me.hand[i].card.hidden.replace("selected ", "");
     }
 }
+function reduce(varl, val) {
+    if (varl >= val) {
+        varl -= val;
+    } else {
+        varl = 0;
+    }
+    return varl;
+}
+
