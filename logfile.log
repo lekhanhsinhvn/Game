@@ -5414,3 +5414,7 @@
 {"level":"info","message":"Connected to mongodb://localhost/underdog...","timestamp":"2018-11-13T13:58:17.220Z"}
 {"level":"info","message":"Listening on port 3000","timestamp":"2018-11-13T13:59:04.866Z"}
 {"level":"info","message":"Connected to mongodb://localhost/underdog...","timestamp":"2018-11-13T13:59:05.925Z"}
+{"level":"info","message":"Listening on port 3000","timestamp":"2018-11-13T14:54:05.916Z"}
+{"level":"info","message":"Connected to mongodb://localhost/underdog...","timestamp":"2018-11-13T14:54:06.992Z"}
+{"level":"info","message":"Listening on port 3000","timestamp":"2018-11-13T14:58:20.162Z"}
+{"level":"info","message":"Connected to mongodb://localhost/underdog...","timestamp":"2018-11-13T14:58:21.244Z"}

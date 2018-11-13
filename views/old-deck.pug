@@ -1,0 +1,65 @@
+extends layouts/layout.pug
+
+prepend head
+    title #{title}
+    link(rel="stylesheet", href="/stylesheets/grid.css", attr)
+block content
+    #gameZone
+        #info
+            #avatar
+                #avatarImg
+                    img(src='images/ghost.jpg')
+                #frameworkAvatar
+                    img(src='images/avatar.png')
+            #frameName
+                img(src='images/name.png', alt='')
+            #textName
+                p Nguyen Tien Hoang
+            #frameLevel
+                img(src='images/level.png', alt='')
+            #textLevel
+                p Lv 5
+        #playBtn
+            #framePlayBtn
+                img(src='images/play-game.png', alt='')
+            #textPlayBtn
+                p Play Online
+        #exitBtn
+            #frameExitBtn
+                img(src='images/exit.png', alt='')
+            #textExitBtn
+                p Back
+    .container-fluid
+        .row
+            .col-md-8.offset-md-1
+                    .row
+                        each val in cards
+                            .col-md-3.item(style="height:18vw;" card=JSON.stringify(val))
+                                table.card-holder(id=val._id)
+                                    tr
+                                        td(colspan=3).name-holder
+                                            span= val.name
+                                        td.value-holder.cost
+                                            span= val.cost
+                                    tr
+                                        td(colspan=4).image-holder
+                                            img(src="/images/"+val.avatar, alt="")
+                                    tr
+                                        td(colspan=4).effect-holder
+                                            span= val.description
+                                    tr
+                                        td.value-holder.atk
+                                            span= val.attack
+                                        td(colspan=2).value-holder.rarity
+                                        td.value-holder.hp
+                                            span= val.health
+            .col-md-2
+                select#deck_num(name="deck_num")
+                    option(value=deck_id) Deck 1
+                    option(value=2) Deck 2
+                    option(value=3) Deck 3
+                button#save Save
+                #deck
+append foot
+    script(src="/javascripts/deck.js")
+    
