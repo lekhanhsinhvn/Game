@@ -188,6 +188,7 @@ img {
 
 .card{
   margin: 10px;
+  width: 170px;
   height: 200px;
   border-radius: 10px;
   display: block;

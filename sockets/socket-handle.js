@@ -14,15 +14,17 @@ module.exports = {
                     model: 'Card'
                 }
             })
-        if (find_room_of_user_as_player(user) == undefined && (acc.deckSample).cardList.length == 25) {
-            var room = {
-                _id: user._id + Date.now(),
-                players: [user],
-                spectators: []
-            };
-            rooms.push(room);
-            refreshRoom(io);
-            user.socket.emit("room_id", room._id);
+        if ((acc.deckSample).cardList.length == 25) {
+            if (find_room_of_user_as_player(user) == undefined) {
+                var room = {
+                    _id: user._id + Date.now(),
+                    players: [user],
+                    spectators: []
+                };
+                rooms.push(room);
+                refreshRoom(io);
+                user.socket.emit("room_id", room._id);
+            } else user.socket.emit("err", "Already in a room");
         }
         else user.socket.emit("err", "Deck must have 25 cards");
     },
@@ -41,12 +43,14 @@ module.exports = {
         }
         else {
             var room = _.find(rooms, { _id: room_id });
-            if (room != undefined && room.players.length == 1 && (acc.deckSample).cardList.length == 25) {
-                game.creategame(user, room.players[0], room);
-                room.players.push(user);
-                _.remove(rooms, { _id: room_id });
-                rooms.push(room);
-                refreshRoom(io);
+            if ((acc.deckSample).cardList.length == 25) {
+                if (room != undefined && room.players.length == 1) {
+                    game.creategame(user, room.players[0], room);
+                    room.players.push(user);
+                    _.remove(rooms, { _id: room_id });
+                    rooms.push(room);
+                    refreshRoom(io);
+                } else user.socket.emit("err", "ERROR");
             }
             else user.socket.emit("err", "Deck must have 25 cards");
         }
@@ -66,12 +70,14 @@ module.exports = {
         }
         else {
             var room = _.shuffle(rooms)[0];
-            if (room != undefined && room.players.length == 1 && (acc.deckSample).cardList.length == 25) {
-                game.creategame(user, room.players[0], room);
-                room.players.push(user);
-                _.remove(rooms, { _id: room._id });
-                rooms.push(room);
-                refreshRoom(io);
+            if ((acc.deckSample).cardList.length == 25) {
+                if (room != undefined && room.players.length == 1) {
+                    game.creategame(user, room.players[0], room);
+                    room.players.push(user);
+                    _.remove(rooms, { _id: room._id });
+                    rooms.push(room);
+                    refreshRoom(io);
+                } else user.socket.emit("err", "ERROR");
             }
             else user.socket.emit("err", "Deck must have 25 cards");
         }

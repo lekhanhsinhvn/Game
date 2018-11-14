@@ -1,12 +1,18 @@
-table.card-holder
-    tr
-        td(colspan=3).name-holder
-        td.value-holder.cost
-    tr
-        td(colspan=4).image-holder
-    tr
-        td(colspan=4).effect-holder
-    tr
-        td.value-holder.atk
-        td(colspan=2).value-holder.rarity
-        td.value-holder.hp
+.card.item(card=JSON.stringify(val))
+            .titleCard
+              p
+            .monsterImg
+              img(src=`/images/monster/`, alt='')
+              .grade
+                p
+              .cost
+                img(src='/images/point.png', alt='')
+                p
+              .description
+                p
+              .attack
+                p
+                img(src='/images/attack.png', alt='')
+              .health
+                img(src='/images/life.png', alt='')
+                p

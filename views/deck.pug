@@ -14,7 +14,7 @@ block content
       #frameName
         img(src='/images/name.png', alt='')
       #textName
-        p Nguyen Tien Hoang
+        p=user.name
       #frameLevel
         img(src='/images/level.png', alt='')
       #textLevel
@@ -22,14 +22,17 @@ block content
     #playBtn
       #framePlayBtn
         img(src='/images/play-game.png', alt='')
-      #textPlayBtn
-        p Play Online
+      a(href="/api/games/")
+        #textPlayBtn
+          p Play Online
     #exitBtn
       #frameExitBtn
         img(src='/images/exit.png', alt='')
       #textExitBtn
         p Back
     #cardCollection
+      button#back Back
+      button#next Next
       .grid
         each val in cards
           .card.item(card=JSON.stringify(val))
@@ -50,11 +53,11 @@ block content
               .health
                 img(src='/images/life.png', alt='')
                 p= val.health
-    //- select#deck_num(name="deck_num")
-    //-   option(value=deck_id) Deck 1
-    //-   option(value=2) Deck 2
-    //-   option(value=3) Deck 3
-    //- button#save Save
+    select#deck_num(name="deck_num")
+    option(value=deck_id) Deck 1
+    option(value=2) Deck 2
+    option(value=3) Deck 3
+    button#save Save
     #deck
 
 append foot

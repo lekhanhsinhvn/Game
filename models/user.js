@@ -1,4 +1,4 @@
-const {Deck} = require('../models/deck')
+const { Deck } = require('../models/deck')
 
 const mongoose = require('mongoose');
 const jwt = require('jsonwebtoken');
@@ -27,14 +27,19 @@ const userSchema = new mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: 'Deck',
   },
+  isAdmin: {
+    type: Boolean,
+  }
 });
 
-userSchema.methods.generateAuthToken = function() {
-  const token = jwt.sign({_id: this._id, isAdmin: this.isAdmin}, config.get('jwtPrivateKey'));
+userSchema.methods.generateAuthToken = function () {
+  const token = jwt.sign({ _id: this._id, isAdmin: this.isAdmin }, config.get('jwtPrivateKey'));
+  const decoded = jwt.verify(token, config.get('jwtPrivateKey'));
+  console.log(decoded);
   return token;
 }
 
-userSchema.methods.generateDeck = async function() {
+userSchema.methods.generateDeck = async function () {
   let deck = new Deck({
     cardList: []
   })
@@ -53,5 +58,5 @@ function validateUser(user) {
   return Joi.validate(user, schema);
 };
 
-exports.User = User; 
+exports.User = User;
 exports.validate = validateUser;
