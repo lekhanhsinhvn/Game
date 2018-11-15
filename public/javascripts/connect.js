@@ -60,9 +60,6 @@ $(document).ready(function () {
             timer.addEventListener('secondsUpdated', function (e) {
                 $('#timer').html(timer.getTimeValues().toString());
             });
-            // console.log(room_id);
-            // console.log(data_me);
-            // console.log(data_op);
             updategame();
             if (data_me.turn == true) {
                 $(".summonable").mouseenter(function () {
@@ -275,21 +272,21 @@ function loadRoom(room) {
     if (room.players.length == 1 && room_id == undefined) {
         str += "<div class='room'>"
             + "<p>" + room._id + "</p>"
-            + player_name
-            + "<button class='btn-success' id='join' val='" + room._id + "'>Join</button>"
+            + "<button class='btn btn-success' id='join' val='" + room._id + "'>Join</button>"
+            + "<div>" + player_name + "</div>"
             + "</div>";
     }
     else if (room.players.length == 2 && room_id == undefined) {
         str += "<div class='room'>"
             + "<p>" + room._id + "</p>"
-            + player_name
-            + "<button class='btn-success' id='spectate' val='" + room._id + "'>Spectate</button>"
+            + "<button class='btn btn-success' id='spectate' val='" + room._id + "'>Spectate</button>"
+            + "<div>" + player_name + "</div>"
             + "</div>";
     }
     else {
         str += "<div class='room'>"
             + "<p>" + room._id + "</p>"
-            + player_name
+            + "<div>" + player_name + "</div>"
             + "</div>";
     }
     return str;
@@ -297,6 +294,8 @@ function loadRoom(room) {
 function updateRooms() {
     $("#rooms").empty();
     $("#leaveRoom").css("display", "none");
+    $("#host").css("display", "inline");
+    $("#random").css("display", "inline");
     rooms.forEach(room => {
         if (_.find(room.players, { _id: user_id }) != undefined) {
             $("#leaveRoom").css("display", "block");
@@ -314,6 +313,10 @@ function updateRooms() {
     $("#spectate").click(function () {
         socket.emit('spectate', user_id, $(this).attr("val"));
     });
+    if (room_id != undefined) {
+        $("#host").css("display", "none");
+        $("#random").css("display", "none");
+    }
 }
 function get_card_from_array(id, arr) {
     for (let i = 0; i < arr.length; i++) {

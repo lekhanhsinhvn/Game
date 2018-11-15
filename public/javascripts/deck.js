@@ -13,7 +13,7 @@ $(".item").draggable({
 $("#deck").droppable({
     drop: function (event, ui) {
         var card = JSON.parse(ui.draggable.attr("card"));
-        if (deck.length < 25) {
+        if ((_.filter(deck, { _id: card._id })).length < 3 && deck.length < 25) {
             deck.push(card);
         }
         updatedeck();
@@ -61,7 +61,7 @@ $("#save").click(function () {
     });
 })
 $("#next").click(function () {
-    if(page<=3){
+    if (page <= 3) {
         page += 1;
     }
     var obj = {

@@ -5,14 +5,22 @@ prepend head
     link(rel="stylesheet", href="/stylesheets/style.css", attr)
 block content
     .row
-        .col-md-3
+        #btn
+            #top
+            #middle
+            #bottom
+        #box
+            h2(style="padding-left:20px;") Rooms
             #rooms
-            button#host.btn Host
-            button#random.btn-primary Random
-        .col-md-9.container-fluid(style='min-height: 80vh;')
+            div.container-fluid(style="text-align: center;")
+                button#host.btn Host
+                button#random.btn.btn-primary Random
+            button#leaveRoom.btn.btn-danger Leave Room
+            a(href="/api/games/deck")
+                button.btn.btn-warning#deck-btn Deck
+        #page-wrapper.container-fluid(style='min-height: 80vh;')
             .load
                 #loader
-                button#leaveRoom Leave Room
             #game
                 table#op_info
                     tr
@@ -60,4 +68,29 @@ append foot
     script(src="/assets/easytimer.min.js")
     script(src="/assets/socket.io.js")
     script(src="/javascripts/connect.js")
+    script.
+        const sidebarBox = document.querySelector('#box'),
+        sidebarBtn = document.querySelector('#btn'),
+        pageWrapper = document.querySelector('#page-wrapper');
+
+        sidebarBtn.addEventListener('click', event => {
+                sidebarBtn.classList.toggle('active');
+                sidebarBox.classList.toggle('active');
+        });
+
+        pageWrapper.addEventListener('click', event => {
+
+                if (sidebarBox.classList.contains('active')) {
+                        sidebarBtn.classList.remove('active');
+                        sidebarBox.classList.remove('active');
+                }
+        });
+
+        window.addEventListener('keydown', event => {
+
+                if (sidebarBox.classList.contains('active') && event.keyCode === 27) {
+                        sidebarBtn.classList.remove('active');
+                        sidebarBox.classList.remove('active');
+                }
+        });
 

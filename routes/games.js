@@ -45,7 +45,6 @@ router.get('/myCards', auth, async (req, res) => {
     })
 
   const cards = _.map((user.deckSample).cardList, 'card');
-  console.log(cards)
   res.send(cards);
 });
 module.exports = router;
