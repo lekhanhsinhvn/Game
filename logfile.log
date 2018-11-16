@@ -5901,3 +5901,9 @@
 {"level":"info","message":"Connected to mongodb://localhost/underdog...","timestamp":"2018-11-16T02:18:54.377Z"}
 {"level":"info","message":"Listening on port 3000","timestamp":"2018-11-16T02:20:09.833Z"}
 {"level":"info","message":"Connected to mongodb://localhost/underdog...","timestamp":"2018-11-16T02:20:10.899Z"}
+{"level":"info","message":"Listening on port 3000","timestamp":"2018-11-16T02:27:33.338Z"}
+{"level":"info","message":"Listening on port 3000","timestamp":"2018-11-16T02:27:34.679Z"}
+{"level":"info","message":"Listening on port 3000","timestamp":"2018-11-16T02:28:22.562Z"}
+{"level":"info","message":"Connected to mongodb://localhost/underdog...","timestamp":"2018-11-16T02:28:24.055Z"}
+{"level":"info","message":"Listening on port 3000","timestamp":"2018-11-16T02:33:16.902Z"}
+{"level":"info","message":"Connected to mongodb://localhost/underdog...","timestamp":"2018-11-16T02:33:18.016Z"}

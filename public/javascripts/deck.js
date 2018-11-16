@@ -109,7 +109,7 @@ function updatedeck() {
     var btn = "";
     deck = _.orderBy(deck, ['name'], ['asc']);
     deck.forEach(card => {
-        btn += `<div class="card-name" style="cursor: pointer" card="${JSON.stringify(card)}"><span>${card.name}</span></div>`
+        btn += `<div class="card-name" style="cursor: pointer" card='${JSON.stringify(card)}'><span>${card.name}</span></div>`
     });
     $("#deck").empty();
     $("#deck").append(btn);
