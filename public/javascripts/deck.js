@@ -25,15 +25,15 @@ jQuery(function ($) {
         $.ajax({
             type: "GET",
             url: "/api/games/myCards",
+            contentType: "application/json",
+            dataType: 'json',
             success: function (data) {
                 deck = data;
                 updatedeck();
             },
             error: function (errMsg, status, xhr) {
                 alert(errMsg.responseText);
-            },
-            contentType: "application/json",
-            dataType: 'json'
+            }
         });
     }).change();
 });
@@ -106,13 +106,13 @@ $("#back").click(function () {
     });
 })
 function updatedeck() {
-    var str = "";
+    var btn = "";
     deck = _.orderBy(deck, ['name'], ['asc']);
     deck.forEach(card => {
-        str += "<div class='card-name' style='cursor: pointer' card='" + JSON.stringify(card) + "'><span>" + card.name + "</span></div>"
+        btn += `<div class="card-name" style="cursor: pointer" card="${JSON.stringify(card)}"><span>${card.name}</span></div>`
     });
     $("#deck").empty();
-    $("#deck").append(str);
+    $("#deck").append(btn);
     $("#deck .card-name").dblclick(function () {
         var card = JSON.parse($(this).attr("card"));
         deck.splice(_.findIndex(deck, { _id: card._id }), 1);

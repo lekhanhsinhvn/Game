@@ -12,6 +12,7 @@ body{
 img {
   filter: drop-shadow(10px 10px 10px #222);
 }
+
 #gameZone{
   width: 1236px;
   height: 695px; 
@@ -332,6 +333,8 @@ img {
 
 #deck{
   position: absolute;
+  display: flex;
+  flex-direction: column;
   width: 250px;
   height: 450px;
   top: 200px;
@@ -339,4 +342,28 @@ img {
   border: 2px solid red;
 }
 
+#paginate{
+  position: absolute;
+  top: 170px;
+  left: 800px;
+  width: 140px;
+}
 
+#paginate button{
+  width: 50px;
+  cursor: pointer;
+ }
+#back img{
+  width: 25%;
+}
+
+#next img{
+  width: 25%;
+}
+
+#chooseAndSaveDeck{
+  position: absolute;
+  top: 170px;
+  left: 1000px;
+  width: 200px;
+}

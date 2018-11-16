@@ -29,10 +29,13 @@ block content
       #frameExitBtn
         img(src='/images/exit.png', alt='')
       #textExitBtn
-        p Back
+        p Log out
+    #paginate    
+      button#back
+        img(src="/images/left.png" , alt="")
+      button#next
+        img(src="/images/right.png", alt="")
     #cardCollection
-      button#back Back
-      button#next Next
       .grid
         each val in cards
           .card.item(card=JSON.stringify(val))
@@ -46,18 +49,19 @@ block content
                 img(src='/images/point.png', alt='')
                 p= val.cost
               .description
-                p= val.description 
+                p= val.effect.description 
               .attack
                 p= val.attack
                 img(src='/images/attack.png', alt='')
               .health
                 img(src='/images/life.png', alt='')
                 p= val.health
-    select#deck_num(name="deck_num")
-    option(value=deck_id) Deck 1
-    option(value=2) Deck 2
-    option(value=3) Deck 3
-    button#save Save
+    #chooseAndSaveDeck
+      select#deck_num(name="deck_num")
+        option(value=deck_id) Deck 1
+        option(value=2) Deck 2
+        option(value=3) Deck 3
+      button#save Save
     #deck
 
 append foot

@@ -2,10 +2,15 @@ const Joi = require('joi');
 const mongoose = require('mongoose');
 
 const effectSchema = new mongoose.Schema({
-  name: {
+  event: {
     type: String,
-    maxlength: 256,
+    required: true,
+    enum: ['on_summon', 'on_death', 'on_startTurn', 'on_endTurn']
+  },
+  code: {
+    type: String,
     minlength: 1,
+    maxlength: 2048,
     required: true
   },
   description: {
@@ -14,21 +19,15 @@ const effectSchema = new mongoose.Schema({
     minlength: 1,
     required: true
   },
-  keyword: {
-    type: String,
-    minlength: 1,
-    maxlength: 20,
-    required: true
-  }
 })
 
 const Effect = mongoose.model('Effect', effectSchema)
 
 function validateEffect(effect) {
   const schema = {
-    name: Joi.string().max(256),
-    description: Joi.string().max(1024),
-    keyword: Joi.string().max(20)
+    event: Joi.string().max(30),
+    code: Joi.string().max(2048),
+    description: Joi.string().max(1024)
   }
   return Joi.validate(effect, schema)
 }

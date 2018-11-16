@@ -35,9 +35,9 @@ router.post('/', [auth, admin, validator(validate)], async (req, res) => {
     health: req.body.health,
     effect: {
       _id: effect._id,
-      name: effect.name,
+      event: effect.event,
       description: effect.description,
-      keyword: effect.keyword
+      code: effect.code
     }
   })
   await card.save();
