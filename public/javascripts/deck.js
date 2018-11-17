@@ -121,10 +121,9 @@ function updatedeck() {
 }
 function loadcards() {
     var str = "";
-    console.log(cards);
     cards.forEach(c => {
         str +=
-            `<div class="card item">
+            `<div class="card item" card='${JSON.stringify(c)}' id='${c.id}'>
                 <div class="titleCard">
                     <p>${c.name}</p>
                 </div>
@@ -149,4 +148,12 @@ function loadcards() {
     });
     $("#cardCollection .grid").empty();
     $("#cardCollection .grid").html(str);
+    $(".item").draggable({
+        helper: "clone",
+        containment: "document",
+        connectWith: "#deck",
+        revert: 'invalid',
+        stack: "div",
+        distance: 0
+    });
 }
