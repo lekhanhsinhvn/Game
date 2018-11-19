@@ -58,8 +58,8 @@ $(document).ready(function () {
                 countdown: true,
             })
             timer.addEventListener('secondsUpdated', function (e) {
-                $('#timer').html(timer.getTimeValues().toString());
-            });
+                $('#timer').html(timer.getTimeValues().minutes.toString()+":"+timer.getTimeValues().seconds.toString());
+            }); 
             updategame();
             if (data_me.turn == true) {
                 $(".summonable").mouseenter(function () {
@@ -110,7 +110,7 @@ $(document).ready(function () {
                     },
                     tolerance: "pointer"
                 });
-                $(".card-holder.targetable").droppable({
+                $(".card.targetable").droppable({
                     drop: function (event, ui) {
                         card_id1 = ui.draggable.attr("id");
                         card_id2 = $(this).attr("id");
@@ -148,10 +148,10 @@ $(document).ready(function () {
     function sendPlay(action, card_id1, x, y, card_id2) {
         socket.emit("play", user_id, data_me._id + "#@#" + data_op._id + "#@#" + action + "#@#" + card_id1 + "#@#" + x + "#@#" + y + "#@#" + card_id2);
     }
-    $("#endTurn").click(function () {
+    $(".endTurn").click(function () {
         sendPlay("endTurn");
     });
-    $("#surrender").click(function () {
+    $(".surrender").click(function () {
         socket.emit("surrender", user_id, room_id);
     });
     $("#leaveRoom").click(function () {
@@ -167,38 +167,44 @@ $(document).ready(function () {
     }
 });
 
-function loadcard(card, hide) {
-    var attr = card.card.status;
+function loadcard(c, hide) {
+    var attr = c.card.status;
     var hidden = "";
     if (hide == true) {
-        hidden = card.card.hidden;
+        hidden = c.card.hidden;
+        console.log(c.card.hidden);
     }
-    var str = "<table id='" + card._id + "' class='card-holder " + attr + hidden + "' card='" + JSON.stringify(card) + "'>"
-        + "<tr>"
-        + "<td class='name-holder' colspan='3'>"
-        + "<p>" + card.card.name + "</p>"
-        + "</td>"
-        + "<td class='value-holder cost'>" + card.card.temp_cost + "</td>"
-        + "</tr>"
-        + "<tr>"
-        + "<td class='image-holder' colspan='4'>"
-        + "<img src='/images/" + card.card.avatar + "'>"
-        + "</td>"
-        + "</tr>"
-        + "<tr>"
-        + "<td class='effect-holder' colspan='4'>" + card.card.effect.name + "</td>"
-        + "</tr>"
-        + "<tr>"
-        + "<td class='value-holder atk'>" + card.card.temp_attack + "</td>"
-        + "<td class='value-holder rarity' colspan='2'>" + card.card.grade + "</td>"
-        + "<td class='value-holder hp'>" + card.card.temp_health + "</td>"
-        + "</tr>"
-        + "</table>";
+    var str = `
+        <div class="card ${attr} ${hidden}" card='${JSON.stringify(c)}' id='${c._id}'>
+            <div class="titleCard">
+                <p>${c.card.name}</p>
+            </div>
+            <div class="monsterImg">
+                <img src="/images/monster/${c.card.avatar}" alt="">
+                <div class="grade">
+                    <p>${c.card.grade}</p>
+                </div>
+                <div class="cost"><img src="/images/point.png" alt="">
+                    <p>${c.card.cost}</p>
+                </div>
+                <div class="description">
+                    <p>${c.card.effect.description}</p>
+                </div>
+                <div class="attack">
+                    <p>${c.card.temp_attack}</p><img src="/images/attack.png" alt="">
+                </div>
+                <div class="health"><img src="/images/life.png" alt="">
+                    <p>${c.card.temp_health}</p>
+                </div>
+            </div>
+        </div>
+    `
+
     return str;
 }
 
 function updategame() {
-    $("#endTurn").css("display", "none");
+    $(".endTurn").css("display", "none");
     let str = "";
     if (data_op.turn == true) {
         $("#op_info .player_name").attr("class", "player_name " + str);
@@ -208,7 +214,7 @@ function updategame() {
     }
     str = "";
     if (data_me.turn == true) {
-        $("#endTurn").css("display", "block");
+        $(".endTurn").css("display", "block");
         str += "turn_current ";
     }
 
@@ -253,13 +259,14 @@ function updategame() {
             }
         }
     }
+    $("#hand").empty();
     for (let i = 0; i < 6; i++) {
-        $("#hand td[x$='" + i + "']").empty();
+        
         if (data_me.hand[i] != undefined) {
             if (data_me.turn == true) {
-                $("#hand td[x$='" + i + "']").append(loadcard(data_me.hand[i], true));
+                $("#hand").append(loadcard(data_me.hand[i], true));
             } else {
-                $("#hand td[x$='" + i + "']").append(loadcard(data_me.hand[i], false));
+                $("#hand").append(loadcard(data_me.hand[i], false));
             }
         }
     }

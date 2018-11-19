@@ -22,17 +22,33 @@ block content
             .load
                 #loader
             #game
-                table#op_info
-                    tr
-                        td.leftPart
-                            span.player_name
-                            #timer
-                        td.centerPart
-                            .hp
-                        td.rightPart
-                            span.mp
-                            span.hand_num
-                            span.deck_num
+                #op_info
+                    #avatar
+                        #avatarImg
+                            img(src='/images/ghost.jpg')
+                        #frameworkAvatar
+                            img(src='/images/avatar.png')
+                    #frameName
+                        img(src='/images/name.png', alt='')
+                    #textName
+                        .player_name
+                    .infoStatusOp
+                        .infoStatusFrameOp
+                            img(src="/images/infoPlayer.png", alt="")
+                        .manapointOp
+                            img(src="/images/point.png")
+                            .mp 
+                        .numberCardOp
+                            img(src="/images/backside-card.png", alt="")    
+                            .deck_num
+                            p /25  
+                    .timerFrame
+                        img(src="/images/timer-frame.png", alt="")              
+                    #timer
+                    .handNumFrame
+                        img(src="/images/backside-card.png", alt="")
+                    .hand_num
+                    .hp
                 table#board
                     tr(id="op_side")
                         td(x=0 y=0 class="zone placeable")
@@ -44,26 +60,29 @@ block content
                         td(x=1 y=1 class="zone placeable")
                         td(x=2 y=1 class="zone placeable")
                         td(x=3 y=1 class="zone placeable")
-                table#me_info
-                    tr
-                        td.leftPart
-                            span.player_name
-                            button#surrender Surrender
-                        td.centerPart
-                            .hp
-                        td.rightPart
-                            button#endTurn End Turn
-                            span.mp
-                            span.hand_num
-                            span.deck_num
-                table#hand
-                    tr
-                        td(x=0 class="zone")
-                        td(x=1 class="zone")
-                        td(x=2 class="zone")
-                        td(x=3 class="zone")
-                        td(x=4 class="zone")
-                        td(x=5 class="zone")
+                #me_info
+                    .frameMe
+                        img(src="/images/player-in-game.png", alt="")
+                        .infoStatus
+                            .infoStatusFrame
+                                img(src="/images/infoPlayer.png", alt="")
+                            .manapoint
+                                img(src="/images/point.png")
+                                .mp 
+                            .numberCard
+                                img(src="/images/backside-card.png", alt="")    
+                                .deck_num
+                                p /25
+                            .mainLifePoint
+                                img(src="/images/life.png")
+                                .hp
+                        .player_name
+                        .surrender 
+                            p Surrender
+                        .endTurn 
+                            img(src="/images/end-turn.png", alt="")
+                            p End Turn
+                #hand
 append foot
     script(src="/assets/easytimer.min.js")
     script(src="/assets/socket.io.js")

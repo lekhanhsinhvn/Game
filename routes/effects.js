@@ -7,7 +7,7 @@ const express = require('express');
 const router = express.Router()
 
 router.get('/', auth, async (req, res) => {
-  const effects = await Effect.find().sort('name')
+  const effects = await Effect.find().sort('event')
   
   res.send(effects)
 })
@@ -20,7 +20,7 @@ router.get('/:id', auth, async (req, res) => {
 })
 
 router.post('/', [auth, admin, validator(validate)], async (req, res) => {
-  const effect = new Effect(_.pick(req.body, ['name', 'description', 'keyword']))
+  const effect = new Effect(_.pick(req.body, ['code', 'description', 'event']))
   await effect.save();
 
   res.send(effect);
@@ -29,7 +29,7 @@ router.post('/', [auth, admin, validator(validate)], async (req, res) => {
 router.put('/:id', [auth, admin, validator(validate)], async(req, res) => {
   const effect = await Effect.findByIdAndUpdate(
     req.params.id,
-    _.pick(req.body, ['name', 'description', 'keyword']),
+    _.pick(req.body, ['code', 'description', 'event']),
     { new: true }
   );
   

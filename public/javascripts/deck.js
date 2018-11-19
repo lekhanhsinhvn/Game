@@ -51,7 +51,7 @@ $("#save").click(function () {
         url: "/api/decks/",
         data: JSON.stringify(obj),
         success: function (data) {
-            alert("saved");
+            $('#infoSaved').text("saved");
         },
         error: function (errMsg, status, xhr) {
             alert(errMsg.responseText);
@@ -109,7 +109,11 @@ function updatedeck() {
     var btn = "";
     deck = _.orderBy(deck, ['name'], ['asc']);
     deck.forEach(card => {
-        btn += `<div class="card-name" style="cursor: pointer" card='${JSON.stringify(card)}'><span>${card.name}</span></div>`
+        btn += `
+        <div class="card-name" card='${JSON.stringify(card)}'>
+            <img src="/images/monster/${card.avatar}">
+            <p>${card.name}</p>
+        </div>`
     });
     $("#deck").empty();
     $("#deck").append(btn);

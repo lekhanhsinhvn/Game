@@ -16,7 +16,8 @@ router.post('/', validator(validate), async (req, res) => {
 
   const token = user.generateAuthToken();
   req.session.token = token;
-  res.header('x-auth-token', token).send(`Welcome ${user.name}`)
+  // res.header('x-auth-token', token).send(`Welcome ${user.name}`)
+  res.send({redirect:'/api/games/deck'})
   res.end();
 });
 function validate(req) {
@@ -27,6 +28,12 @@ function validate(req) {
 
   return Joi.validate(req, schema);
 }
+
+router.get('/logout', async (req, res) => {
+  console.log('ahhi')
+  req.session = null;
+  res.redirect('/api/login')
+})
 
 router.post('/getToken', auth, async (req, res) => {
   res.send(req.session.token);

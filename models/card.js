@@ -8,12 +8,6 @@ const cardSchema = new mongoose.Schema({
     maxlength: 256,
     required: true
   },
-  description: {
-    type: String,
-    minlength: 1,
-    maxlength: 512,
-    required: true
-  },
   type: {
     type: String,
     required: true,
@@ -59,7 +53,6 @@ const Card = mongoose.model('Card', cardSchema)
 function validateCard(card) {
   const schema = {
     name: Joi.string().min(1).max(256).required(),
-    description: Joi.string().min(1).max(512).required(),
     type: Joi.string().min(5).max(7).required(),
     grade: Joi.string().min(1).max(2).required(),
     avatar: Joi.string().min(5).max(2048).required(),

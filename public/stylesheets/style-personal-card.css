@@ -283,7 +283,7 @@ img {
   position: absolute;
   top: 145%;
   left: 0%;
-  width: 49%;
+  width: 49.2%;
   height: 26%;
   border-radius: 0px 0px 0px 10px;
   background-color: #292929;
@@ -309,7 +309,7 @@ img {
   position: absolute;
   top: 145%;
   left: 50%;
-  width: 49%;
+  width: 49.2%;
   height: 26%;
   border-radius: 0px 0px 10px 0px;
   background-color: #292929;
@@ -334,14 +334,29 @@ img {
 #deck{
   position: absolute;
   display: flex;
+  overflow: scroll;
   flex-direction: column;
-  width: 250px;
+  width: 200px;
   height: 450px;
   top: 200px;
   left: 1000px;
-  border: 2px solid red;
 }
 
+.card-name{
+  cursor: pointer;
+  background-color: rgb(30, 30, 30, 0.5);
+}
+
+.card-name img{
+  width: 15%;
+  float: left;
+}
+
+.card-name p{
+  font-family: 'Poor Story', cursive;
+  font-weight: 600;
+  color: yellow;
+}
 #paginate{
   position: absolute;
   top: 170px;
@@ -352,18 +367,48 @@ img {
 #paginate button{
   width: 50px;
   cursor: pointer;
+  background: none;
+  border: none
  }
 #back img{
-  width: 25%;
+  width: 120%;
 }
 
 #next img{
-  width: 25%;
+  width: 120%;
 }
 
 #chooseAndSaveDeck{
+  font-family: 'Poor Story', cursive;
+  font-weight: 600;
+  color: yellow;
   position: absolute;
   top: 170px;
   left: 1000px;
   width: 200px;
+}
+
+#save img{
+  cursor: pointer;
+  top:-5px;
+  left: 70px;
+  position: absolute;
+  width: 40%;
+}
+#save p{
+  cursor: pointer;
+  top:-2px;
+  left: 95px;
+  position: absolute;
+  font-family: 'Poor Story', cursive;
+  font-weight: 600;
+  color: yellow;
+}
+
+#infoSaved{
+  top:-4px;
+  left: 160px;
+  position: absolute;
+  font-family: 'Poor Story', cursive;
+  font-weight: 400;
 }

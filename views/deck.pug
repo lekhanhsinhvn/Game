@@ -28,8 +28,9 @@ block content
     #exitBtn
       #frameExitBtn
         img(src='/images/exit.png', alt='')
-      #textExitBtn
-        p Log out
+      a(href="/api/auth/logout")  
+        #textExitBtn
+          p Log out
     #paginate    
       button#back
         img(src="/images/left.png" , alt="")
@@ -61,7 +62,10 @@ block content
         option(value=deck_id) Deck 1
         option(value=2) Deck 2
         option(value=3) Deck 3
-      button#save Save
+      #save 
+        img(src="/images/save.png")
+        p Save
+        #infoSaved
     #deck
 
 append foot

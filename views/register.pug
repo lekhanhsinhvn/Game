@@ -4,24 +4,24 @@ prepend head
   title Register form
   link(rel="stylesheet", href="/stylesheets/style-login-register.css", attr)
 block content
-  .login-register-body
-    .box
-      form
-        .textbox
-          i.fa.fa-user-o(aria-hidden='true')
-          input(type='text', id='name', placeholder='Name', name='', value='', required='true')
-        .textbox
-          i.fa.fa-envelope-o(aria-hidden='true')
-          input(type='text', id='email', placeholder='Email', name='', value='', required='')
-        .textbox
-          i.fa.fa-lock(aria-hidden='true')
-          input(type='password', id='psw', placeholder='Password', name='', value='', required='')
-        .textbox
-          i.fa.fa-lock(aria-hidden='true')
-          input(type='password', id='cfmPsw', placeholder='Confirm Password', name='', value='', required='')
-        input.btn.register(onclick='register()', type='button', name='', value='REGISTER')
-        a(href='http://localhost:3000/api/login')
-          input.btn.login(type='button', name='', value='Already have a account')
+  .box
+    #warning
+    form
+      .textbox
+        i.fa.fa-user-o(aria-hidden='true')
+        input(type='text', id='name', placeholder='Name', name='', value='', required='true')
+      .textbox
+        i.fa.fa-envelope-o(aria-hidden='true')
+        input(type='text', id='email', placeholder='Email', name='', value='', required='')
+      .textbox
+        i.fa.fa-lock(aria-hidden='true')
+        input(type='password', id='psw', placeholder='Password', name='', value='', required='')
+      .textbox
+        i.fa.fa-lock(aria-hidden='true')
+        input(type='password', id='cfmPsw', placeholder='Confirm Password', name='', value='', required='')
+      input.btn.register(onclick='register()', type='button', name='', value='REGISTER')
+      a(href='http://localhost:3000/api/login')
+        input.btn.login(type='button', name='', value='Already have a account')
 
 append foot
   script(src="/javascripts/account.js")

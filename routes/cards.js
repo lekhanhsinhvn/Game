@@ -26,7 +26,6 @@ router.post('/', [auth, admin, validator(validate)], async (req, res) => {
   
   const card = new Card({
     name: req.body.name,
-    description: req.body.description,
     type: req.body.type,
     grade: req.body.grade,
     avatar: req.body.avatar,

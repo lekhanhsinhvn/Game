@@ -16,7 +16,7 @@ function login() {
       window.location.href = data.redirect;
     },
     error: function (errMsg, status, xhr) {
-      alert(errMsg.responseText);
+      $('#warning').text(errMsg.responseText)
     }
   })
 }
@@ -44,7 +44,7 @@ function register() {
       window.location.href = data.redirect;
     },
     error: function (errMsg) {
-      alert(errMsg.responseText);
+      $('#warning').text(errMsg.responseText)
     }
   })
   

@@ -434,7 +434,7 @@ function update_hand(game, player_me, player_op) {
 }
 function draw(player) {
     if ((card = remove_card_from_array(player.deck[0], player.deck)) != undefined) {
-        if (player.hand.length < 6) {
+        if (player.hand.length < 5) {
             player.hand.push(card);
         }
     }
