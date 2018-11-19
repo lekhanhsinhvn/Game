@@ -222,12 +222,29 @@ function updategame() {
     $("#op_info .deck_num").text(data_op.deck_num);
     $("#op_info .hand_num").text(data_op.hand_num);
     $("#op_info .mp").text(data_op.mp);
-    $("#op_info .hp").text(data_op.hp);
-    $("#op_info .hp").attr("class", "hp " + data_op.status);
+    $("#op_info .hp_num").text(data_op.hp);
+    $("#op_info .hp").attr("class", "hp " + data_op.hidden);
     $("#me_info .player_name").text(data_me.player_name);
     $("#me_info .deck_num").text(data_me.deck_num);
     $("#me_info .mp").text(data_me.mp);
-    $("#me_info .hp").text(data_me.hp);
+    $("#me_info .hp_num").text(data_me.hp);
+
+    let hp_me = $("#me_info .hp").data("value");
+    let dmg_me = hp_me - data_me.hp;
+    $("#me_info .hp .hit").css("width", (dmg_me / hp_me) * 100 + "%");
+    $("#me_info .hp").data("value", data_me.hp);
+    setTimeout(function () {
+        $("#me_info .hp .hit").css({ 'width': '0' });
+        $("#me_info .hp .bar").css('width', (data_me.hp / 30) * 100 + "%");
+    }, 500);
+    let hp_op = $("#op_info .hp").data("value");
+    let dmg_op = hp_op - data_op.hp;
+    $("#op_info .hp .hit").css("width", (dmg_op / hp_op) * 100 + "%");
+    $("#op_info .hp").data("value", data_op.hp);
+    setTimeout(function () {
+        $("#op_info .hp .hit").css({ 'width': '0' });
+        $("#op_info .hp .bar").css('width', (data_op.hp / 30) * 100 + "%");
+    }, 500);
 
     for (let i = 0; i < 4; i++) {
         $("td[y$='0'][x$='" + i + "']").empty();

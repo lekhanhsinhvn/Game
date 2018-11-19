@@ -122,6 +122,7 @@ function updatedeck() {
         deck.splice(_.findIndex(deck, { _id: card._id }), 1);
         updatedeck();
     });
+    $("#deck_length").text(deck.length);
 }
 function loadcards() {
     var str = "";

@@ -48,7 +48,10 @@ block content
                     .handNumFrame
                         img(src="/images/backside-card.png", alt="")
                     .hand_num
-                    .hp
+                    .hp(data-total="30" data-value="30")
+                        .bar
+                            .hit
+                        .hp_num
                 table#board
                     tr(id="op_side")
                         td(x=0 y=0 class="zone placeable")
@@ -75,7 +78,10 @@ block content
                                 p /25
                             .mainLifePoint
                                 img(src="/images/life.png")
-                                .hp
+                                .hp(data-total="30" data-value="30")
+                                    .bar
+                                        .hit
+                                    .hp_num
                         .player_name
                         .surrender 
                             p Surrender
