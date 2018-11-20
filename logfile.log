@@ -6247,3 +6247,134 @@
 {"level":"info","message":"Connected to mongodb://localhost/underdog...","timestamp":"2018-11-19T12:59:38.774Z"}
 {"level":"info","message":"Listening on port 3000","timestamp":"2018-11-19T13:01:55.874Z"}
 {"level":"info","message":"Connected to mongodb://localhost/underdog...","timestamp":"2018-11-19T13:01:56.931Z"}
+{"level":"info","message":"Listening on port 3000","timestamp":"2018-11-19T16:14:29.821Z"}
+{"level":"info","message":"Connected to mongodb://localhost/underdog...","timestamp":"2018-11-19T16:14:30.888Z"}
+{"level":"info","message":"Listening on port 3000","timestamp":"2018-11-19T16:38:36.123Z"}
+{"level":"info","message":"Connected to mongodb://localhost/underdog...","timestamp":"2018-11-19T16:38:37.173Z"}
+{"level":"info","message":"Listening on port 3000","timestamp":"2018-11-19T17:19:03.531Z"}
+{"level":"info","message":"Connected to mongodb://localhost/underdog...","timestamp":"2018-11-19T17:19:04.617Z"}
+{"level":"info","message":"Listening on port 3000","timestamp":"2018-11-19T17:19:50.455Z"}
+{"level":"info","message":"Connected to mongodb://localhost/underdog...","timestamp":"2018-11-19T17:19:51.509Z"}
+{"level":"info","message":"Listening on port 3000","timestamp":"2018-11-19T17:20:41.143Z"}
+{"level":"info","message":"Listening on port 3000","timestamp":"2018-11-19T17:20:43.534Z"}
+{"level":"info","message":"Connected to mongodb://localhost/underdog...","timestamp":"2018-11-19T17:20:44.594Z"}
+{"level":"info","message":"Listening on port 3000","timestamp":"2018-11-19T17:21:04.922Z"}
+{"level":"info","message":"Connected to mongodb://localhost/underdog...","timestamp":"2018-11-19T17:21:06.016Z"}
+{"level":"info","message":"Listening on port 3000","timestamp":"2018-11-19T17:21:58.296Z"}
+{"level":"info","message":"Connected to mongodb://localhost/underdog...","timestamp":"2018-11-19T17:21:59.356Z"}
+{"level":"info","message":"Listening on port 3000","timestamp":"2018-11-19T17:32:39.775Z"}
+{"level":"info","message":"Connected to mongodb://localhost/underdog...","timestamp":"2018-11-19T17:32:40.848Z"}
+{"level":"info","message":"Listening on port 3000","timestamp":"2018-11-19T17:35:45.281Z"}
+{"level":"info","message":"Connected to mongodb://localhost/underdog...","timestamp":"2018-11-19T17:35:46.355Z"}
+{"level":"info","message":"Listening on port 3000","timestamp":"2018-11-19T17:35:50.071Z"}
+{"level":"info","message":"Connected to mongodb://localhost/underdog...","timestamp":"2018-11-19T17:35:51.120Z"}
+{"level":"info","message":"Listening on port 3000","timestamp":"2018-11-19T17:36:45.012Z"}
+{"level":"info","message":"Connected to mongodb://localhost/underdog...","timestamp":"2018-11-19T17:36:46.116Z"}
+{"level":"info","message":"Listening on port 3000","timestamp":"2018-11-19T17:36:52.438Z"}
+{"level":"info","message":"Connected to mongodb://localhost/underdog...","timestamp":"2018-11-19T17:36:53.518Z"}
+{"level":"info","message":"Listening on port 3000","timestamp":"2018-11-19T17:36:57.461Z"}
+{"level":"info","message":"Connected to mongodb://localhost/underdog...","timestamp":"2018-11-19T17:36:58.542Z"}
+{"level":"info","message":"Listening on port 3000","timestamp":"2018-11-19T17:39:17.141Z"}
+{"level":"info","message":"Connected to mongodb://localhost/underdog...","timestamp":"2018-11-19T17:39:18.229Z"}
+{"level":"info","message":"Listening on port 3000","timestamp":"2018-11-19T17:45:53.815Z"}
+{"level":"info","message":"Connected to mongodb://localhost/underdog...","timestamp":"2018-11-19T17:45:54.890Z"}
+{"message":"Cannot set property 'token' of undefined","stack":"TypeError: Cannot set property 'token' of undefined\n    at router.post (E:\\Code\\My_Project\\ProjectSem2\\Game test 8\\Game\\routes\\auth.js:18:21)\n    at <anonymous>","level":"error","timestamp":"2018-11-19T17:46:14.853Z"}
+{"level":"info","message":"Listening on port 3000","timestamp":"2018-11-19T17:48:18.019Z"}
+{"level":"info","message":"Connected to mongodb://localhost/underdog...","timestamp":"2018-11-19T17:48:19.077Z"}
+{"message":"Cannot set property 'token' of undefined","stack":"TypeError: Cannot set property 'token' of undefined\n    at router.post (E:\\Code\\My_Project\\ProjectSem2\\Game test 8\\Game\\routes\\auth.js:18:21)\n    at <anonymous>","level":"error","timestamp":"2018-11-19T17:48:45.615Z"}
+{"level":"info","message":"Listening on port 3000","timestamp":"2018-11-19T17:49:18.999Z"}
+{"level":"info","message":"Connected to mongodb://localhost/underdog...","timestamp":"2018-11-19T17:49:20.065Z"}
+{"message":"Cannot set property 'token' of undefined","stack":"TypeError: Cannot set property 'token' of undefined\n    at router.post (E:\\Code\\My_Project\\ProjectSem2\\Game test 8\\Game\\routes\\auth.js:19:21)\n    at <anonymous>","level":"error","timestamp":"2018-11-19T17:49:22.396Z"}
+{"message":"Cannot set property 'token' of undefined","stack":"TypeError: Cannot set property 'token' of undefined\n    at router.post (E:\\Code\\My_Project\\ProjectSem2\\Game test 8\\Game\\routes\\auth.js:19:21)\n    at <anonymous>","level":"error","timestamp":"2018-11-19T17:50:32.550Z"}
+{"level":"info","message":"Listening on port 3000","timestamp":"2018-11-19T17:51:39.203Z"}
+{"level":"info","message":"Connected to mongodb://localhost/underdog...","timestamp":"2018-11-19T17:51:40.270Z"}
+{"level":"info","message":"Listening on port 3000","timestamp":"2018-11-19T17:51:47.475Z"}
+{"level":"info","message":"Connected to mongodb://localhost/underdog...","timestamp":"2018-11-19T17:51:48.544Z"}
+{"message":"Cannot read property 'token' of undefined","stack":"TypeError: Cannot read property 'token' of undefined\n    at module.exports (E:\\Code\\My_Project\\ProjectSem2\\Game test 8\\Game\\middleware\\auth.js:5:59)\n    at newFn (E:\\Code\\My_Project\\ProjectSem2\\Game test 8\\Game\\node_modules\\express-async-errors\\index.js:16:20)\n    at Layer.handle [as handle_request] (E:\\Code\\My_Project\\ProjectSem2\\Game test 8\\Game\\node_modules\\express\\lib\\router\\layer.js:95:5)\n    at next (E:\\Code\\My_Project\\ProjectSem2\\Game test 8\\Game\\node_modules\\express\\lib\\router\\route.js:137:13)\n    at Route.dispatch (E:\\Code\\My_Project\\ProjectSem2\\Game test 8\\Game\\node_modules\\express\\lib\\router\\route.js:112:3)\n    at newFn (E:\\Code\\My_Project\\ProjectSem2\\Game test 8\\Game\\node_modules\\express-async-errors\\index.js:16:20)\n    at Layer.handle [as handle_request] (E:\\Code\\My_Project\\ProjectSem2\\Game test 8\\Game\\node_modules\\express\\lib\\router\\layer.js:95:5)\n    at E:\\Code\\My_Project\\ProjectSem2\\Game test 8\\Game\\node_modules\\express\\lib\\router\\index.js:281:22\n    at Function.process_params (E:\\Code\\My_Project\\ProjectSem2\\Game test 8\\Game\\node_modules\\express\\lib\\router\\index.js:335:12)\n    at next (E:\\Code\\My_Project\\ProjectSem2\\Game test 8\\Game\\node_modules\\express\\lib\\router\\index.js:275:10)\n    at Function.handle (E:\\Code\\My_Project\\ProjectSem2\\Game test 8\\Game\\node_modules\\express\\lib\\router\\index.js:174:3)\n    at router (E:\\Code\\My_Project\\ProjectSem2\\Game test 8\\Game\\node_modules\\express\\lib\\router\\index.js:47:12)\n    at newFn (E:\\Code\\My_Project\\ProjectSem2\\Game test 8\\Game\\node_modules\\express-async-errors\\index.js:16:20)\n    at Layer.handle [as handle_request] (E:\\Code\\My_Project\\ProjectSem2\\Game test 8\\Game\\node_modules\\express\\lib\\router\\layer.js:95:5)\n    at trim_prefix (E:\\Code\\My_Project\\ProjectSem2\\Game test 8\\Game\\node_modules\\express\\lib\\router\\index.js:317:13)\n    at E:\\Code\\My_Project\\ProjectSem2\\Game test 8\\Game\\node_modules\\express\\lib\\router\\index.js:284:7","level":"error","timestamp":"2018-11-19T17:51:51.739Z"}
+{"level":"info","message":"Listening on port 3000","timestamp":"2018-11-19T17:53:32.584Z"}
+{"level":"info","message":"Connected to mongodb://localhost/underdog...","timestamp":"2018-11-19T17:53:33.652Z"}
+{"message":"Cannot set property 'token' of undefined","stack":"TypeError: Cannot set property 'token' of undefined\n    at router.post (E:\\Code\\My_Project\\ProjectSem2\\Game test 8\\Game\\routes\\auth.js:18:21)\n    at <anonymous>","level":"error","timestamp":"2018-11-19T17:53:44.107Z"}
+{"level":"info","message":"Listening on port 3000","timestamp":"2018-11-19T17:54:10.296Z"}
+{"level":"info","message":"Connected to mongodb://localhost/underdog...","timestamp":"2018-11-19T17:54:11.346Z"}
+{"message":"Cannot set property 'token' of undefined","stack":"TypeError: Cannot set property 'token' of undefined\n    at router.post (E:\\Code\\My_Project\\ProjectSem2\\Game test 8\\Game\\routes\\auth.js:19:21)\n    at <anonymous>","level":"error","timestamp":"2018-11-19T17:54:29.835Z"}
+{"level":"info","message":"Listening on port 3000","timestamp":"2018-11-19T17:54:56.643Z"}
+{"level":"info","message":"Connected to mongodb://localhost/underdog...","timestamp":"2018-11-19T17:54:57.694Z"}
+{"level":"info","message":"Listening on port 3000","timestamp":"2018-11-19T17:56:49.516Z"}
+{"level":"info","message":"Connected to mongodb://localhost/underdog...","timestamp":"2018-11-19T17:56:50.602Z"}
+{"level":"info","message":"Listening on port 3000","timestamp":"2018-11-19T17:58:06.142Z"}
+{"level":"info","message":"Connected to mongodb://localhost/underdog...","timestamp":"2018-11-19T17:58:07.201Z"}
+{"level":"info","message":"Listening on port 3000","timestamp":"2018-11-19T17:58:23.815Z"}
+{"level":"info","message":"Connected to mongodb://localhost/underdog...","timestamp":"2018-11-19T17:58:24.872Z"}
+{"message":"Cannot set property 'token' of undefined","stack":"TypeError: Cannot set property 'token' of undefined\n    at router.post (E:\\Code\\My_Project\\ProjectSem2\\Game test 8\\Game\\routes\\auth.js:19:21)\n    at <anonymous>","level":"error","timestamp":"2018-11-19T17:59:05.903Z"}
+{"level":"info","message":"Listening on port 3000","timestamp":"2018-11-19T18:01:53.035Z"}
+{"level":"info","message":"Connected to mongodb://localhost/underdog...","timestamp":"2018-11-19T18:01:54.109Z"}
+{"message":"Cannot set property 'token' of undefined","stack":"TypeError: Cannot set property 'token' of undefined\n    at router.post (E:\\Code\\My_Project\\ProjectSem2\\Game test 8\\Game\\routes\\auth.js:19:21)\n    at <anonymous>","level":"error","timestamp":"2018-11-19T18:02:19.648Z"}
+{"level":"info","message":"Listening on port 3000","timestamp":"2018-11-19T18:03:59.242Z"}
+{"level":"info","message":"Connected to mongodb://localhost/underdog...","timestamp":"2018-11-19T18:04:00.300Z"}
+{"level":"info","message":"Listening on port 3000","timestamp":"2018-11-19T18:05:21.066Z"}
+{"level":"info","message":"Connected to mongodb://localhost/underdog...","timestamp":"2018-11-19T18:05:22.139Z"}
+{"level":"info","message":"Listening on port 3000","timestamp":"2018-11-19T18:06:01.092Z"}
+{"level":"info","message":"Connected to mongodb://localhost/underdog...","timestamp":"2018-11-19T18:06:02.159Z"}
+{"level":"info","message":"Listening on port 3000","timestamp":"2018-11-19T18:06:56.467Z"}
+{"level":"info","message":"Connected to mongodb://localhost/underdog...","timestamp":"2018-11-19T18:06:57.535Z"}
+{"level":"info","message":"Listening on port 3000","timestamp":"2018-11-19T18:07:00.320Z"}
+{"level":"info","message":"Connected to mongodb://localhost/underdog...","timestamp":"2018-11-19T18:07:01.378Z"}
+{"level":"info","message":"Listening on port 3000","timestamp":"2018-11-19T18:07:14.363Z"}
+{"level":"info","message":"Listening on port 3000","timestamp":"2018-11-19T18:07:15.574Z"}
+{"level":"info","message":"Connected to mongodb://localhost/underdog...","timestamp":"2018-11-19T18:07:16.633Z"}
+{"level":"info","message":"Listening on port 3000","timestamp":"2018-11-19T18:08:14.724Z"}
+{"level":"info","message":"Connected to mongodb://localhost/underdog...","timestamp":"2018-11-19T18:08:15.767Z"}
+{"level":"info","message":"Listening on port 3000","timestamp":"2018-11-19T18:08:19.257Z"}
+{"level":"info","message":"Connected to mongodb://localhost/underdog...","timestamp":"2018-11-19T18:08:20.309Z"}
+{"level":"info","message":"Listening on port 3000","timestamp":"2018-11-19T18:08:26.174Z"}
+{"level":"info","message":"Connected to mongodb://localhost/underdog...","timestamp":"2018-11-19T18:08:27.234Z"}
+{"level":"info","message":"Listening on port 3000","timestamp":"2018-11-19T18:09:04.107Z"}
+{"level":"info","message":"Connected to mongodb://localhost/underdog...","timestamp":"2018-11-19T18:09:05.169Z"}
+{"level":"info","message":"Listening on port 3000","timestamp":"2018-11-19T18:09:56.245Z"}
+{"level":"info","message":"Connected to mongodb://localhost/underdog...","timestamp":"2018-11-19T18:09:57.302Z"}
+{"level":"info","message":"Listening on port 3000","timestamp":"2018-11-19T18:09:58.953Z"}
+{"level":"info","message":"Connected to mongodb://localhost/underdog...","timestamp":"2018-11-19T18:10:00.019Z"}
+{"level":"info","message":"Listening on port 3000","timestamp":"2018-11-19T18:10:18.850Z"}
+{"level":"info","message":"Connected to mongodb://localhost/underdog...","timestamp":"2018-11-19T18:10:19.906Z"}
+{"level":"info","message":"Listening on port 3000","timestamp":"2018-11-19T18:10:47.978Z"}
+{"level":"info","message":"Listening on port 3000","timestamp":"2018-11-19T18:10:49.767Z"}
+{"level":"info","message":"Connected to mongodb://localhost/underdog...","timestamp":"2018-11-19T18:10:50.822Z"}
+{"level":"info","message":"Listening on port 3000","timestamp":"2018-11-19T18:11:10.207Z"}
+{"level":"info","message":"Connected to mongodb://localhost/underdog...","timestamp":"2018-11-19T18:11:11.280Z"}
+{"level":"info","message":"Listening on port 3000","timestamp":"2018-11-19T18:11:16.074Z"}
+{"level":"info","message":"Connected to mongodb://localhost/underdog...","timestamp":"2018-11-19T18:11:17.138Z"}
+{"level":"info","message":"Listening on port 3000","timestamp":"2018-11-19T18:14:22.704Z"}
+{"level":"info","message":"Connected to mongodb://localhost/underdog...","timestamp":"2018-11-19T18:14:23.759Z"}
+{"message":"Cannot set property 'token' of undefined","stack":"TypeError: Cannot set property 'token' of undefined\n    at router.post (E:\\Code\\My_Project\\ProjectSem2\\Game test 8\\Game\\routes\\auth.js:19:21)\n    at <anonymous>","level":"error","timestamp":"2018-11-19T18:14:49.388Z"}
+{"level":"info","message":"Listening on port 3000","timestamp":"2018-11-19T18:15:20.959Z"}
+{"level":"info","message":"Connected to mongodb://localhost/underdog...","timestamp":"2018-11-19T18:15:22.018Z"}
+{"level":"info","message":"Listening on port 3000","timestamp":"2018-11-19T18:17:02.710Z"}
+{"level":"info","message":"Connected to mongodb://localhost/underdog...","timestamp":"2018-11-19T18:17:03.769Z"}
+{"level":"info","message":"Listening on port 3000","timestamp":"2018-11-19T18:17:21.650Z"}
+{"level":"info","message":"Connected to mongodb://localhost/underdog...","timestamp":"2018-11-19T18:17:22.710Z"}
+{"level":"info","message":"Listening on port 3000","timestamp":"2018-11-19T18:18:01.190Z"}
+{"level":"info","message":"Connected to mongodb://localhost/underdog...","timestamp":"2018-11-19T18:18:02.248Z"}
+{"level":"info","message":"Listening on port 3000","timestamp":"2018-11-19T18:18:08.549Z"}
+{"level":"info","message":"Connected to mongodb://localhost/underdog...","timestamp":"2018-11-19T18:18:09.612Z"}
+{"level":"info","message":"Listening on port 3000","timestamp":"2018-11-19T18:18:25.987Z"}
+{"level":"info","message":"Connected to mongodb://localhost/underdog...","timestamp":"2018-11-19T18:18:27.059Z"}
+{"level":"info","message":"Listening on port 3000","timestamp":"2018-11-19T18:18:50.437Z"}
+{"level":"info","message":"Connected to mongodb://localhost/underdog...","timestamp":"2018-11-19T18:18:51.497Z"}
+{"level":"info","message":"Listening on port 3000","timestamp":"2018-11-19T18:19:15.969Z"}
+{"level":"info","message":"Connected to mongodb://localhost/underdog...","timestamp":"2018-11-19T18:19:17.028Z"}
+{"message":"Cannot set property 'token' of undefined","stack":"TypeError: Cannot set property 'token' of undefined\n    at router.post (E:\\Code\\My_Project\\ProjectSem2\\Game test 8\\Game\\routes\\auth.js:18:21)\n    at <anonymous>","level":"error","timestamp":"2018-11-19T18:19:17.981Z"}
+{"level":"info","message":"Listening on port 3000","timestamp":"2018-11-19T18:20:58.006Z"}
+{"level":"info","message":"Connected to mongodb://localhost/underdog...","timestamp":"2018-11-19T18:20:59.067Z"}
+{"level":"info","message":"Listening on port 3000","timestamp":"2018-11-19T18:23:24.363Z"}
+{"level":"info","message":"Connected to mongodb://localhost/underdog...","timestamp":"2018-11-19T18:23:25.419Z"}
+{"level":"info","message":"Listening on port 3000","timestamp":"2018-11-20T03:09:05.675Z"}
+{"level":"info","message":"Listening on port 3000","timestamp":"2018-11-20T03:09:06.843Z"}
+{"level":"info","message":"Connected to mongodb://localhost/underdog...","timestamp":"2018-11-20T03:09:07.922Z"}
+{"level":"info","message":"Listening on port 3000","timestamp":"2018-11-20T03:11:04.207Z"}
+{"level":"info","message":"Connected to mongodb://localhost/underdog...","timestamp":"2018-11-20T03:11:05.254Z"}
+{"level":"info","message":"Listening on port 3000","timestamp":"2018-11-20T04:58:48.910Z"}
+{"level":"info","message":"Connected to mongodb://localhost/underdog...","timestamp":"2018-11-20T04:58:49.963Z"}
+{"level":"info","message":"Listening on port 3000","timestamp":"2018-11-20T05:03:54.166Z"}
+{"level":"info","message":"Connected to mongodb://localhost/underdog...","timestamp":"2018-11-20T05:03:55.244Z"}
+{"level":"info","message":"Listening on port 3000","timestamp":"2018-11-20T05:18:37.925Z"}
+{"level":"info","message":"Connected to mongodb://localhost/underdog...","timestamp":"2018-11-20T05:18:38.988Z"}

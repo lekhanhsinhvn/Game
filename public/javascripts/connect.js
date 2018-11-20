@@ -10,7 +10,7 @@ $(document).ready(function () {
     var token = undefined;
     $.ajax({
         type: "POST",
-        url: "/api/auth/getToken/",
+        url: "/auth/getToken/",
         dataType: "text",
         success: function (data, status, xhr) {
             token = data;

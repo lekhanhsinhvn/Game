@@ -2,6 +2,8 @@
 body{
   margin: 0;
   padding: 0;
+  overflow-x:hidden;
+  overflow-y:hidden;
   background-color: black
 }
 
@@ -411,4 +413,28 @@ img {
   position: absolute;
   font-family: 'Poor Story', cursive;
   font-weight: 400;
+}
+
+#deckNumFrame{
+  position: absolute;
+  width: 60px;
+  height: 40px;
+  left: 1150px;
+  top: 650px;
+}
+
+#deckNumFrame #deck_length{
+  position: absolute;
+  font-family: 'Poor Story', cursive;
+  font-weight: 800;
+  font-size: 20px;
+  color: yellow;
+}
+#deckNumFrame p{
+  position: absolute;
+  font-family: 'Poor Story', cursive;
+  font-weight: 800;
+  font-size: 20px;
+  left: 20px;
+  color: yellow;
 }

@@ -24,7 +24,7 @@ jQuery(function ($) {
         deck_id = $("#deck_num").val();
         $.ajax({
             type: "GET",
-            url: "/api/games/myCards",
+            url: "/games/myCards",
             contentType: "application/json",
             dataType: 'json',
             success: function (data) {
@@ -48,7 +48,7 @@ $("#save").click(function () {
     };
     $.ajax({
         type: "PUT",
-        url: "/api/decks/",
+        url: "/decks/",
         data: JSON.stringify(obj),
         success: function (data) {
             $('#infoSaved').text("saved");
@@ -69,7 +69,7 @@ $("#next").click(function () {
     };
     $.ajax({
         type: "POST",
-        url: "/api/games/card/",
+        url: "/games/card/",
         data: JSON.stringify(obj),
         success: function (data) {
             cards = data;
@@ -92,7 +92,7 @@ $("#back").click(function () {
     };
     $.ajax({
         type: "POST",
-        url: "/api/games/card/",
+        url: "/games/card/",
         data: JSON.stringify(obj),
         success: function (data) {
             cards = data;

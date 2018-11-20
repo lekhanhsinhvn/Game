@@ -22,13 +22,13 @@ block content
     #playBtn
       #framePlayBtn
         img(src='/images/play-game.png', alt='')
-      a(href="/api/games/")
+      a(href="/games/")
         #textPlayBtn
           p Play Online
     #exitBtn
       #frameExitBtn
         img(src='/images/exit.png', alt='')
-      a(href="/api/auth/logout")  
+      a(href="/auth/logout")  
         #textExitBtn
           p Log out
     #paginate    
@@ -57,9 +57,6 @@ block content
               .health
                 img(src='/images/life.png', alt='')
                 p= val.health
-    div
-      span#deck_length
-      span /25
     #chooseAndSaveDeck
       select#deck_num(name="deck_num")
         option(value=deck_id) Deck 1
@@ -70,6 +67,9 @@ block content
         p Save
         #infoSaved
     #deck
+    #deckNumFrame
+      #deck_length
+      p /25
 
 append foot
   script(src="/javascripts/deck.js")

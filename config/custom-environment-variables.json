@@ -1,4 +1,5 @@
 {
     "jwtPrivateKey": "underdog_jwtPrivateKey",
-    "db": "underdog_db"
+    "db": "underdog_db",
+    "session": "underdog_sessionKey"
   }

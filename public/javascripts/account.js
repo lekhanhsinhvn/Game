@@ -8,7 +8,7 @@ function login() {
   })
   $.ajax({
     type: "POST",
-    url: "/api/auth/",
+    url: "/auth/",
     data: JSON.stringify(obj),
     contentType: "application/json",
     dataType: "json",
@@ -36,7 +36,7 @@ function register() {
   console.log(obj)
   $.ajax({
     type: "POST",
-    url: "/api/users/",
+    url: "/users/",
     data: JSON.stringify(obj),
     contentType: "application/json",
     dataType: "json",

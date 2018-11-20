@@ -11,13 +11,13 @@ const error = require('../middleware/error');
 
 module.exports = function(app) {
   app.use(express.json());
-  app.use('/api/users', users);
-  app.use('/api/auth', auth);
-  app.use('/api/cards', cards);
-  app.use('/api/effects', effects)
-  app.use('/api/decks', decks);
-  app.use('/api/games', games);
-  app.use('/api/login', login);
-  app.use('/api/register', register);
+  app.use('/users', users);
+  app.use('/auth', auth);
+  app.use('/cards', cards);
+  app.use('/effects', effects)
+  app.use('/decks', decks);
+  app.use('/games', games);
+  app.use('/login', login);
+  app.use('/register', register);
   app.use(error);
 }

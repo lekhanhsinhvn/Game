@@ -1,29 +1,28 @@
+const config = require('config')
 const winston = require('winston');
 const express = require('express');
-const cors = require('cors');
 const path = require('path');
-const cookieSession = require('cookie-session');
 const bodyParser = require("body-parser");
+const cookieSession = require('cookie-session');
 
 const app = express();
 
 app.use(bodyParser.urlencoded({
   extended: true
 }));
+
 app.use(bodyParser.json());
 
 app.use(cookieSession({
   name: 'session',
-  keys: ["lekhanhsinh"],
-
-  // Cookie Options
-  maxAge: 24 * 60 * 60 * 1000 // 24 hours
+  keys: [config.get('session')],
+  maxAge: 24 * 60 * 60 * 1000
 }))
 
-app.use(cors())
 require('./startup/logging')();
 require('./startup/routes')(app);
 require('./startup/db')();
+require('./startup/cors')(app);
 require('./startup/config')();
 require('./startup/validation')();
 

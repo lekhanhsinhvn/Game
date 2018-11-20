@@ -51,7 +51,7 @@ router.post('/', validator(validate), async (req, res) => {
     token: token,
   });
   */
- res.send({redirect:'/api/login'});
+ res.send({redirect:'/login'});
  res.end();
 });
 
