@@ -19,8 +19,7 @@ block content
             a(href="/games/deck")
                 button.btn.btn-warning#deck-btn Deck
         #page-wrapper.container-fluid(style='min-height: 80vh;')
-            .load
-                #loader
+            #loader
             #game
                 #op_info
                     #avatar
@@ -52,6 +51,7 @@ block content
                         .bar
                             .hit
                         .hp_num
+                    img.attack_img(src="/images/attack.png", alt="alt")
                 table#board
                     tr(id="op_side")
                         td(x=0 y=0 class="zone placeable")

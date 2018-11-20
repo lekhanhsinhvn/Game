@@ -62,6 +62,10 @@ $(document).ready(function () {
             }); 
             updategame();
             if (data_me.turn == true) {
+                $(".guard.targetable").append("<img src='/images/guard.png' alt='' class='guard_img'>");
+                $(".card.targetable").append("<img src='/images/attack.png' alt='' class='attack_img'>");
+                $("#op_info .attack_img").css("display", "none");
+                $("#op_info.targetable .attack_img").css("display", "block");
                 $(".summonable").mouseenter(function () {
                     if (!$(this).hasClass("selected") && down == false) {
                         card_id = $(this).attr("id");
@@ -118,7 +122,7 @@ $(document).ready(function () {
                     },
                     tolerance: "pointer"
                 })
-                $(".hp.targetable").droppable({
+                $("#op_info.targetable").droppable({
                     drop: function (event, ui) {
                         card_id1 = ui.draggable.attr("id");
                         card_id2 = "player";
@@ -223,7 +227,7 @@ function updategame() {
     $("#op_info .hand_num").text(data_op.hand_num);
     $("#op_info .mp").text(data_op.mp);
     $("#op_info .hp_num").text(data_op.hp);
-    $("#op_info .hp").attr("class", "hp " + data_op.hidden);
+    $("#op_info").attr("class", data_op.hidden);
     $("#me_info .player_name").text(data_me.player_name);
     $("#me_info .deck_num").text(data_me.deck_num);
     $("#me_info .mp").text(data_me.mp);
@@ -297,20 +301,20 @@ function loadRoom(room) {
         str += "<div class='room'>"
             + "<p>" + room._id + "</p>"
             + "<button class='btn btn-success' id='join' val='" + room._id + "'>Join</button>"
-            + "<div>" + player_name + "</div>"
+            + "<div class='player_name'>" + player_name + "</div>"
             + "</div>";
     }
     else if (room.players.length == 2 && room_id == undefined) {
         str += "<div class='room'>"
             + "<p>" + room._id + "</p>"
             + "<button class='btn btn-success' id='spectate' val='" + room._id + "'>Spectate</button>"
-            + "<div>" + player_name + "</div>"
+            + "<div class='player_name'>" + player_name + "</div>"
             + "</div>";
     }
     else {
         str += "<div class='room'>"
             + "<p>" + room._id + "</p>"
-            + "<div>" + player_name + "</div>"
+            + "<div class='player_name'>" + player_name + "</div>"
             + "</div>";
     }
     return str;
