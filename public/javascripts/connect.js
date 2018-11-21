@@ -58,8 +58,8 @@ $(document).ready(function () {
                 countdown: true,
             })
             timer.addEventListener('secondsUpdated', function (e) {
-                $('#timer').html(timer.getTimeValues().minutes.toString()+":"+timer.getTimeValues().seconds.toString());
-            }); 
+                $('#timer').html(timer.getTimeValues().minutes.toString() + ":" + timer.getTimeValues().seconds.toString());
+            });
             updategame();
             if (data_me.turn == true) {
                 $(".guard.targetable").append("<img src='/images/guard.png' alt='' class='guard_img'>");
@@ -131,9 +131,13 @@ $(document).ready(function () {
                     tolerance: "pointer"
                 })
             }
+            $("#op_info .boom_img").css("display", "none");
+            $("#op_info.boom .boom_img").css("display", "block");
+            $("#me_info .boom_img").css("display", "none");
+            $("#me_info.boom .boom_img").css("display", "block");
+            $(".card.boom").append("<img src='/images/boom.png' alt='' class='attack_img'>");
         });
         socket.on('err', function (data) {
-            alert(data);
             if (data == "YOU LOSE" || data == "YOU WIN") {
                 socket.emit("leaveRoom", user_id, room_id);
             }
@@ -141,6 +145,7 @@ $(document).ready(function () {
             data_me = undefined;
             data_op = undefined;
             hideGame();
+            alert(data);
         });
     });
     $("#host").click(function () {
@@ -227,11 +232,13 @@ function updategame() {
     $("#op_info .hand_num").text(data_op.hand_num);
     $("#op_info .mp").text(data_op.mp);
     $("#op_info .hp_num").text(data_op.hp);
-    $("#op_info").attr("class", data_op.hidden);
     $("#me_info .player_name").text(data_me.player_name);
     $("#me_info .deck_num").text(data_me.deck_num);
     $("#me_info .mp").text(data_me.mp);
     $("#me_info .hp_num").text(data_me.hp);
+
+    $("#me_info").attr("class", data_me.status);
+    $("#op_info").attr("class", data_op.hidden+" "+data_op.status);
 
     let hp_me = $("#me_info .hp").data("value");
     let dmg_me = hp_me - data_me.hp;
@@ -282,7 +289,7 @@ function updategame() {
     }
     $("#hand").empty();
     for (let i = 0; i < 6; i++) {
-        
+
         if (data_me.hand[i] != undefined) {
             if (data_me.turn == true) {
                 $("#hand").append(loadcard(data_me.hand[i], true));

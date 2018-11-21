@@ -2,6 +2,7 @@ const _ = require('lodash');
 var game = require("./game"),
     rooms = [];
 const { User } = require('../models/user');
+var online = [];
 module.exports = {
     host: async function (user, io) {
         const acc = await User
@@ -106,6 +107,7 @@ module.exports = {
             _.remove(room.players, { _id: user._id });
             _.remove(room.spectators, { _id: user._id });
             user.socket.emit("err", "Leave Room");
+            _.remove(rooms, { _id: room_id });
             refreshRoom(io);
         }
     },
@@ -125,7 +127,6 @@ module.exports = {
     },
 }
 function refreshRoom(io) {
-
     _.remove(rooms, function (room) {
         if (room.players.length == 0)
             return room;

@@ -52,6 +52,7 @@ block content
                             .hit
                         .hp_num
                     img.attack_img(src="/images/attack.png", alt="alt")
+                    img.boom_img(src="/images/boom.png", alt="alt")
                 table#board
                     tr(id="op_side")
                         td(x=0 y=0 class="zone placeable")
@@ -88,6 +89,7 @@ block content
                         .endTurn 
                             img(src="/images/end-turn.png", alt="")
                             p End Turn
+                    img.boom_img(src="/images/boom.png", alt="alt")
                 #hand
 append foot
     script(src="/assets/easytimer.min.js")

@@ -23,11 +23,20 @@ module.exports = {
                     let guards = get_array_has_status("guard", player_op.board);
                     if ((card_target = get_card_from_array(data[6], player_op.board)) != undefined && card_target.card.hidden.includes("targetable")) {
                         card_target.card.temp_health -= card.card.temp_attack;
-                        add_to_board(player_op.board.indexOf(card_target), 0, card_target, player_me, player_op);
                         card.card.temp_health -= card_target.card.temp_attack;
+                        if (!card_target.card.status.includes("boom")) {
+                            card_target.card.status += "boom ";
+                        }
+                        add_to_board(player_op.board.indexOf(card_target), 0, card_target, player_me, player_op);
                     }
                     else if (guards.length == 0 && data[6] == "player") {
                         player_op.hp -= card.card.temp_attack;
+                        if (!player_op.status.includes("boom")) {
+                            player_op.status += "boom ";
+                        }
+                    }
+                    if (!card.card.status.includes("boom")) {
+                        card.card.status += "boom ";
                     }
                     add_to_board(player_op.board.indexOf(card), 1, card, player_me, player_op);
                     card.card.hidden = card.card.hidden.replace("attackable ", "");
@@ -40,6 +49,28 @@ module.exports = {
                     games.delete(room._id);
                 }
                 reset_suggestion(player_me, player_op);
+                setTimeout(function () {
+                    player_op.status = player_op.status.replace("boom ", "");
+                    player_me.status = player_me.status.replace("boom ", "");
+                    for (let i = 0; i < player_op.board.length; i++) {
+                        if (player_op.board[i] != undefined && player_op.board[i] != "targetable")
+                            player_op.board[i].card.status = player_op.board[i].card.status.replace("boom ", "");
+                    }
+                    for (let i = 0; i < player_me.board.length; i++) {
+                        if (player_me.board[i] != undefined && player_me.board[i] != "targetable")
+                            player_me.board[i].card.status = player_me.board[i].card.status.replace("boom ", "");
+                    }
+                    update_hand(game, player_me, player_op);
+                    update_broad(game, player_me, player_op);
+                    var temp = {
+                        turn_num: game.turn_num,
+                        timer: game.timer,
+                        player1: player_me,
+                        player2: player_op
+                    }
+                    set_game_state(room._id, temp);
+                    send(room._id, temp);
+                }, 800);
                 break;
             case "summon":
                 if (player_me.turn == true && (card = get_card_from_array(data[3], player_me.hand)) != undefined && card.card.hidden.includes("summonable") == true && (zone = get_card_from_board(parseInt(data[4]), parseInt(data[5]), player_me, player_op)) != undefined && zone == "targetable") {
@@ -144,6 +175,7 @@ module.exports = {
             hand: [],
             board: [undefined, undefined, undefined, undefined],
             graveyard: [],
+            status: "",
             hidden: "",
         }
         const user2 = await User
@@ -168,6 +200,7 @@ module.exports = {
             hand: [],
             board: [undefined, undefined, undefined, undefined],
             graveyard: [],
+            status: "",
             hidden: "",
         }
         var game = {
@@ -267,6 +300,7 @@ function send(room_id, game) {
         hand: game.player1.hand,
         board: game.player1.board,
         graveyard: game.player1.graveyard,
+        status: game.player1.status,
         hidden: game.player1.hidden,
     },
         data2 = {
@@ -279,6 +313,7 @@ function send(room_id, game) {
             hand_num: game.player2.hand.length,
             board: game.player2.board,
             graveyard: game.player2.graveyard,
+            status: game.player2.status,
             hidden: game.player2.hidden,
         };
     game.player1.socket.emit('updateGame', room_id, game.timer.getTimeValues(), data1, data2);
@@ -292,6 +327,7 @@ function send(room_id, game) {
         hand: game.player2.hand,
         board: game.player2.board,
         graveyard: game.player2.graveyard,
+        status: game.player2.status,
         hidden: game.player2.hidden,
     },
         data2 = {
@@ -304,6 +340,7 @@ function send(room_id, game) {
             hand_num: game.player1.hand.length,
             board: game.player1.board,
             graveyard: game.player1.graveyard,
+            status: game.player1.status,
             hidden: game.player1.hidden,
         };
     game.player2.socket.emit('updateGame', room_id, game.timer.getTimeValues(), data1, data2);
@@ -482,6 +519,7 @@ function get_array_has_status(status, arr) {
 function reset_suggestion(player_me, player_op) {
     player_op.hidden = player_op.hidden.replace("targetable ", "");
     player_me.hidden = player_me.hidden.replace("targetable ", "");
+
     for (let i = 0; i < player_op.board.length; i++) {
         if (player_op.board[i] != undefined && player_op.board[i] != "targetable")
             player_op.board[i].card.hidden = player_op.board[i].card.hidden.replace("targetable ", "");

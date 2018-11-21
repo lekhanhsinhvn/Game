@@ -755,7 +755,22 @@ img {
   width: 140px;
   height: 150px;
 }
+.boom_img{
+  position: absolute;
+  width: 140px;
+  height: 150px;
+}
 #op_info .attack_img{
+  display: none;
+  left: 60px;
+  top: -10px;
+}
+#op_info .boom_img{
+  display: none;
+  left: 60px;
+  top: -10px;
+}
+#me_info .boom_img{
   display: none;
   left: 60px;
   top: -10px;
