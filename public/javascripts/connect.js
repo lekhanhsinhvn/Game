@@ -181,7 +181,6 @@ function loadcard(c, hide) {
     var hidden = "";
     if (hide == true) {
         hidden = c.card.hidden;
-        console.log(c.card.hidden);
     }
     var str = `
         <div class="card ${attr} ${hidden}" card='${JSON.stringify(c)}' id='${c._id}'>

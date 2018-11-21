@@ -8,6 +8,7 @@ module.exports = {
     incomingPlay: function (room, play) {
         //id_me #@# id_op #@# action #@# id_card1 #@# x #@# y #@# id_card2
         //console.log(play);
+        var delay = false;
         var data = play.split("#@#");
         var game = get_game_state(room._id);
         var player_me = check_player(game, data[0]);
@@ -49,6 +50,7 @@ module.exports = {
                     games.delete(room._id);
                 }
                 reset_suggestion(player_me, player_op);
+                delay = true;
                 setTimeout(function () {
                     player_op.status = player_op.status.replace("boom ", "");
                     player_me.status = player_me.status.replace("boom ", "");
@@ -70,7 +72,7 @@ module.exports = {
                     }
                     set_game_state(room._id, temp);
                     send(room._id, temp);
-                }, 800);
+                }, 500);
                 break;
             case "summon":
                 if (player_me.turn == true && (card = get_card_from_array(data[3], player_me.hand)) != undefined && card.card.hidden.includes("summonable") == true && (zone = get_card_from_board(parseInt(data[4]), parseInt(data[5]), player_me, player_op)) != undefined && zone == "targetable") {
@@ -150,7 +152,13 @@ module.exports = {
             player2: player_op
         }
         set_game_state(room._id, temp);
-        send(room._id, temp);
+        if (delay == true) {
+            setTimeout(function () {
+                send(room._id, temp);
+            }, 500);
+        }
+        else
+            send(room._id, temp);
     },
     creategame: async (client1, client2, room) => {
         const user1 = await User

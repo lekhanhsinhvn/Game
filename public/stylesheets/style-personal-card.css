@@ -17,7 +17,7 @@ img {
 
 #gameZone{
   width: 1236px;
-  height: 695px; 
+  height: 750px; 
   margin: 0 auto;
   background: url(../images/bg2.jpg);
   background-size: cover;
@@ -178,7 +178,7 @@ img {
   position: absolute;
   width: 800px;
   height: 450px;
-  top: 200px;
+  top: 170px;
   left: 150px;
 }
 
@@ -337,10 +337,11 @@ img {
   position: absolute;
   display: flex;
   overflow: scroll;
+  overflow-x: hidden;
   flex-direction: column;
   width: 200px;
   height: 450px;
-  top: 200px;
+  top: 170px;
   left: 1000px;
 }
 
@@ -361,7 +362,7 @@ img {
 }
 #paginate{
   position: absolute;
-  top: 170px;
+  top: 140px;
   left: 800px;
   width: 140px;
 }
@@ -385,7 +386,7 @@ img {
   font-weight: 600;
   color: yellow;
   position: absolute;
-  top: 170px;
+  top: 140px;
   left: 1000px;
   width: 200px;
 }
@@ -420,7 +421,7 @@ img {
   width: 60px;
   height: 40px;
   left: 1150px;
-  top: 650px;
+  top: 620px;
 }
 
 #deckNumFrame #deck_length{

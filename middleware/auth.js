@@ -3,7 +3,7 @@ const config = require('config');
 
 module.exports = function (req, res, next) {
   const token = req.header('x-auth-token') || req.session.token;
-  if (!token) return res.status(401).redirect('/api/login')
+  if (!token) return res.status(401).redirect('/login')
 
   try {
     const decoded = jwt.verify(token, config.get('jwtPrivateKey'));

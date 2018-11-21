@@ -33,7 +33,6 @@ function register() {
     email: email,
     password: password
   })
-  console.log(obj)
   $.ajax({
     type: "POST",
     url: "/users/",
