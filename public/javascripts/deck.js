@@ -52,6 +52,9 @@ $("#save").click(function () {
         data: JSON.stringify(obj),
         success: function (data) {
             $('#infoSaved').text("saved");
+            setTimeout(function () {
+                $('#infoSaved').text("");
+            },2000)
         },
         error: function (errMsg, status, xhr) {
             alert(errMsg.responseText);
@@ -162,4 +165,5 @@ function loadcards() {
         stack: "div",
         distance: 0
     });
+    $('img').on('dragstart', function(event) {event.preventDefault(); });
 }

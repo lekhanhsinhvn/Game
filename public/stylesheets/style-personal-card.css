@@ -4,7 +4,7 @@ body{
   padding: 0;
   overflow-x:hidden;
   overflow-y:hidden;
-  background-color: black
+  background-color: black;
 }
 
 *{
@@ -197,6 +197,7 @@ img {
   display: block;
   background-color: rgba(240, 240, 240, 0);
   border: none;
+  box-shadow: 0 12px 16px 0 rgba(0,0,0,0.6), 0 17px 50px 0 rgba(0,0,0,0.5);
 }
 
 .titleCard{
@@ -340,6 +341,7 @@ img {
   top: 180px;
   left: 1000px;
   overflow:hidden;
+  background-color: rgba(0, 0, 0, 0.3);
 }
 #deck .content{
   display: flex;
@@ -363,7 +365,7 @@ img {
 }
 #paginate{
   position: absolute;
-  top: 140px;
+  top: 120px;
   left: 800px;
   width: 140px;
 }

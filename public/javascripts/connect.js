@@ -138,6 +138,7 @@ $(document).ready(function () {
             $("#me_info .boom_img").css("display", "none");
             $("#me_info.boom .boom_img").css("display", "block");
             $(".card.boom").append("<img src='/images/boom.png' alt='' class='attack_img'>");
+            $('img').on('dragstart', function(event) {event.preventDefault(); });
         });
         socket.on('err', function (data) {
             if (data == "YOU LOSE" || data == "YOU WIN") {
