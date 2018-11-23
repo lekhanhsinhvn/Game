@@ -3,6 +3,7 @@ prepend head
   meta(charset='UTF-8')
   title Deck form
   link(rel="stylesheet", href="/stylesheets/style-personal-card.css", attr)
+  link(rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery.perfect-scrollbar/1.4.0/css/perfect-scrollbar.min.css", attr)
 block content
   #gameZone
     #info
@@ -67,9 +68,13 @@ block content
         p Save
         #infoSaved
     #deck
+      .content
     #deckNumFrame
       #deck_length
       p /25
 
 append foot
+  script(src="https://cdnjs.cloudflare.com/ajax/libs/jquery.perfect-scrollbar/1.4.0/perfect-scrollbar.min.js")
+  script.
+    const ps = new PerfectScrollbar('#deck');
   script(src="/javascripts/deck.js")

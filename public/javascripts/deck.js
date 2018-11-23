@@ -32,7 +32,7 @@ jQuery(function ($) {
                 updatedeck();
             },
             error: function (errMsg, status, xhr) {
-                alert(errMsg.responseText);
+                //alert(errMsg.responseText);
             }
         });
     }).change();
@@ -99,7 +99,7 @@ $("#back").click(function () {
             loadcards()
         },
         error: function (errMsg, status, xhr) {
-            alert(errMsg.responseText);
+            //alert(errMsg.responseText);
         },
         contentType: "application/json",
         dataType: 'json'
@@ -115,14 +115,15 @@ function updatedeck() {
             <p>${card.name}</p>
         </div>`
     });
-    $("#deck").empty();
-    $("#deck").append(btn);
-    $("#deck .card-name").dblclick(function () {
+    $("#deck .content").empty();
+    $("#deck .content").append(btn);
+    $("#deck .content .card-name").dblclick(function () {
         var card = JSON.parse($(this).attr("card"));
         deck.splice(_.findIndex(deck, { _id: card._id }), 1);
         updatedeck();
     });
     $("#deck_length").text(deck.length);
+    ps.update();
 }
 function loadcards() {
     var str = "";

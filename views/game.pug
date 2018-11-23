@@ -3,6 +3,7 @@ extends layouts/layout.pug
 prepend head
     title #{title}
     link(rel="stylesheet", href="/stylesheets/style.css", attr)
+    link(rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery.perfect-scrollbar/1.4.0/css/perfect-scrollbar.min.css", attr)
 block content
     .row
         #btn
@@ -10,16 +11,20 @@ block content
             #middle
             #bottom
         #box
-            h2(style="padding-left:20px;") Rooms
+            .header_rooms 
+                h1 Rooms
             #rooms
+                .content
             div.container-fluid(style="text-align: center;")
-                button#host.btn Host
-                button#random.btn.btn-primary Random
-            button#leaveRoom.btn.btn-danger Leave Room
+                button#host Host
+                button#random Random
+            button#leaveRoom Leave Room
             a(href="/games/deck")
-                button.btn.btn-warning#deck-btn Deck
+                button#deck-btn Deck
         #page-wrapper.container-fluid(style='min-height: 80vh;')
-            #loader
+            .loader
+                #loader
+                .message
             #game
                 #op_info
                     #avatar
@@ -92,10 +97,11 @@ block content
                     img.boom_img(src="/images/boom.png", alt="alt")
                 #hand
 append foot
+    script(src="https://cdnjs.cloudflare.com/ajax/libs/jquery.perfect-scrollbar/1.4.0/perfect-scrollbar.min.js")
     script(src="/assets/easytimer.min.js")
     script(src="/assets/socket.io.js")
-    script(src="/javascripts/connect.js")
     script.
+        const ps = new PerfectScrollbar('#rooms');
         const sidebarBox = document.querySelector('#box'),
         sidebarBtn = document.querySelector('#btn'),
         pageWrapper = document.querySelector('#page-wrapper');
@@ -120,4 +126,5 @@ append foot
                         sidebarBox.classList.remove('active');
                 }
         });
+    script(src="/javascripts/connect.js")
 

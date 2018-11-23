@@ -17,7 +17,7 @@ $(document).ready(function () {
             connect(token);
         },
         error: function (errMsg, status, xhr) {
-            alert(errMsg.responseText);
+            //alert(errMsg.responseText);
         }
     })
     function connect(token) {
@@ -44,24 +44,26 @@ $(document).ready(function () {
             updateRooms();
         });
         socket.on('updateGame', function (r, t, me, op) {
-            showGame();
-            $("#leaveRoom").css("display", "none");
-            room_id = r;
-            data_me = me;
-            data_op = op;
-            timer = new Timer();
-            timer.start({
-                startValues: t,
-                target: {
-                    seconds: 0,
-                },
-                countdown: true,
-            })
-            timer.addEventListener('secondsUpdated', function (e) {
-                $('#timer').html(timer.getTimeValues().minutes.toString() + ":" + timer.getTimeValues().seconds.toString());
-            });
-            updategame();
-            if (data_me.turn == true) {
+            if (me != undefined && op != undefined) {
+                showGame();
+                $("#leaveRoom").css("display", "none");
+                room_id = r;
+                data_me = me;
+                data_op = op;
+                timer = new Timer();
+                timer.start({
+                    startValues: t,
+                    target: {
+                        seconds: 0,
+                    },
+                    countdown: true,
+                })
+                timer.addEventListener('secondsUpdated', function (e) {
+                    $('#timer').html(timer.getTimeValues().minutes.toString() + ":" + timer.getTimeValues().seconds.toString());
+                });
+                updategame();
+            }
+            if (data_me != undefined && data_me.turn == true) {
                 $(".guard.targetable").append("<img src='/images/guard.png' alt='' class='guard_img'>");
                 $(".card.targetable").append("<img src='/images/attack.png' alt='' class='attack_img'>");
                 $("#op_info .attack_img").css("display", "none");
@@ -145,7 +147,9 @@ $(document).ready(function () {
             data_me = undefined;
             data_op = undefined;
             hideGame();
-            alert(data);
+            if(data!="Leave Room"){
+                $(".message").text(data);
+            }
         });
     });
     $("#host").click(function () {
@@ -168,11 +172,11 @@ $(document).ready(function () {
     });
     function showGame() {
         $("#game").css("display", "block");
-        $("#loader").css("display", "none");
+        $(".loader").css("display", "none");
     }
     function hideGame() {
         $("#game").css("display", "none");
-        $("#loader").css("display", "block");
+        $(".loader").css("display", "block");
     }
 });
 
@@ -237,23 +241,27 @@ function updategame() {
     $("#me_info .hp_num").text(data_me.hp);
 
     $("#me_info").attr("class", data_me.status);
-    $("#op_info").attr("class", data_op.hidden+" "+data_op.status);
+    $("#op_info").attr("class", data_op.hidden + " " + data_op.status);
 
     let hp_me = $("#me_info .hp").data("value");
     let dmg_me = hp_me - data_me.hp;
     $("#me_info .hp .hit").css("width", (dmg_me / hp_me) * 100 + "%");
     $("#me_info .hp").data("value", data_me.hp);
     setTimeout(function () {
-        $("#me_info .hp .hit").css({ 'width': '0' });
-        $("#me_info .hp .bar").css('width', (data_me.hp / 30) * 100 + "%");
+        if (data_me != undefined && data_op != undefined) {
+            $("#me_info .hp .hit").css({ 'width': '0' });
+            $("#me_info .hp .bar").css('width', (data_me.hp / 30) * 100 + "%");
+        }
     }, 500);
     let hp_op = $("#op_info .hp").data("value");
     let dmg_op = hp_op - data_op.hp;
     $("#op_info .hp .hit").css("width", (dmg_op / hp_op) * 100 + "%");
     $("#op_info .hp").data("value", data_op.hp);
     setTimeout(function () {
-        $("#op_info .hp .hit").css({ 'width': '0' });
-        $("#op_info .hp .bar").css('width', (data_op.hp / 30) * 100 + "%");
+        if (data_me != undefined && data_op != undefined) {
+            $("#op_info .hp .hit").css({ 'width': '0' });
+            $("#op_info .hp .bar").css('width', (data_op.hp / 30) * 100 + "%");
+        }
     }, 500);
 
     for (let i = 0; i < 4; i++) {
@@ -306,14 +314,14 @@ function loadRoom(room) {
     if (room.players.length == 1 && room_id == undefined) {
         str += "<div class='room'>"
             + "<p>" + room._id + "</p>"
-            + "<button class='btn btn-success' id='join' val='" + room._id + "'>Join</button>"
+            + "<button class='wood_go' id='join' val='" + room._id + "'>Join</button>"
             + "<div class='player_name'>" + player_name + "</div>"
             + "</div>";
     }
     else if (room.players.length == 2 && room_id == undefined) {
         str += "<div class='room'>"
             + "<p>" + room._id + "</p>"
-            + "<button class='btn btn-success' id='spectate' val='" + room._id + "'>Spectate</button>"
+            + "<button class='wood_go' id='spectate' val='" + room._id + "'>Spectate</button>"
             + "<div class='player_name'>" + player_name + "</div>"
             + "</div>";
     }
@@ -326,7 +334,7 @@ function loadRoom(room) {
     return str;
 }
 function updateRooms() {
-    $("#rooms").empty();
+    $("#rooms .content").empty();
     $("#leaveRoom").css("display", "none");
     $("#host").css("display", "inline");
     $("#random").css("display", "inline");
@@ -339,7 +347,7 @@ function updateRooms() {
             }
             room_id = room._id;
         }
-        $("#rooms").append(loadRoom(room));
+        $("#rooms .content").append(loadRoom(room));
     });
     $("#join").click(function () {
         socket.emit('join', user_id, $(this).attr("val"));
@@ -351,6 +359,7 @@ function updateRooms() {
         $("#host").css("display", "none");
         $("#random").css("display", "none");
     }
+    ps.update();
 }
 function get_card_from_array(id, arr) {
     for (let i = 0; i < arr.length; i++) {

@@ -43,12 +43,6 @@ module.exports = {
                     card.card.hidden = card.card.hidden.replace("attackable ", "");
                     card.card.hidden = card.card.hidden.replace("selected ", "");
                 }
-                if (player_op.hp <= 0) {
-                    game = get_game_state(room._id);
-                    player_op.socket.emit("err", "YOU LOSE");
-                    player_me.socket.emit("err", "YOU WIN");
-                    games.delete(room._id);
-                }
                 reset_suggestion(player_me, player_op);
                 delay = true;
                 setTimeout(function () {
@@ -72,7 +66,17 @@ module.exports = {
                     }
                     set_game_state(room._id, temp);
                     send(room._id, temp);
-                }, 500);
+                }, 800);
+                if (player_op.hp <= 0) {
+                    if (delay == true) {
+                        setTimeout(function () {
+                            game = undefined;
+                            player_op.socket.emit("err", "YOU LOSE");
+                            player_me.socket.emit("err", "YOU WIN");
+                            games.delete(room._id);
+                        }, 1000);
+                    }
+                }
                 break;
             case "summon":
                 if (player_me.turn == true && (card = get_card_from_array(data[3], player_me.hand)) != undefined && card.card.hidden.includes("summonable") == true && (zone = get_card_from_board(parseInt(data[4]), parseInt(data[5]), player_me, player_op)) != undefined && zone == "targetable") {
@@ -152,13 +156,13 @@ module.exports = {
             player2: player_op
         }
         set_game_state(room._id, temp);
-        if (delay == true) {
-            setTimeout(function () {
-                send(room._id, temp);
-            }, 500);
-        }
-        else
-            send(room._id, temp);
+        // if (delay == true) {
+        //     setTimeout(function () {
+        //         send(room._id, temp);
+        //     }, 1000);
+        // }
+        // else
+        send(room._id, temp);
     },
     creategame: async (client1, client2, room) => {
         const user1 = await User
@@ -227,21 +231,21 @@ module.exports = {
             countdown: true,
         })
         game.timer.addEventListener("targetAchieved", function (room) {
-            if (game != undefined) {
-                if (game.player1.turn == true) {
-                    endTurn(game, game.player1, game.player2);
-                    update_hand(game, game.player1, game.player2);
-                    update_broad(game, game.player1, game.player2);
+            if ((game_temp = get_game_state(room._id)) != undefined) {
+                if (game_temp.player1.turn == true) {
+                    endTurn(game_temp, game_temp.player1, game_temp.player2);
+                    update_hand(game_temp, game_temp.player1, game_temp.player2);
+                    update_broad(game_temp, game_temp.player1, game_temp.player2);
                 } else {
-                    endTurn(game, game.player2, game.player1);
-                    update_hand(game, game.player2, game.player1);
-                    update_broad(game, game.player2, game.player1);
+                    endTurn(game_temp, game_temp.player2, game_temp.player1);
+                    update_hand(game_temp, game_temp.player2, game_temp.player1);
+                    update_broad(game_temp, game_temp.player2, game_temp.player1);
                 }
                 var temp = {
-                    turn_num: game.turn_num,
-                    timer: game.timer,
-                    player1: game.player1,
-                    player2: game.player2
+                    turn_num: game_temp.turn_num,
+                    timer: game_temp.timer,
+                    player1: game_temp.player1,
+                    player2: game_temp.player2
                 }
                 set_game_state(room._id, temp);
                 send(room._id, temp);
@@ -482,6 +486,9 @@ function draw(player) {
         if (player.hand.length < 5) {
             player.hand.push(card);
         }
+    }
+    else{
+        player.hp-=5;
     }
 }
 function endTurn(game, player_me, player_op) {

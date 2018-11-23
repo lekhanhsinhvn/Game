@@ -178,7 +178,7 @@ img {
   position: absolute;
   width: 800px;
   height: 450px;
-  top: 170px;
+  top: 150px;
   left: 150px;
 }
 
@@ -335,16 +335,17 @@ img {
 
 #deck{
   position: absolute;
-  display: flex;
-  overflow: scroll;
-  overflow-x: hidden;
-  flex-direction: column;
   width: 200px;
-  height: 450px;
-  top: 170px;
+  height: 400px;
+  top: 180px;
   left: 1000px;
+  overflow:hidden;
 }
-
+#deck .content{
+  display: flex;
+  overflow: hidden;
+  flex-direction: column;
+}
 .card-name{
   cursor: pointer;
   background-color: rgb(30, 30, 30, 0.5);
@@ -421,7 +422,7 @@ img {
   width: 60px;
   height: 40px;
   left: 1150px;
-  top: 620px;
+  top: 580px;
 }
 
 #deckNumFrame #deck_length{

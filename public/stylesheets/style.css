@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css?family=Poor+Story');
 body {
   padding: 0px;
   overflow-x:hidden;
@@ -42,10 +43,11 @@ img {
 }
 
 #btn.active {
-  left: 300px;
+  left: 240px;
+  top: 70px;
 }
 #btn.active div {
-  background-color: #343838;
+  background-color: yellow;
 }
 #btn.active #top {
   -webkit-transform: translateY(10px) rotate(-135deg);
@@ -71,34 +73,66 @@ img {
   opacity: 0;
   padding: 5px 0px;
   height: 100%;
-  background-color: #f6f6f6;
-  color: #343838;
+  background: url(../images/box_backgrounds.jpg);
+  background-size: cover;
   transition: all 350ms cubic-bezier(0.6, 0.05, 0.28, 0.91);
 }
-
+.header_rooms{
+  margin: auto;
+  width: 300px;
+  height: 120px;
+  background: url(../images/play-game.png) no-repeat;
+  background-size: contain;
+}
+.header_rooms h1{
+  position: absolute;
+  top: 48px;
+  left: 110px;
+  font-size: 50px;
+  font-family: 'Poor Story', cursive;
+  font-weight: 700;
+  color: yellow;
+  text-align: center;
+}
 #box.active {
   left: 0px;
   opacity: 1;
 }
 
-.room {
+/* .room {
   position: relative;
-  top: 10%;
+  top: 15%;
   -webkit-transform: translateY(-50%);
           transform: translateY(-50%);
+} */
+#rooms{
+  font-family: 'Poor Story', cursive;
+  color: yellow;
+  margin: auto;
+  width: 320px;
+  height: 350px;
+  border: #2e1a12 solid 8px;
+  -webkit-border-image: url(../images/border.png) 200 stretch;
+  -moz-border-image: url(../images/border.png) 200 stretch;
+  border-image: url(../images/border.png) 200 stretch;
+  -webkit-box-shadow: inset 0px 0px 10px rgba(0,0,0,1);
 }
 #rooms .room {
+  height: 100px;
   position: relative;
-  cursor: pointer;
-  padding: 15px 30px;
+  padding-left: 30px;
+  padding-top: 15px;
+  padding-bottom: 0px;
   transition: all 250ms;
   font-weight: bold;
   overflow: hidden;
+  background: url(../images/name.png) no-repeat;
+  background-size: cover;
 }
 #rooms .room .player_name{
   overflow: hidden;
   width: 300px;
-  height: 22px;
+  height: 30px;
 }
 #rooms .room p{
   width: 200px;
@@ -106,7 +140,7 @@ img {
   overflow: hidden;
 }
 #rooms .room span{
-  font-size: 18px;
+  font-size: 26px;
   margin-right: 10px;
 }
 #rooms .room button{
@@ -118,24 +152,79 @@ img {
   background-color: rgba(52, 56, 56, 0.2);
 }
 #box #host{
-  width: 40%;
-  margin: auto;
+  width: 30%;
+  background: url(../images/wood_button.png) no-repeat;
+  background-size: cover;
+  height: 50px;
+  border: 0px;
+  font-weight: 700;
+  font-family: 'Poor Story', cursive;
+  color: yellow;
+  text-align: center;
+  font-size: 30px;
+  margin-right: 10px;
+  cursor: pointer;
 }
 #box #random{
-  width: 40%;
-  margin: auto;
+  width: 35%;
+  background: url(../images/wood_go.png) no-repeat;
+  background-size: cover;
+  height: 50px;
+  border: 0px;
+  font-weight: 700;
+  font-family: 'Poor Story', cursive;
+  color: yellow;
+  text-align: center;
+  font-size: 30px;
+  margin-right: 10px;
+  cursor: pointer;
 }
 #box #leaveRoom{
-  width: 80%;
+  width: 45%;
   margin: auto;
+  background: url(../images/wood_button.png) no-repeat;
+  background-size: cover;
+  height: 60px;
+  border: 0px;
+  font-weight: 700;
+  font-family: 'Poor Story', cursive;
+  color: yellow;
+  text-align: center;
+  font-size: 30px;
+  cursor: pointer;
+}
+#box .wood_go{
+  top: 10px;
+  width: 90px;
+  right:15px;
+  background: url(../images/wood_go.png) no-repeat;
+  background-size: cover;
+  height: 50px;
+  border: 0px;
+  font-weight: 700;
+  font-family: 'Poor Story', cursive;
+  color: yellow;
+  text-align: center;
+  font-size: 30px;
+  cursor: pointer;
 }
 #btn, #btn * {
   will-change: transform;
 }
 #box #deck-btn{
   width: 80%;
+  background: url(../images/wood_label.png) no-repeat;
+  background-size: cover;
+  height: 80px;
+  border: 0px;
+  font-weight: 700;
+  font-family: 'Poor Story', cursive;
+  color: yellow;
+  text-align: center;
+  font-size: 30px;
   margin: auto;
   display: block;
+  cursor: pointer;
 }
 #box {
   will-change: transform, opacity;
@@ -156,7 +245,13 @@ img {
   -webkit-animation: spin 2s linear infinite;
   animation: spin 2s linear infinite;
 }
-
+.message{
+  font-weight: 700;
+  font-family: 'Poor Story', cursive;
+  color: yellow;
+  text-align: center;
+  font-size: 60px;
+}
 @-webkit-keyframes spin {
   0% { -webkit-transform: rotate(0deg); }
   100% { -webkit-transform: rotate(360deg); }
@@ -184,11 +279,6 @@ img {
 @keyframes animatebottom { 
   from{ bottom:-100px; opacity:0 } 
   to{ bottom:0; opacity:1 }
-}
-#rooms{
-  width: 100%;
-  height: 60vh;
-  overflow-y: scroll;
 }
 #game{
   display: none;
@@ -485,14 +575,20 @@ img {
 
 #board{
   position: absolute;
-  left: 310px;
+  left: 270px;
   top: 30px;
   margin: auto;
+  background: url(../images/box_backgrounds.jpg);
+  background-size: cover;
 }
 .zone {
-  height: 200px;
-  width: 180px;
-  border: 2px solid rgba(30, 30, 30);
+  height: 218px;
+  width: 190px;
+  border: #2e1a12 solid 8px;
+  -webkit-border-image: url(../images/border.png) 200 stretch;
+  -moz-border-image: url(../images/border.png) 200 stretch;
+  border-image: url(../images/border.png) 200 stretch;
+  -webkit-box-shadow: inset 0px 0px 10px rgba(0,0,0,1);
   padding-bottom: 9px;
 }
 #hand {
